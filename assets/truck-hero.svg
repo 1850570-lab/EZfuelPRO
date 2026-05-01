@@ -1,0 +1,107 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 400" width="900" height="400">
+  <defs>
+    <linearGradient id="truckGrad" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#22D3EE"/>
+      <stop offset="60%" stop-color="#3B82F6"/>
+      <stop offset="100%" stop-color="#1E40AF"/>
+    </linearGradient>
+    <linearGradient id="windowGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#0D1117" stop-opacity="0.75"/>
+      <stop offset="100%" stop-color="#22D3EE" stop-opacity="0.15"/>
+    </linearGradient>
+    <linearGradient id="roadGrad" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#22D3EE" stop-opacity="0"/>
+      <stop offset="50%" stop-color="#22D3EE" stop-opacity="0.6"/>
+      <stop offset="100%" stop-color="#22D3EE" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Road line underneath -->
+  <line x1="0" y1="330" x2="900" y2="330" stroke="url(#roadGrad)" stroke-width="2"/>
+  <!-- Dashed lane markers -->
+  <g stroke="url(#roadGrad)" stroke-width="3" stroke-dasharray="14 18" opacity="0.4">
+    <line x1="0" y1="355" x2="900" y2="355"/>
+  </g>
+
+  <!-- Trailer box -->
+  <g>
+    <rect x="40" y="80" width="470" height="220" rx="6" fill="url(#truckGrad)"/>
+    <!-- Top gloss highlight -->
+    <rect x="40" y="80" width="470" height="16" rx="6" fill="#ffffff" opacity="0.08"/>
+    <!-- Subtle vertical seams -->
+    <g stroke="#0D1117" stroke-width="1" opacity="0.25">
+      <line x1="140" y1="95" x2="140" y2="300"/>
+      <line x1="240" y1="95" x2="240" y2="300"/>
+      <line x1="340" y1="95" x2="340" y2="300"/>
+      <line x1="440" y1="95" x2="440" y2="300"/>
+    </g>
+    <!-- Door handles at rear -->
+    <rect x="48" y="160" width="4" height="70" rx="1" fill="#0D1117" opacity="0.35"/>
+    <rect x="54" y="160" width="4" height="70" rx="1" fill="#0D1117" opacity="0.35"/>
+    <!-- Bottom shadow -->
+    <rect x="40" y="290" width="470" height="10" fill="#0D1117" opacity="0.3"/>
+  </g>
+
+  <!-- Gap between trailer and cab -->
+  <rect x="510" y="210" width="40" height="20" fill="#0D1117" opacity="0.7"/>
+
+  <!-- Cab -->
+  <g>
+    <!-- Main cab body -->
+    <path d="M 550 120 L 710 120 L 780 180 L 810 180 L 810 300 L 550 300 Z" fill="url(#truckGrad)"/>
+    <!-- Windshield -->
+    <path d="M 560 135 L 700 135 L 755 180 L 560 180 Z" fill="url(#windowGrad)"/>
+    <!-- Side window divider -->
+    <line x1="700" y1="135" x2="700" y2="180" stroke="#0D1117" stroke-width="1.5" opacity="0.5"/>
+    <!-- Hood/grill -->
+    <rect x="780" y="210" width="30" height="40" fill="#0D1117" opacity="0.35"/>
+    <line x1="783" y1="215" x2="807" y2="215" stroke="#22D3EE" stroke-width="1" opacity="0.5"/>
+    <line x1="783" y1="225" x2="807" y2="225" stroke="#22D3EE" stroke-width="1" opacity="0.5"/>
+    <line x1="783" y1="235" x2="807" y2="235" stroke="#22D3EE" stroke-width="1" opacity="0.5"/>
+    <line x1="783" y1="245" x2="807" y2="245" stroke="#22D3EE" stroke-width="1" opacity="0.5"/>
+    <!-- Headlight -->
+    <rect x="795" y="260" width="15" height="10" rx="2" fill="#FCD34D" opacity="0.9"/>
+    <!-- Exhaust stack -->
+    <rect x="720" y="70" width="8" height="50" rx="2" fill="#22D3EE" opacity="0.7"/>
+    <rect x="720" y="66" width="8" height="6" rx="1" fill="#0D1117" opacity="0.5"/>
+    <!-- Side step -->
+    <rect x="550" y="300" width="260" height="5" fill="#0D1117" opacity="0.4"/>
+  </g>
+
+  <!-- Wheels -->
+  <g>
+    <!-- Trailer wheels (rear dual) -->
+    <g transform="translate(380, 320)">
+      <circle cx="0" cy="0" r="28" fill="#0D1117"/>
+      <circle cx="0" cy="0" r="22" fill="#1F2328"/>
+      <circle cx="0" cy="0" r="10" fill="url(#truckGrad)"/>
+      <circle cx="0" cy="0" r="4" fill="#0D1117"/>
+    </g>
+    <g transform="translate(440, 320)">
+      <circle cx="0" cy="0" r="28" fill="#0D1117"/>
+      <circle cx="0" cy="0" r="22" fill="#1F2328"/>
+      <circle cx="0" cy="0" r="10" fill="url(#truckGrad)"/>
+      <circle cx="0" cy="0" r="4" fill="#0D1117"/>
+    </g>
+    <!-- Cab rear wheels (dual) -->
+    <g transform="translate(600, 320)">
+      <circle cx="0" cy="0" r="28" fill="#0D1117"/>
+      <circle cx="0" cy="0" r="22" fill="#1F2328"/>
+      <circle cx="0" cy="0" r="10" fill="url(#truckGrad)"/>
+      <circle cx="0" cy="0" r="4" fill="#0D1117"/>
+    </g>
+    <g transform="translate(660, 320)">
+      <circle cx="0" cy="0" r="28" fill="#0D1117"/>
+      <circle cx="0" cy="0" r="22" fill="#1F2328"/>
+      <circle cx="0" cy="0" r="10" fill="url(#truckGrad)"/>
+      <circle cx="0" cy="0" r="4" fill="#0D1117"/>
+    </g>
+    <!-- Cab front wheel -->
+    <g transform="translate(770, 320)">
+      <circle cx="0" cy="0" r="28" fill="#0D1117"/>
+      <circle cx="0" cy="0" r="22" fill="#1F2328"/>
+      <circle cx="0" cy="0" r="10" fill="url(#truckGrad)"/>
+      <circle cx="0" cy="0" r="4" fill="#0D1117"/>
+    </g>
+  </g>
+</svg>

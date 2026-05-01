@@ -1,0 +1,70 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 800" width="800" height="800">
+  <defs>
+    <linearGradient id="g1" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#E83E8C" stop-opacity="0.7"/>
+      <stop offset="100%" stop-color="#4488ff" stop-opacity="0.5"/>
+    </linearGradient>
+    <linearGradient id="g2" x1="1" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#0088ff" stop-opacity="0.6"/>
+      <stop offset="100%" stop-color="#D946EF" stop-opacity="0.7"/>
+    </linearGradient>
+    <radialGradient id="glow1" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#E83E8C" stop-opacity="0.12"/>
+      <stop offset="100%" stop-color="#E83E8C" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="glow2" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#0088ff" stop-opacity="0.1"/>
+      <stop offset="100%" stop-color="#0088ff" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <!-- Glow -->
+  <circle cx="280" cy="320" r="260" fill="url(#glow1)"/>
+  <circle cx="560" cy="520" r="300" fill="url(#glow2)"/>
+
+  <!-- Sphere 1 — top left -->
+  <g transform="translate(280, 320)">
+    <!-- Longitude arcs -->
+    <ellipse rx="200" ry="200" fill="none" stroke="url(#g1)" stroke-width="0.8"/>
+    <ellipse rx="160" ry="200" fill="none" stroke="url(#g1)" stroke-width="0.8"/>
+    <ellipse rx="110" ry="200" fill="none" stroke="url(#g1)" stroke-width="0.7"/>
+    <ellipse rx="55" ry="200" fill="none" stroke="url(#g1)" stroke-width="0.6"/>
+    <ellipse rx="185" ry="200" fill="none" stroke="url(#g1)" stroke-width="0.5" transform="rotate(20)"/>
+    <ellipse rx="185" ry="200" fill="none" stroke="url(#g1)" stroke-width="0.5" transform="rotate(-20)"/>
+    <ellipse rx="140" ry="200" fill="none" stroke="url(#g1)" stroke-width="0.5" transform="rotate(10)"/>
+    <ellipse rx="140" ry="200" fill="none" stroke="url(#g1)" stroke-width="0.5" transform="rotate(-10)"/>
+    <!-- Latitude bands -->
+    <ellipse cy="-150" rx="132" ry="34" fill="none" stroke="url(#g1)" stroke-width="0.7"/>
+    <ellipse cy="-90" rx="178" ry="46" fill="none" stroke="url(#g1)" stroke-width="0.8"/>
+    <ellipse cy="-30" rx="198" ry="52" fill="none" stroke="url(#g1)" stroke-width="0.8"/>
+    <ellipse cy="40" rx="196" ry="50" fill="none" stroke="url(#g1)" stroke-width="0.8"/>
+    <ellipse cy="100" rx="174" ry="44" fill="none" stroke="url(#g1)" stroke-width="0.8"/>
+    <ellipse cy="155" rx="126" ry="32" fill="none" stroke="url(#g1)" stroke-width="0.7"/>
+  </g>
+
+  <!-- Sphere 2 — bottom right, larger -->
+  <g transform="translate(560, 520)">
+    <ellipse rx="240" ry="240" fill="none" stroke="url(#g2)" stroke-width="0.8"/>
+    <ellipse rx="190" ry="240" fill="none" stroke="url(#g2)" stroke-width="0.8"/>
+    <ellipse rx="130" ry="240" fill="none" stroke="url(#g2)" stroke-width="0.7"/>
+    <ellipse rx="65" ry="240" fill="none" stroke="url(#g2)" stroke-width="0.6"/>
+    <ellipse rx="220" ry="240" fill="none" stroke="url(#g2)" stroke-width="0.5" transform="rotate(18)"/>
+    <ellipse rx="220" ry="240" fill="none" stroke="url(#g2)" stroke-width="0.5" transform="rotate(-18)"/>
+    <ellipse rx="165" ry="240" fill="none" stroke="url(#g2)" stroke-width="0.5" transform="rotate(8)"/>
+    <ellipse rx="165" ry="240" fill="none" stroke="url(#g2)" stroke-width="0.5" transform="rotate(-8)"/>
+    <ellipse cy="-180" rx="158" ry="40" fill="none" stroke="url(#g2)" stroke-width="0.7"/>
+    <ellipse cy="-108" rx="212" ry="56" fill="none" stroke="url(#g2)" stroke-width="0.8"/>
+    <ellipse cy="-36" rx="236" ry="62" fill="none" stroke="url(#g2)" stroke-width="0.8"/>
+    <ellipse cy="48" rx="234" ry="60" fill="none" stroke="url(#g2)" stroke-width="0.8"/>
+    <ellipse cy="120" rx="208" ry="54" fill="none" stroke="url(#g2)" stroke-width="0.8"/>
+    <ellipse cy="185" rx="150" ry="38" fill="none" stroke="url(#g2)" stroke-width="0.7"/>
+  </g>
+
+  <!-- Tiny floating particles -->
+  <circle cx="150" cy="200" r="2" fill="#E83E8C" opacity="0.4"/>
+  <circle cx="620" cy="150" r="1.5" fill="#0088ff" opacity="0.3"/>
+  <circle cx="700" cy="380" r="2.5" fill="#D946EF" opacity="0.25"/>
+  <circle cx="100" cy="600" r="1.8" fill="#E83E8C" opacity="0.3"/>
+  <circle cx="400" cy="100" r="2" fill="#0088ff" opacity="0.35"/>
+  <circle cx="680" cy="700" r="1.5" fill="#D946EF" opacity="0.3"/>
+</svg>
