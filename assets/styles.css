@@ -2865,6 +2865,38 @@ input:focus, select:focus, textarea:focus {
   transform-style: preserve-3d;
   outline: none;
 }
+/* Responsive card sizing — small on phones, full size on desktop */
+.card-img {
+  width: 280px;
+  border-radius: 1rem;
+}
+.card-back-sized {
+  width: 280px;
+}
+@media (min-width: 480px) {
+  .card-img, .card-back-sized { width: 320px; }
+}
+@media (min-width: 1024px) {
+  .card-img, .card-back-sized { width: 360px; }
+}
+/* Gyro hint pulse for iOS users (tap to enable motion) */
+.gyro-hint {
+  position: absolute;
+  bottom: -34px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 11px;
+  color: var(--muted);
+  opacity: 0;
+  transition: opacity .3s ease;
+  pointer-events: none;
+  white-space: nowrap;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+.card-tilt-wrap.show-gyro-hint .gyro-hint { opacity: 1; }
+@media (min-width: 1024px) { .gyro-hint { display: none; } }
 /* This wrapper carries the mouse-tilt transform (data-tilt). It sits ABOVE
    .card-flip-inner so the tilt applies to BOTH faces — the tilt keeps working
    when the card is showing its back. */
