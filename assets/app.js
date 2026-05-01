@@ -392,17 +392,115 @@
     go(0);
   }
 
-  // ----- Form stub -----
+  // ----- Form submission via FormSubmit (AJAX, no page reload) -----
+  // After first submission, FormSubmit sends an activation email to the
+  // address below. Click the link in that email once and all future
+  // submissions deliver to that inbox.
   function bindApplyForm() {
+    const FORM_ENDPOINT = 'https://formsubmit.co/ajax/info@ezfuelpro.com';
+
     document.querySelectorAll('[data-apply-form]').forEach(form => {
-      form.addEventListener('submit', (e) => {
+      // Inject a honeypot field for spam protection (bots auto-fill it,
+      // humans never see it). FormSubmit treats _honey as a trap.
+      if (!form.querySelector('input[name="_honey"]')) {
+        const honey = document.createElement('input');
+        honey.type = 'text';
+        honey.name = '_honey';
+        honey.tabIndex = -1;
+        honey.autocomplete = 'off';
+        honey.style.cssText = 'position:absolute;left:-9999px;width:1px;height:1px;opacity:0;';
+        honey.setAttribute('aria-hidden', 'true');
+        form.appendChild(honey);
+      }
+
+      form.addEventListener('submit', async (e) => {
         e.preventDefault();
         const status = form.querySelector('[data-form-status]');
-        if (status) {
-          status.textContent = "Thanks — we received your application. An EZ FUEL account specialist will reach out within one business day.";
-          status.classList.remove('hidden');
+        const submitBtn = form.querySelector('button[type="submit"], [data-submit]') ||
+                          [...form.querySelectorAll('button')].pop();
+
+        // Honeypot tripped — silently abort (looks like success to the bot)
+        const hp = form.querySelector('input[name="_honey"]');
+        if (hp && hp.value) {
+          if (status) {
+            status.textContent = "Thanks — we received your application.";
+            status.classList.remove('hidden');
+          }
+          form.reset();
+          return;
         }
-        form.reset();
+
+        // Collect form data into plain object (handles checkbox arrays)
+        const formData = new FormData(form);
+        const data = {};
+        for (const [key, value] of formData.entries()) {
+          if (key === '_honey') continue;
+          if (data[key] !== undefined) {
+            // multiple values (checkboxes) — collapse to comma-separated string
+            data[key] = Array.isArray(data[key])
+              ? [...data[key], value].join(', ')
+              : [data[key], value].join(', ');
+          } else {
+            data[key] = value;
+          }
+        }
+
+        // FormSubmit metadata
+        const senderName = data.contact_name || data.name || data.full_name || data.email || 'Unknown';
+        data._subject = `New EZ Fuel Pro Application — ${senderName}`;
+        data._template = 'box';
+        data._captcha = 'false';
+        data._replyto = data.email || '';
+        data.page = location.pathname;
+        data.source = (form.dataset.formSource || form.id || 'apply-form');
+
+        // UI: loading state
+        const originalBtnText = submitBtn ? submitBtn.innerHTML : '';
+        if (submitBtn) {
+          submitBtn.disabled = true;
+          submitBtn.dataset.loading = 'true';
+          submitBtn.innerHTML = 'Sending…';
+        }
+        if (status) {
+          status.classList.remove('hidden');
+          status.textContent = 'Sending your application…';
+          status.style.color = '';
+        }
+
+        try {
+          const response = await fetch(FORM_ENDPOINT, {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+              'Accept': 'application/json'
+            },
+            body: JSON.stringify(data)
+          });
+          const result = await response.json().catch(() => ({}));
+          const ok = response.ok && (result.success === 'true' || result.success === true);
+
+          if (ok) {
+            if (status) {
+              status.textContent = '✓ Thanks — we received your application. An EZ FUEL account specialist will reach out within one business day.';
+              status.style.color = '';
+            }
+            form.reset();
+          } else {
+            throw new Error(result.message || ('HTTP ' + response.status));
+          }
+        } catch (err) {
+          console.error('FormSubmit error:', err);
+          if (status) {
+            status.textContent = 'Something went wrong sending your application. Please try again, or email info@ezfuelpro.com directly.';
+            status.style.color = '#f87171';
+          }
+        } finally {
+          if (submitBtn) {
+            submitBtn.disabled = false;
+            delete submitBtn.dataset.loading;
+            submitBtn.innerHTML = originalBtnText;
+          }
+        }
       });
     });
   }
