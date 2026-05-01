@@ -236,6 +236,102 @@
     });
   }
 
+  // ----- Gyroscope tilt for mobile (DeviceOrientation API) -----
+  // Card responds to phone movement: tilt the phone left/right/forward/back
+  // and the 3D card follows. Works automatically on Android. iOS 13+ requires
+  // a user-gesture permission request — we attach a one-time tap handler
+  // for that. Falls back to the existing CSS card-float idle animation if
+  // permissions denied or device has no gyro.
+  function bindCardGyro() {
+    if (!window.matchMedia('(pointer: coarse)').matches) return;
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    if (typeof window.DeviceOrientationEvent === 'undefined') return;
+
+    const cards = document.querySelectorAll('[data-gyro]');
+    if (!cards.length) return;
+
+    // Smoothing state per card
+    const state = new Map();
+    cards.forEach(card => {
+      state.set(card, { curRX: 0, curRY: 0, targetRX: 0, targetRY: 0, raf: null });
+      // Inject hint label (shown only on iOS until permission granted)
+      const wrap = card.closest('.card-tilt-wrap');
+      if (wrap && !wrap.querySelector('.gyro-hint')) {
+        const hint = document.createElement('div');
+        hint.className = 'gyro-hint';
+        hint.innerHTML = '<span>📱</span> Tap card, then tilt your phone';
+        wrap.appendChild(hint);
+      }
+    });
+
+    const MAX_TILT_X = 18; // beta range mapped here
+    const MAX_TILT_Y = 22; // gamma range mapped here
+
+    function animate(card) {
+      const s = state.get(card);
+      s.curRX += (s.targetRX - s.curRX) * 0.12;
+      s.curRY += (s.targetRY - s.curRY) * 0.12;
+      card.style.transform = `perspective(900px) rotateX(${s.curRX.toFixed(2)}deg) rotateY(${s.curRY.toFixed(2)}deg) translateY(-4px)`;
+      const still = Math.abs(s.curRX - s.targetRX) < 0.05 && Math.abs(s.curRY - s.targetRY) < 0.05;
+      if (!still) {
+        s.raf = requestAnimationFrame(() => animate(card));
+      } else {
+        s.raf = null;
+      }
+    }
+
+    let baseBeta = null, baseGamma = null;
+    function onOrientation(e) {
+      const beta  = e.beta  || 0;  // front-back tilt (-180..180)
+      const gamma = e.gamma || 0;  // left-right tilt (-90..90)
+      // Calibrate to user's natural holding position on first event
+      if (baseBeta === null)  baseBeta = beta;
+      if (baseGamma === null) baseGamma = gamma;
+      const dB = Math.max(-30, Math.min(30, beta - baseBeta));
+      const dG = Math.max(-30, Math.min(30, gamma - baseGamma));
+
+      cards.forEach(card => {
+        const wrap = card.closest('.card-tilt-wrap');
+        if (wrap) wrap.classList.add('is-tilting');
+        const s = state.get(card);
+        s.targetRX = -(dB / 30) * MAX_TILT_X;
+        s.targetRY =  (dG / 30) * MAX_TILT_Y;
+        if (s.raf == null) s.raf = requestAnimationFrame(() => animate(card));
+      });
+    }
+
+    function startListening() {
+      window.addEventListener('deviceorientation', onOrientation, true);
+      cards.forEach(card => {
+        const wrap = card.closest('.card-tilt-wrap');
+        if (wrap) wrap.classList.remove('show-gyro-hint');
+      });
+    }
+
+    // iOS 13+ — needs explicit permission via user gesture
+    const needsPerm = typeof DeviceOrientationEvent.requestPermission === 'function';
+    if (needsPerm) {
+      // Show the hint and wait for tap on any card to request permission
+      cards.forEach(card => {
+        const wrap = card.closest('.card-tilt-wrap');
+        if (wrap) wrap.classList.add('show-gyro-hint');
+        const requestPerm = async () => {
+          try {
+            const result = await DeviceOrientationEvent.requestPermission();
+            if (result === 'granted') startListening();
+          } catch (_) { /* ignore */ }
+          card.removeEventListener('touchend', requestPerm);
+          card.removeEventListener('click', requestPerm);
+        };
+        card.addEventListener('touchend', requestPerm, { passive: true });
+        card.addEventListener('click', requestPerm);
+      });
+    } else {
+      // Android / other — listen immediately
+      startListening();
+    }
+  }
+
   // ----- Click-to-flip card -----
   function bindCardFlip() {
     document.querySelectorAll('[data-card-flip]').forEach(card => {
@@ -339,6 +435,7 @@
     // Card tilt is opt-in per [data-tilt] element, so we bind it everywhere
     // — any page that has a fuel-card hero gets the mouse-follow 3D effect.
     bindCardTilt();
+    bindCardGyro();
     bindCardFlip();
 
     // Broader animation layer — homepage only. Static pages opt out via body.static-page.
