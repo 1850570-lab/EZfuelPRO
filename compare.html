@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EZ FUEL vs Comdata, EFS, WEX, Fuelman — Compare Fleet Fuel Cards</title>
+  <meta name="description" content="Side-by-side comparison of EZ Fuel against Comdata, EFS, WEX Fleet, Fuelman, and RTS Carrier Services. Discounts, fees, controls, support, and where each provider wins.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            pink: { 500: '#22D3EE', 600: '#3B82F6' },
+            navy: { 900: '#0D1117', 800: '#161B22', 700: '#1F2328' },
+            green: { 500: '#3FB950' },
+          },
+          fontFamily: { sans: ['Inter', 'ui-sans-serif', 'system-ui', 'sans-serif'] },
+        }
+      }
+    }
+  </script>
+  <link rel="stylesheet" href="assets/styles.css">
+</head>
+<body class="static-page surface-0 text-white font-sans">
+
+  <!-- ===== STICKY HEADER ===== -->
+  <header class="fixed top-0 inset-x-0 z-50 nav-bg backdrop-blur-xl border-b border-soft">
+    <div class="max-w-7xl mx-auto flex items-center justify-between px-5 h-16">
+      <a href="index.html" class="flex items-center gap-1.5 text-xl font-extrabold tracking-tight">
+        <span class="ez-gradient-text">EZ</span><span>FUEL</span><span class="ez-pro-text ml-0.5">PRO</span><span class="ez-tm">&trade;</span>
+      </a>
+      <nav class="hidden md:flex items-center gap-6 text-sm font-medium text-muted">
+        <a href="fuel-cards.html" class="hover:text-white transition-colors">Fuel Cards</a>
+        <a href="fleet-tech.html" class="hover:text-white transition-colors">Roadside Support</a>
+        <a href="pricing.html" class="hover:text-white transition-colors">Pricing</a>
+        <a href="network.html" class="hover:text-white transition-colors">Network</a>
+        <div class="relative" data-nav-dropdown>
+          <button type="button" class="flex items-center gap-1 hover:text-white transition-colors py-1" data-nav-dropdown-toggle aria-haspopup="true" aria-expanded="false">
+            Resources
+            <i data-lucide="chevron-down" class="w-3.5 h-3.5 transition-transform duration-200" data-nav-dropdown-chevron></i>
+          </button>
+          <div class="absolute top-full right-0 mt-3 w-[480px] hidden surface-1 border border-soft rounded-2xl shadow-2xl p-3 z-50" data-nav-dropdown-menu>
+            <a href="resources.html" class="flex items-center gap-3 p-3 mb-2 rounded-xl bg-pink-500/5 hover:bg-pink-500/10 border border-pink-500/20 transition-colors" onclick="window.location.href='resources.html'; return false;">
+              <div class="w-9 h-9 rounded-lg bg-pink-500/15 flex items-center justify-center flex-shrink-0">
+                <i data-lucide="library" class="w-4 h-4 text-pink-500"></i>
+              </div>
+              <div class="flex-1 min-w-0">
+                <p class="font-semibold text-white text-sm">All Resources</p>
+                <p class="text-xs text-muted">Hub with everything in one place</p>
+              </div>
+              <i data-lucide="arrow-right" class="w-4 h-4 text-pink-500 flex-shrink-0"></i>
+            </a>
+            <div class="grid grid-cols-2 gap-1">
+              <a href="compare.html" class="flex items-center gap-2.5 p-2.5 rounded-lg hover:bg-white/5 transition-colors" onclick="window.location.href='compare.html'; return false;">
+                <i data-lucide="git-compare-arrows" class="w-4 h-4 text-pink-500 flex-shrink-0"></i>
+                <span class="text-sm text-white">Compare</span>
+              </a>
+              <a href="customer-stories.html" class="flex items-center gap-2.5 p-2.5 rounded-lg hover:bg-white/5 transition-colors" onclick="window.location.href='customer-stories.html'; return false;">
+                <i data-lucide="users" class="w-4 h-4 text-pink-500 flex-shrink-0"></i>
+                <span class="text-sm text-white">Customer Stories</span>
+              </a>
+              <a href="roi-calculator.html" class="flex items-center gap-2.5 p-2.5 rounded-lg hover:bg-white/5 transition-colors" onclick="window.location.href='roi-calculator.html'; return false;">
+                <i data-lucide="calculator" class="w-4 h-4 text-green-500 flex-shrink-0"></i>
+                <span class="text-sm text-white">ROI Calculator</span>
+              </a>
+              <a href="owner-operators.html" class="flex items-center gap-2.5 p-2.5 rounded-lg hover:bg-white/5 transition-colors" onclick="window.location.href='owner-operators.html'; return false;">
+                <i data-lucide="truck" class="w-4 h-4 text-pink-500 flex-shrink-0"></i>
+                <span class="text-sm text-white">For Owner Operators</span>
+              </a>
+              <a href="integrations.html" class="flex items-center gap-2.5 p-2.5 rounded-lg hover:bg-white/5 transition-colors" onclick="window.location.href='integrations.html'; return false;">
+                <i data-lucide="plug-2" class="w-4 h-4 text-pink-500 flex-shrink-0"></i>
+                <span class="text-sm text-white">Integrations</span>
+              </a>
+              <a href="mobile-app.html" class="flex items-center gap-2.5 p-2.5 rounded-lg hover:bg-white/5 transition-colors" onclick="window.location.href='mobile-app.html'; return false;">
+                <i data-lucide="smartphone" class="w-4 h-4 text-pink-500 flex-shrink-0"></i>
+                <span class="text-sm text-white">Driver App</span>
+              </a>
+              <a href="help.html" class="flex items-center gap-2.5 p-2.5 rounded-lg hover:bg-white/5 transition-colors" onclick="window.location.href='help.html'; return false;">
+                <i data-lucide="life-buoy" class="w-4 h-4 text-pink-500 flex-shrink-0"></i>
+                <span class="text-sm text-white">Help Center</span>
+              </a>
+              <a href="refer.html" class="flex items-center gap-2.5 p-2.5 rounded-lg hover:bg-white/5 transition-colors" onclick="window.location.href='refer.html'; return false;">
+                <i data-lucide="gift" class="w-4 h-4 text-green-500 flex-shrink-0"></i>
+                <span class="text-sm text-white">Refer &amp; Earn</span>
+              </a>
+            </div>
+          </div>
+        </div>
+        <a href="about.html" class="hover:text-white transition-colors">About</a>
+        <a href="contact.html" class="hover:text-white transition-colors">Contact</a>
+      </nav>
+      <div class="flex items-center gap-3">
+        <button data-theme-toggle aria-label="Toggle theme" class="p-2 rounded-lg hover:bg-white/5 transition-colors">
+          <i data-lucide="moon" data-theme-icon-dark class="w-4 h-4"></i>
+          <i data-lucide="sun" data-theme-icon-light class="w-4 h-4 hidden"></i>
+        </button>
+        <a href="#" class="btn-ghost text-sm hidden sm:inline-flex">Log In</a>
+        <a href="contact.html" class="btn-primary text-sm hidden sm:inline-flex">Apply Now <i data-lucide="arrow-right" class="w-4 h-4"></i></a>
+        <button data-mobile-nav-toggle class="md:hidden p-2 rounded-lg hover:bg-white/5">
+          <i data-lucide="menu" class="w-5 h-5"></i>
+        </button>
+      </div>
+    </div>
+    <nav data-mobile-nav class="hidden md:hidden border-t border-soft px-5 py-4 flex flex-col gap-3 text-sm font-medium text-muted surface-0">
+      <a href="fuel-cards.html" class="py-2 hover:text-white">Fuel Cards</a>
+      <a href="fleet-tech.html" class="py-2 hover:text-white">Roadside Support</a>
+      <a href="pricing.html" class="py-2 hover:text-white">Pricing</a>
+      <a href="network.html" class="py-2 hover:text-white">Network</a>
+      <details class="border-t border-b border-soft py-1" data-mobile-dropdown>
+        <summary class="py-2 hover:text-white cursor-pointer flex items-center justify-between list-none">
+          <span>Resources</span>
+          <i data-lucide="chevron-down" class="w-4 h-4 transition-transform" data-mobile-chevron></i>
+        </summary>
+        <div class="pl-3 pt-2 pb-2 flex flex-col gap-2">
+          <a href="resources.html" class="py-1 text-sm text-pink-500 font-semibold hover:text-white" onclick="window.location.href='resources.html'; return false;">All Resources →</a>
+          <a href="compare.html" class="py-1 text-sm hover:text-white" onclick="window.location.href='compare.html'; return false;">Compare</a>
+          <a href="customer-stories.html" class="py-1 text-sm hover:text-white" onclick="window.location.href='customer-stories.html'; return false;">Customer Stories</a>
+          <a href="roi-calculator.html" class="py-1 text-sm hover:text-white" onclick="window.location.href='roi-calculator.html'; return false;">ROI Calculator</a>
+          <a href="owner-operators.html" class="py-1 text-sm hover:text-white" onclick="window.location.href='owner-operators.html'; return false;">For Owner Operators</a>
+          <a href="integrations.html" class="py-1 text-sm hover:text-white" onclick="window.location.href='integrations.html'; return false;">Integrations</a>
+          <a href="mobile-app.html" class="py-1 text-sm hover:text-white" onclick="window.location.href='mobile-app.html'; return false;">Driver App</a>
+          <a href="help.html" class="py-1 text-sm hover:text-white" onclick="window.location.href='help.html'; return false;">Help Center</a>
+          <a href="refer.html" class="py-1 text-sm hover:text-white" onclick="window.location.href='refer.html'; return false;">Refer &amp; Earn</a>
+        </div>
+      </details>
+      <a href="about.html" class="py-2 hover:text-white">About</a>
+      <a href="contact.html" class="py-2 hover:text-white">Contact</a>
+      <a href="#" class="btn-ghost text-sm mt-2 justify-center">Log In</a>
+      <a href="contact.html" class="btn-primary text-sm justify-center">Apply Now</a>
+    </nav>
+  </header>
+
+  <main>
+
+    <!-- ===== HERO ===== -->
+    <section class="relative flex items-center overflow-hidden surface-0 pt-16">
+      <div class="hero-aurora"></div>
+      <div class="grid-bg absolute inset-0 z-0"></div>
+      <div class="relative z-10 max-w-5xl mx-auto px-5 py-20 md:py-24 w-full text-center">
+        <p class="pill mx-auto mb-6">
+          <i data-lucide="git-compare-arrows" class="w-3 h-3"></i>
+          Honest comparison
+        </p>
+        <h1 class="text-4xl sm:text-5xl md:text-6xl font-extrabold leading-[1.08] tracking-tight mb-6">
+          EZ Fuel vs the
+          <span class="ez-gradient-text">legacy fuel cards.</span>
+        </h1>
+        <p class="text-lg md:text-xl text-muted max-w-3xl mx-auto leading-relaxed">
+          Comdata, EFS, WEX Fleet, Fuelman, RTS Carrier Services — they've been around for decades and they have real strengths. Here's how we line up against each, where they win, and where we win.
+        </p>
+      </div>
+    </section>
+    <div class="gradient-line"></div>
+
+    <!-- ===== COMPARISON TABLE ===== -->
+    <section class="surface-0 py-20">
+      <div class="max-w-7xl mx-auto px-5">
+        <div class="text-center mb-12 reveal">
+          <h2 class="text-3xl md:text-4xl font-extrabold tracking-tight mb-3">Feature-by-feature</h2>
+          <p class="text-muted max-w-2xl mx-auto">No legalese, no ★★★★ ratings — just what each provider does and doesn't do.</p>
+        </div>
+
+        <div class="overflow-x-auto reveal">
+          <table class="w-full text-sm border-collapse min-w-[760px]">
+            <thead>
+              <tr class="border-b border-soft">
+                <th class="text-left py-4 px-4 font-semibold text-muted">Feature</th>
+                <th class="text-center py-4 px-4 font-semibold">
+                  <span class="ez-gradient-text">EZ Fuel</span>
+                </th>
+                <th class="text-center py-4 px-4 font-semibold text-muted">Comdata</th>
+                <th class="text-center py-4 px-4 font-semibold text-muted">EFS</th>
+                <th class="text-center py-4 px-4 font-semibold text-muted">WEX Fleet</th>
+                <th class="text-center py-4 px-4 font-semibold text-muted">Fuelman</th>
+              </tr>
+            </thead>
+            <tbody class="text-sm">
+              <tr class="border-b border-soft/60">
+                <td class="py-4 px-4 font-medium">Activation fee</td>
+                <td class="text-center py-4 px-4 text-green-500 font-semibold">$0</td>
+                <td class="text-center py-4 px-4 text-muted">Varies</td>
+                <td class="text-center py-4 px-4 text-muted">Varies</td>
+                <td class="text-center py-4 px-4 text-muted">Up to $50/card</td>
+                <td class="text-center py-4 px-4 text-muted">Varies</td>
+              </tr>
+              <tr class="border-b border-soft/60">
+                <td class="py-4 px-4 font-medium">Per-transaction fee</td>
+                <td class="text-center py-4 px-4 text-green-500 font-semibold">None</td>
+                <td class="text-center py-4 px-4 text-muted">$0.50–2.00</td>
+                <td class="text-center py-4 px-4 text-muted">Tiered</td>
+                <td class="text-center py-4 px-4 text-muted">$0.50+</td>
+                <td class="text-center py-4 px-4 text-muted">$1.00+</td>
+              </tr>
+              <tr class="border-b border-soft/60">
+                <td class="py-4 px-4 font-medium">Monthly card fee</td>
+                <td class="text-center py-4 px-4 text-green-500 font-semibold">None</td>
+                <td class="text-center py-4 px-4 text-muted">Per card</td>
+                <td class="text-center py-4 px-4 text-muted">Per card</td>
+                <td class="text-center py-4 px-4 text-muted">Per card</td>
+                <td class="text-center py-4 px-4 text-muted">Per card</td>
+              </tr>
+              <tr class="border-b border-soft/60">
+                <td class="py-4 px-4 font-medium">Fund with credit card</td>
+                <td class="text-center py-4 px-4"><i data-lucide="check" class="w-5 h-5 text-green-500 inline"></i></td>
+                <td class="text-center py-4 px-4"><i data-lucide="x" class="w-5 h-5 text-pink-500 inline opacity-50"></i></td>
+                <td class="text-center py-4 px-4"><i data-lucide="x" class="w-5 h-5 text-pink-500 inline opacity-50"></i></td>
+                <td class="text-center py-4 px-4"><i data-lucide="x" class="w-5 h-5 text-pink-500 inline opacity-50"></i></td>
+                <td class="text-center py-4 px-4"><i data-lucide="x" class="w-5 h-5 text-pink-500 inline opacity-50"></i></td>
+              </tr>
+              <tr class="border-b border-soft/60">
+                <td class="py-4 px-4 font-medium">MoneyCode issuance</td>
+                <td class="text-center py-4 px-4"><i data-lucide="check" class="w-5 h-5 text-green-500 inline"></i></td>
+                <td class="text-center py-4 px-4"><i data-lucide="check" class="w-5 h-5 text-muted inline"></i></td>
+                <td class="text-center py-4 px-4"><i data-lucide="check" class="w-5 h-5 text-muted inline"></i></td>
+                <td class="text-center py-4 px-4"><i data-lucide="x" class="w-5 h-5 text-pink-500 inline opacity-50"></i></td>
+                <td class="text-center py-4 px-4"><i data-lucide="x" class="w-5 h-5 text-pink-500 inline opacity-50"></i></td>
+              </tr>
+              <tr class="border-b border-soft/60">
+                <td class="py-4 px-4 font-medium">Real-time controls (per-driver)</td>
+                <td class="text-center py-4 px-4"><i data-lucide="check" class="w-5 h-5 text-green-500 inline"></i></td>
+                <td class="text-center py-4 px-4 text-muted text-xs">Limited</td>
+                <td class="text-center py-4 px-4 text-muted text-xs">Limited</td>
+                <td class="text-center py-4 px-4"><i data-lucide="check" class="w-5 h-5 text-muted inline"></i></td>
+                <td class="text-center py-4 px-4 text-muted text-xs">Limited</td>
+              </tr>
+              <tr class="border-b border-soft/60">
+                <td class="py-4 px-4 font-medium">Driver mobile app</td>
+                <td class="text-center py-4 px-4"><i data-lucide="check" class="w-5 h-5 text-green-500 inline"></i></td>
+                <td class="text-center py-4 px-4"><i data-lucide="check" class="w-5 h-5 text-muted inline"></i></td>
+                <td class="text-center py-4 px-4"><i data-lucide="check" class="w-5 h-5 text-muted inline"></i></td>
+                <td class="text-center py-4 px-4"><i data-lucide="check" class="w-5 h-5 text-muted inline"></i></td>
+                <td class="text-center py-4 px-4"><i data-lucide="x" class="w-5 h-5 text-pink-500 inline opacity-50"></i></td>
+              </tr>
+              <tr class="border-b border-soft/60">
+                <td class="py-4 px-4 font-medium">24/7 roadside dispatch included</td>
+                <td class="text-center py-4 px-4"><i data-lucide="check" class="w-5 h-5 text-green-500 inline"></i></td>
+                <td class="text-center py-4 px-4"><i data-lucide="x" class="w-5 h-5 text-pink-500 inline opacity-50"></i></td>
+                <td class="text-center py-4 px-4"><i data-lucide="x" class="w-5 h-5 text-pink-500 inline opacity-50"></i></td>
+                <td class="text-center py-4 px-4"><i data-lucide="x" class="w-5 h-5 text-pink-500 inline opacity-50"></i></td>
+                <td class="text-center py-4 px-4"><i data-lucide="x" class="w-5 h-5 text-pink-500 inline opacity-50"></i></td>
+              </tr>
+              <tr class="border-b border-soft/60">
+                <td class="py-4 px-4 font-medium">Same-day approval (Prepaid)</td>
+                <td class="text-center py-4 px-4"><i data-lucide="check" class="w-5 h-5 text-green-500 inline"></i></td>
+                <td class="text-center py-4 px-4 text-muted text-xs">2–5 days</td>
+                <td class="text-center py-4 px-4 text-muted text-xs">2–5 days</td>
+                <td class="text-center py-4 px-4 text-muted text-xs">3–7 days</td>
+                <td class="text-center py-4 px-4 text-muted text-xs">3–7 days</td>
+              </tr>
+              <tr class="border-b border-soft/60">
+                <td class="py-4 px-4 font-medium">Owner-operator friendly</td>
+                <td class="text-center py-4 px-4"><i data-lucide="check" class="w-5 h-5 text-green-500 inline"></i></td>
+                <td class="text-center py-4 px-4 text-muted text-xs">Fleet-focused</td>
+                <td class="text-center py-4 px-4 text-muted text-xs">Fleet-focused</td>
+                <td class="text-center py-4 px-4 text-muted text-xs">Fleet-focused</td>
+                <td class="text-center py-4 px-4"><i data-lucide="check" class="w-5 h-5 text-muted inline"></i></td>
+              </tr>
+              <tr class="border-b border-soft/60">
+                <td class="py-4 px-4 font-medium">IFTA reporting</td>
+                <td class="text-center py-4 px-4"><i data-lucide="check" class="w-5 h-5 text-green-500 inline"></i></td>
+                <td class="text-center py-4 px-4"><i data-lucide="check" class="w-5 h-5 text-muted inline"></i></td>
+                <td class="text-center py-4 px-4"><i data-lucide="check" class="w-5 h-5 text-muted inline"></i></td>
+                <td class="text-center py-4 px-4"><i data-lucide="check" class="w-5 h-5 text-muted inline"></i></td>
+                <td class="text-center py-4 px-4"><i data-lucide="check" class="w-5 h-5 text-muted inline"></i></td>
+              </tr>
+              <tr class="border-b border-soft/60">
+                <td class="py-4 px-4 font-medium">Phone support response</td>
+                <td class="text-center py-4 px-4 text-green-500 font-semibold">Under 60s</td>
+                <td class="text-center py-4 px-4 text-muted">Hold queue</td>
+                <td class="text-center py-4 px-4 text-muted">Hold queue</td>
+                <td class="text-center py-4 px-4 text-muted">Hold queue</td>
+                <td class="text-center py-4 px-4 text-muted">Hold queue</td>
+              </tr>
+              <tr class="border-b border-soft/60">
+                <td class="py-4 px-4 font-medium">Cancellation penalty</td>
+                <td class="text-center py-4 px-4 text-green-500 font-semibold">None</td>
+                <td class="text-center py-4 px-4 text-muted text-xs">Check contract</td>
+                <td class="text-center py-4 px-4 text-muted text-xs">Check contract</td>
+                <td class="text-center py-4 px-4 text-muted text-xs">Check contract</td>
+                <td class="text-center py-4 px-4 text-muted text-xs">Check contract</td>
+              </tr>
+              <tr>
+                <td class="py-4 px-4 font-medium">Major chain coverage</td>
+                <td class="text-center py-4 px-4"><i data-lucide="check" class="w-5 h-5 text-green-500 inline"></i></td>
+                <td class="text-center py-4 px-4"><i data-lucide="check" class="w-5 h-5 text-muted inline"></i></td>
+                <td class="text-center py-4 px-4"><i data-lucide="check" class="w-5 h-5 text-muted inline"></i></td>
+                <td class="text-center py-4 px-4"><i data-lucide="check" class="w-5 h-5 text-muted inline"></i></td>
+                <td class="text-center py-4 px-4"><i data-lucide="check" class="w-5 h-5 text-muted inline"></i></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="text-xs text-muted mt-6 max-w-3xl reveal">Comparison data based on publicly available pricing pages and customer reports as of Q2 2026. Each carrier negotiates individual contracts — your specific terms may differ. We refresh this table quarterly.</p>
+      </div>
+    </section>
+    <div class="gradient-line"></div>
+
+    <!-- ===== HONEST TAKES (1-PARAGRAPH ON EACH) ===== -->
+    <section class="surface-1 py-24 border-y border-soft">
+      <div class="max-w-7xl mx-auto px-5">
+        <div class="text-center mb-16 reveal">
+          <p class="pill mx-auto mb-4"><i data-lucide="message-square-quote" class="w-3 h-3"></i> Honest takes</p>
+          <h2 class="text-3xl md:text-4xl font-extrabold tracking-tight">Where each one wins</h2>
+          <p class="text-muted mt-4 max-w-2xl mx-auto">We're not going to pretend the legacy networks don't have real advantages. They do. Here's the straight read.</p>
+        </div>
+
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+          <div class="surface-0 border border-soft rounded-2xl p-7 lift reveal">
+            <h3 class="text-xl font-bold mb-2">Comdata</h3>
+            <p class="text-muted text-sm leading-relaxed mb-4"><strong class="text-white">Where it wins:</strong> the dominant network in OTR trucking. If your fleet runs Pilot Flying J / TA / Petro almost exclusively, Comdata's chain-direct discounts can be hard to beat at scale.</p>
+            <p class="text-muted text-sm leading-relaxed"><strong class="text-white">Where it stings:</strong> per-transaction fees, monthly fees, multi-page contracts, and a portal that hasn't had a real refresh in years.</p>
+          </div>
+
+          <div class="surface-0 border border-soft rounded-2xl p-7 lift reveal">
+            <h3 class="text-xl font-bold mb-2">EFS</h3>
+            <p class="text-muted text-sm leading-relaxed mb-4"><strong class="text-white">Where it wins:</strong> deep cash-advance / MoneyCode infrastructure, established broker integrations, and one of the largest accepted networks.</p>
+            <p class="text-muted text-sm leading-relaxed"><strong class="text-white">Where it stings:</strong> fee structure is opaque, support response varies wildly, and discounts often come with attached factoring or banking products you may not want.</p>
+          </div>
+
+          <div class="surface-0 border border-soft rounded-2xl p-7 lift reveal">
+            <h3 class="text-xl font-bold mb-2">WEX Fleet</h3>
+            <p class="text-muted text-sm leading-relaxed mb-4"><strong class="text-white">Where it wins:</strong> mature reporting and integrations, strong for last-mile and regional fleets running mixed retail stations (not just truck stops).</p>
+            <p class="text-muted text-sm leading-relaxed"><strong class="text-white">Where it stings:</strong> fee-heavy on small accounts, weak roadside-support story, and tier discounts often quoted on retail rather than DOE — a meaningful difference.</p>
+          </div>
+
+          <div class="surface-0 border border-soft rounded-2xl p-7 lift reveal">
+            <h3 class="text-xl font-bold mb-2">Fuelman</h3>
+            <p class="text-muted text-sm leading-relaxed mb-4"><strong class="text-white">Where it wins:</strong> friendly to small fleets and owner-operators, strong on local stations, simple onboarding.</p>
+            <p class="text-muted text-sm leading-relaxed"><strong class="text-white">Where it stings:</strong> smaller OTR truck-stop discount than the big networks, no MoneyCode equivalent, and no roadside dispatch product.</p>
+          </div>
+
+          <div class="surface-0 border border-soft rounded-2xl p-7 lift reveal">
+            <h3 class="text-xl font-bold mb-2">RTS Carrier Services</h3>
+            <p class="text-muted text-sm leading-relaxed mb-4"><strong class="text-white">Where it wins:</strong> tightly bundled with RTS factoring — if you already factor with them, the integrated experience is real.</p>
+            <p class="text-muted text-sm leading-relaxed"><strong class="text-white">Where it stings:</strong> the bundling is the catch. Decoupling your factoring and your fuel card later can be painful, and the fuel card on its own isn't competitive with specialists.</p>
+          </div>
+
+          <div class="surface-0 border border-pink-500/40 rounded-2xl p-7 reveal" style="background: linear-gradient(135deg, rgba(34,211,238,0.06), rgba(59,130,246,0.04));">
+            <h3 class="text-xl font-bold mb-2"><span class="ez-gradient-text">EZ Fuel</span></h3>
+            <p class="text-muted text-sm leading-relaxed mb-4"><strong class="text-white">Where we win:</strong> no activation fees, no per-transaction fees, no monthly card fees, no contracts. Credit card funding (yes, including Amex). Built-in 24/7 roadside dispatch with a real human in under 60 seconds. A driver app that drivers actually open.</p>
+            <p class="text-muted text-sm leading-relaxed"><strong class="text-white">Where we don't pretend to win:</strong> we're newer than Comdata. If your fleet has 500+ tractors and is already deep on Comdata-direct discounts, you should still talk to us — but bring numbers and we'll be straight about whether we beat them on your specific lanes.</p>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== CTA ===== -->
+    <section class="surface-0 py-24 relative overflow-hidden">
+      <div class="hero-aurora opacity-50"></div>
+      <div class="relative z-10 max-w-4xl mx-auto px-5 text-center reveal">
+        <h2 class="text-3xl md:text-5xl font-extrabold tracking-tight mb-6">
+          Bring us your current statement.
+        </h2>
+        <p class="text-muted text-lg max-w-2xl mx-auto mb-10">Send a recent fuel-card invoice (Comdata, EFS, WEX, anyone). We'll do the math line-by-line and show you exactly what changes — including the times when the answer is "you should stay where you are."</p>
+        <div class="flex flex-wrap gap-4 justify-center">
+          <a href="contact.html" class="btn-primary">Get the comparison <i data-lucide="arrow-right" class="w-4 h-4"></i></a>
+          <a href="tel:+18886265377" class="btn-ghost">(888) 626-5377</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="surface-1 border-t border-soft">
+    <div class="max-w-7xl mx-auto px-5 py-14">
+      <div class="grid sm:grid-cols-2 lg:grid-cols-5 gap-10">
+        <div class="lg:col-span-2">
+          <a href="index.html" class="flex items-center gap-1.5 text-xl font-extrabold tracking-tight mb-4">
+            <span class="ez-gradient-text">EZ</span><span>FUEL</span><span class="ez-pro-text ml-0.5">PRO</span><span class="ez-tm">&trade;</span>
+          </a>
+          <p class="text-muted text-sm leading-relaxed mb-4 max-w-sm">Fleet fuel cards with real savings. Roadside support that actually answers the phone.</p>
+          <p class="text-muted text-sm"><a href="tel:+18886265377" class="hover:text-white">(888) 626-5377</a> · info@ezfuelpro.com</p>
+        </div>
+        <div>
+          <p class="font-semibold mb-3 text-sm uppercase tracking-wider">Products</p>
+          <ul class="space-y-2 text-muted text-sm">
+            <li><a href="fuel-cards.html" class="hover:text-white transition-colors">Fuel Cards</a></li>
+            <li><a href="fleet-tech.html" class="hover:text-white transition-colors">Roadside Support</a></li>
+            <li><a href="mobile-app.html" class="hover:text-white transition-colors">Driver App</a></li>
+            <li><a href="integrations.html" class="hover:text-white transition-colors">Integrations</a></li>
+            <li><a href="pricing.html" class="hover:text-white transition-colors">Pricing</a></li>
+            <li><a href="network.html" class="hover:text-white transition-colors">Network</a></li>
+          </ul>
+        </div>
+        <div>
+          <p class="font-semibold mb-3 text-sm uppercase tracking-wider">Resources</p>
+          <ul class="space-y-2 text-muted text-sm">
+            <li><a href="resources.html" class="hover:text-white transition-colors">Insights</a></li>
+            <li><a href="compare.html" class="hover:text-white transition-colors">Compare</a></li>
+            <li><a href="customer-stories.html" class="hover:text-white transition-colors">Customer Stories</a></li>
+            <li><a href="roi-calculator.html" class="hover:text-white transition-colors">ROI Calculator</a></li>
+            <li><a href="help.html" class="hover:text-white transition-colors">Help Center</a></li>
+          </ul>
+        </div>
+        <div>
+          <p class="font-semibold mb-3 text-sm uppercase tracking-wider">Company</p>
+          <ul class="space-y-2 text-muted text-sm">
+            <li><a href="about.html" class="hover:text-white transition-colors">About</a></li>
+            <li><a href="owner-operators.html" class="hover:text-white transition-colors">For Owner Operators</a></li>
+            <li><a href="refer.html" class="hover:text-white transition-colors">Refer & Earn</a></li>
+            <li><a href="contact.html" class="hover:text-white transition-colors">Contact</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="dotted-divider mt-10 pt-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-muted text-xs">
+        <p>&copy; <span data-year></span> EZ FUEL. All rights reserved.</p>
+        <div class="flex gap-4">
+          <a href="#" class="hover:text-white transition-colors">Privacy Policy</a>
+          <a href="#" class="hover:text-white transition-colors">Terms of Service</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+  <script src="assets/app.js"></script>
+</body>
+</html>

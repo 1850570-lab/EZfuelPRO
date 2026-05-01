@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 200" width="700" height="200">
+  <defs>
+    <linearGradient id="ez3" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#22D3EE"/>
+      <stop offset="100%" stop-color="#3B82F6"/>
+    </linearGradient>
+  </defs>
+  <rect width="700" height="200" fill="#0D1117" rx="16"/>
+
+  <!-- Dot-matrix "E" mark on the left -->
+  <g transform="translate(55, 50)" fill="url(#ez3)">
+    <!-- Simple 3-row bar symbol suggesting "E" and fuel-gauge lines -->
+    <rect x="0" y="0"   width="70" height="14" rx="3"/>
+    <rect x="0" y="42"  width="50" height="14" rx="3" opacity="0.75"/>
+    <rect x="0" y="84"  width="70" height="14" rx="3" opacity="0.55"/>
+  </g>
+
+  <!-- Big stacked wordmark -->
+  <g font-family="'Helvetica Neue', Arial, sans-serif" letter-spacing="-3">
+    <text x="170" y="95" font-size="80" font-weight="900" fill="#ffffff">EZ FUEL</text>
+    <text x="510" y="50" font-size="22" font-weight="700" fill="#ffffff" opacity="0.8">&#8482;</text>
+    <!-- subline -->
+    <text x="170" y="148" font-size="32" font-weight="800" fill="url(#ez3)" letter-spacing="14">PRO</text>
+    <!-- dot divider -->
+    <circle cx="270" cy="140" r="3" fill="#3B82F6"/>
+    <text x="285" y="148" font-size="14" font-weight="600" fill="#9CA3AF" letter-spacing="4">COMMERCIAL FLEET</text>
+  </g>
+</svg>

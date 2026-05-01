@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EZ Fuel Driver App — Mobile App for Drivers</title>
+  <meta name="description" content="Cheapest in-network station map, live balance, MoneyCode issuance, instant card freeze, and one-tap roadside dispatch — in your driver's pocket. iOS &amp; Android.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            pink: { 500: '#22D3EE', 600: '#3B82F6' },
+            navy: { 900: '#0D1117', 800: '#161B22', 700: '#1F2328' },
+            green: { 500: '#3FB950' },
+          },
+          fontFamily: { sans: ['Inter', 'ui-sans-serif', 'system-ui', 'sans-serif'] },
+        }
+      }
+    }
+  </script>
+  <link rel="stylesheet" href="assets/styles.css">
+</head>
+<body class="static-page surface-0 text-white font-sans">
+
+  <header class="fixed top-0 inset-x-0 z-50 nav-bg backdrop-blur-xl border-b border-soft">
+    <div class="max-w-7xl mx-auto flex items-center justify-between px-5 h-16">
+      <a href="index.html" class="flex items-center gap-1.5 text-xl font-extrabold tracking-tight">
+        <span class="ez-gradient-text">EZ</span><span>FUEL</span><span class="ez-pro-text ml-0.5">PRO</span><span class="ez-tm">&trade;</span>
+      </a>
+      <nav class="hidden md:flex items-center gap-6 text-sm font-medium text-muted">
+        <a href="fuel-cards.html" class="hover:text-white transition-colors">Fuel Cards</a>
+        <a href="fleet-tech.html" class="hover:text-white transition-colors">Roadside Support</a>
+        <a href="pricing.html" class="hover:text-white transition-colors">Pricing</a>
+        <a href="network.html" class="hover:text-white transition-colors">Network</a>
+        <div class="relative" data-nav-dropdown>
+          <button type="button" class="flex items-center gap-1 hover:text-white transition-colors py-1" data-nav-dropdown-toggle aria-haspopup="true" aria-expanded="false">
+            Resources
+            <i data-lucide="chevron-down" class="w-3.5 h-3.5 transition-transform duration-200" data-nav-dropdown-chevron></i>
+          </button>
+          <div class="absolute top-full right-0 mt-3 w-[480px] hidden surface-1 border border-soft rounded-2xl shadow-2xl p-3 z-50" data-nav-dropdown-menu>
+            <a href="resources.html" class="flex items-center gap-3 p-3 mb-2 rounded-xl bg-pink-500/5 hover:bg-pink-500/10 border border-pink-500/20 transition-colors" onclick="window.location.href='resources.html'; return false;">
+              <div class="w-9 h-9 rounded-lg bg-pink-500/15 flex items-center justify-center flex-shrink-0">
+                <i data-lucide="library" class="w-4 h-4 text-pink-500"></i>
+              </div>
+              <div class="flex-1 min-w-0">
+                <p class="font-semibold text-white text-sm">All Resources</p>
+                <p class="text-xs text-muted">Hub with everything in one place</p>
+              </div>
+              <i data-lucide="arrow-right" class="w-4 h-4 text-pink-500 flex-shrink-0"></i>
+            </a>
+            <div class="grid grid-cols-2 gap-1">
+              <a href="compare.html" class="flex items-center gap-2.5 p-2.5 rounded-lg hover:bg-white/5 transition-colors" onclick="window.location.href='compare.html'; return false;">
+                <i data-lucide="git-compare-arrows" class="w-4 h-4 text-pink-500 flex-shrink-0"></i>
+                <span class="text-sm text-white">Compare</span>
+              </a>
+              <a href="customer-stories.html" class="flex items-center gap-2.5 p-2.5 rounded-lg hover:bg-white/5 transition-colors" onclick="window.location.href='customer-stories.html'; return false;">
+                <i data-lucide="users" class="w-4 h-4 text-pink-500 flex-shrink-0"></i>
+                <span class="text-sm text-white">Customer Stories</span>
+              </a>
+              <a href="roi-calculator.html" class="flex items-center gap-2.5 p-2.5 rounded-lg hover:bg-white/5 transition-colors" onclick="window.location.href='roi-calculator.html'; return false;">
+                <i data-lucide="calculator" class="w-4 h-4 text-green-500 flex-shrink-0"></i>
+                <span class="text-sm text-white">ROI Calculator</span>
+              </a>
+              <a href="owner-operators.html" class="flex items-center gap-2.5 p-2.5 rounded-lg hover:bg-white/5 transition-colors" onclick="window.location.href='owner-operators.html'; return false;">
+                <i data-lucide="truck" class="w-4 h-4 text-pink-500 flex-shrink-0"></i>
+                <span class="text-sm text-white">For Owner Operators</span>
+              </a>
+              <a href="integrations.html" class="flex items-center gap-2.5 p-2.5 rounded-lg hover:bg-white/5 transition-colors" onclick="window.location.href='integrations.html'; return false;">
+                <i data-lucide="plug-2" class="w-4 h-4 text-pink-500 flex-shrink-0"></i>
+                <span class="text-sm text-white">Integrations</span>
+              </a>
+              <a href="mobile-app.html" class="flex items-center gap-2.5 p-2.5 rounded-lg hover:bg-white/5 transition-colors" onclick="window.location.href='mobile-app.html'; return false;">
+                <i data-lucide="smartphone" class="w-4 h-4 text-pink-500 flex-shrink-0"></i>
+                <span class="text-sm text-white">Driver App</span>
+              </a>
+              <a href="help.html" class="flex items-center gap-2.5 p-2.5 rounded-lg hover:bg-white/5 transition-colors" onclick="window.location.href='help.html'; return false;">
+                <i data-lucide="life-buoy" class="w-4 h-4 text-pink-500 flex-shrink-0"></i>
+                <span class="text-sm text-white">Help Center</span>
+              </a>
+              <a href="refer.html" class="flex items-center gap-2.5 p-2.5 rounded-lg hover:bg-white/5 transition-colors" onclick="window.location.href='refer.html'; return false;">
+                <i data-lucide="gift" class="w-4 h-4 text-green-500 flex-shrink-0"></i>
+                <span class="text-sm text-white">Refer &amp; Earn</span>
+              </a>
+            </div>
+          </div>
+        </div>
+        <a href="about.html" class="hover:text-white transition-colors">About</a>
+        <a href="contact.html" class="hover:text-white transition-colors">Contact</a>
+      </nav>
+      <div class="flex items-center gap-3">
+        <button data-theme-toggle aria-label="Toggle theme" class="p-2 rounded-lg hover:bg-white/5 transition-colors">
+          <i data-lucide="moon" data-theme-icon-dark class="w-4 h-4"></i>
+          <i data-lucide="sun" data-theme-icon-light class="w-4 h-4 hidden"></i>
+        </button>
+        <a href="#" class="btn-ghost text-sm hidden sm:inline-flex">Log In</a>
+        <a href="contact.html" class="btn-primary text-sm hidden sm:inline-flex">Apply Now <i data-lucide="arrow-right" class="w-4 h-4"></i></a>
+        <button data-mobile-nav-toggle class="md:hidden p-2 rounded-lg hover:bg-white/5">
+          <i data-lucide="menu" class="w-5 h-5"></i>
+        </button>
+      </div>
+    </div>
+    <nav data-mobile-nav class="hidden md:hidden border-t border-soft px-5 py-4 flex flex-col gap-3 text-sm font-medium text-muted surface-0">
+      <a href="fuel-cards.html" class="py-2 hover:text-white">Fuel Cards</a>
+      <a href="fleet-tech.html" class="py-2 hover:text-white">Roadside Support</a>
+      <a href="pricing.html" class="py-2 hover:text-white">Pricing</a>
+      <a href="network.html" class="py-2 hover:text-white">Network</a>
+      <details class="border-t border-b border-soft py-1" data-mobile-dropdown>
+        <summary class="py-2 hover:text-white cursor-pointer flex items-center justify-between list-none">
+          <span>Resources</span>
+          <i data-lucide="chevron-down" class="w-4 h-4 transition-transform" data-mobile-chevron></i>
+        </summary>
+        <div class="pl-3 pt-2 pb-2 flex flex-col gap-2">
+          <a href="resources.html" class="py-1 text-sm text-pink-500 font-semibold hover:text-white" onclick="window.location.href='resources.html'; return false;">All Resources →</a>
+          <a href="compare.html" class="py-1 text-sm hover:text-white" onclick="window.location.href='compare.html'; return false;">Compare</a>
+          <a href="customer-stories.html" class="py-1 text-sm hover:text-white" onclick="window.location.href='customer-stories.html'; return false;">Customer Stories</a>
+          <a href="roi-calculator.html" class="py-1 text-sm hover:text-white" onclick="window.location.href='roi-calculator.html'; return false;">ROI Calculator</a>
+          <a href="owner-operators.html" class="py-1 text-sm hover:text-white" onclick="window.location.href='owner-operators.html'; return false;">For Owner Operators</a>
+          <a href="integrations.html" class="py-1 text-sm hover:text-white" onclick="window.location.href='integrations.html'; return false;">Integrations</a>
+          <a href="mobile-app.html" class="py-1 text-sm hover:text-white" onclick="window.location.href='mobile-app.html'; return false;">Driver App</a>
+          <a href="help.html" class="py-1 text-sm hover:text-white" onclick="window.location.href='help.html'; return false;">Help Center</a>
+          <a href="refer.html" class="py-1 text-sm hover:text-white" onclick="window.location.href='refer.html'; return false;">Refer &amp; Earn</a>
+        </div>
+      </details>
+      <a href="about.html" class="py-2 hover:text-white">About</a>
+      <a href="contact.html" class="py-2 hover:text-white">Contact</a>
+      <a href="#" class="btn-ghost text-sm mt-2 justify-center">Log In</a>
+      <a href="contact.html" class="btn-primary text-sm justify-center">Apply Now</a>
+    </nav>
+  </header>
+
+  <main>
+
+    <!-- ===== HERO with phone mockup ===== -->
+    <section class="relative flex items-center overflow-hidden surface-0 pt-16">
+      <div class="hero-aurora"></div>
+      <div class="grid-bg absolute inset-0 z-0"></div>
+      <div class="relative z-10 max-w-7xl mx-auto px-5 py-24 md:py-28 w-full">
+        <div class="grid lg:grid-cols-2 gap-12 items-center">
+          <div>
+            <p class="pill mb-6">
+              <i data-lucide="smartphone" class="w-3 h-3"></i>
+              iOS &amp; Android
+            </p>
+            <h1 class="text-4xl sm:text-5xl md:text-6xl font-extrabold leading-[1.08] tracking-tight mb-6">
+              The driver app
+              <span class="ez-gradient-text">drivers actually open.</span>
+            </h1>
+            <p class="text-lg md:text-xl text-muted max-w-xl mb-10 leading-relaxed">
+              Cheapest in-network station along the route, live card balance, MoneyCode issuance, instant card freeze, and one-tap roadside dispatch. Built for someone wearing gloves, in a hurry, in bad lighting.
+            </p>
+            <div class="flex flex-wrap gap-4 mb-8">
+              <a href="#" class="store-badge inline-flex items-center gap-3 surface-1 border border-soft rounded-xl px-5 py-3 hover:border-pink-500/40 transition-colors">
+                <i data-lucide="apple" class="w-7 h-7"></i>
+                <div class="text-left leading-tight">
+                  <div class="text-[10px] text-muted uppercase">Download on the</div>
+                  <div class="font-bold text-base">App Store</div>
+                </div>
+              </a>
+              <a href="#" class="store-badge inline-flex items-center gap-3 surface-1 border border-soft rounded-xl px-5 py-3 hover:border-pink-500/40 transition-colors">
+                <i data-lucide="play" class="w-7 h-7"></i>
+                <div class="text-left leading-tight">
+                  <div class="text-[10px] text-muted uppercase">Get it on</div>
+                  <div class="font-bold text-base">Google Play</div>
+                </div>
+              </a>
+            </div>
+            <p class="text-sm text-muted">Free. Comes with every active EZ Fuel account. <a href="contact.html" class="text-pink-500 hover:underline">Don't have one yet?</a></p>
+          </div>
+
+          <!-- Phone mockup -->
+          <div class="hidden lg:flex justify-center" aria-hidden="true">
+            <div class="phone-mock">
+              <div class="phone-mock__notch"></div>
+              <div class="phone-mock__screen">
+                <div class="phone-mock__statusbar">
+                  <span>9:41</span>
+                  <div class="flex items-center gap-1">
+                    <i data-lucide="signal" class="w-3 h-3"></i>
+                    <i data-lucide="wifi" class="w-3 h-3"></i>
+                    <i data-lucide="battery-full" class="w-3 h-3"></i>
+                  </div>
+                </div>
+                <div class="phone-mock__body">
+                  <div class="phone-mock__greet">
+                    <p class="text-[10px] text-muted uppercase tracking-wider">Welcome back</p>
+                    <p class="font-bold">Marcus D.</p>
+                  </div>
+                  <div class="phone-mock__balance">
+                    <p class="text-[10px] uppercase tracking-wider opacity-70">Available balance</p>
+                    <p class="phone-mock__balance-num">$1,847.20</p>
+                    <div class="flex gap-2 mt-2">
+                      <button class="phone-mock__pill"><i data-lucide="plus" class="w-3 h-3"></i> Top up</button>
+                      <button class="phone-mock__pill"><i data-lucide="key-round" class="w-3 h-3"></i> MoneyCode</button>
+                    </div>
+                  </div>
+                  <div class="phone-mock__section">
+                    <p class="phone-mock__section-title">Cheapest nearby</p>
+                    <div class="phone-mock__stop">
+                      <div class="phone-mock__stop-icon"><i data-lucide="fuel" class="w-3.5 h-3.5"></i></div>
+                      <div class="flex-1">
+                        <p class="font-semibold text-xs">Pilot · I-40 Exit 187</p>
+                        <p class="text-[10px] opacity-60">2.4 mi · Discount applied</p>
+                      </div>
+                      <i data-lucide="chevron-right" class="w-3.5 h-3.5 opacity-50"></i>
+                    </div>
+                    <div class="phone-mock__stop">
+                      <div class="phone-mock__stop-icon"><i data-lucide="fuel" class="w-3.5 h-3.5"></i></div>
+                      <div class="flex-1">
+                        <p class="font-semibold text-xs">Love's · I-40 Exit 196</p>
+                        <p class="text-[10px] opacity-60">9.1 mi · Discount applied</p>
+                      </div>
+                      <i data-lucide="chevron-right" class="w-3.5 h-3.5 opacity-50"></i>
+                    </div>
+                  </div>
+                  <div class="phone-mock__sos">
+                    <i data-lucide="life-buoy" class="w-4 h-4"></i>
+                    <span>Roadside dispatch</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+    <div class="gradient-line"></div>
+
+    <!-- ===== FEATURES ===== -->
+    <section class="surface-0 py-24">
+      <div class="max-w-7xl mx-auto px-5">
+        <div class="text-center mb-16 reveal">
+          <p class="pill mx-auto mb-4"><i data-lucide="sparkles" class="w-3 h-3"></i> Built for the driver, not the dispatcher</p>
+          <h2 class="text-3xl md:text-4xl font-extrabold tracking-tight">What it does</h2>
+        </div>
+        <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+
+          <div class="surface-1 border border-soft rounded-2xl p-6 lift reveal">
+            <i data-lucide="map" class="w-6 h-6 text-pink-500 mb-4"></i>
+            <h3 class="font-bold mb-2">Cheapest-stop map</h3>
+            <p class="text-muted text-sm leading-relaxed">In-network stations along the route, sorted by your effective post-discount price and accounting for deadhead miles.</p>
+          </div>
+
+          <div class="surface-1 border border-soft rounded-2xl p-6 lift reveal">
+            <i data-lucide="key-round" class="w-6 h-6 text-pink-500 mb-4"></i>
+            <h3 class="font-bold mb-2">Issue MoneyCodes</h3>
+            <p class="text-muted text-sm leading-relaxed">Generate one-time codes for lumper fees, scale tickets, parking, or cash advances — straight from the app, no portal trip needed.</p>
+          </div>
+
+          <div class="surface-1 border border-soft rounded-2xl p-6 lift reveal">
+            <i data-lucide="wallet" class="w-6 h-6 text-pink-500 mb-4"></i>
+            <h3 class="font-bold mb-2">Live balance &amp; activity</h3>
+            <p class="text-muted text-sm leading-relaxed">See available balance, pending authorizations, and the last 30 days of fills — searchable by location and date.</p>
+          </div>
+
+          <div class="surface-1 border border-soft rounded-2xl p-6 lift reveal">
+            <i data-lucide="lock" class="w-6 h-6 text-pink-500 mb-4"></i>
+            <h3 class="font-bold mb-2">Freeze the card</h3>
+            <p class="text-muted text-sm leading-relaxed">Two taps if the card's lost or you spot something weird. Unfreeze the same way once it's resolved.</p>
+          </div>
+
+          <div class="surface-1 border border-soft rounded-2xl p-6 lift reveal">
+            <i data-lucide="life-buoy" class="w-6 h-6 text-pink-500 mb-4"></i>
+            <h3 class="font-bold mb-2">One-tap roadside</h3>
+            <p class="text-muted text-sm leading-relaxed">SOS button at the bottom of every screen. Connects to a real human dispatcher with your location and truck info pre-loaded.</p>
+          </div>
+
+          <div class="surface-1 border border-soft rounded-2xl p-6 lift reveal">
+            <i data-lucide="receipt" class="w-6 h-6 text-pink-500 mb-4"></i>
+            <h3 class="font-bold mb-2">Receipt capture</h3>
+            <p class="text-muted text-sm leading-relaxed">Snap a photo of paper receipts (lumpers, weigh stations, repairs) and they attach to the right transaction automatically.</p>
+          </div>
+
+          <div class="surface-1 border border-soft rounded-2xl p-6 lift reveal">
+            <i data-lucide="bell" class="w-6 h-6 text-pink-500 mb-4"></i>
+            <h3 class="font-bold mb-2">Smart alerts</h3>
+            <p class="text-muted text-sm leading-relaxed">Pings when you're approaching a discount-friendly station, when a card is declined, or when dispatch needs a confirmation.</p>
+          </div>
+
+          <div class="surface-1 border border-soft rounded-2xl p-6 lift reveal">
+            <i data-lucide="message-circle" class="w-6 h-6 text-pink-500 mb-4"></i>
+            <h3 class="font-bold mb-2">In-app chat</h3>
+            <p class="text-muted text-sm leading-relaxed">Quick questions to support without leaving the app. Voice messages supported for the times typing isn't realistic.</p>
+          </div>
+
+          <div class="surface-1 border border-soft rounded-2xl p-6 lift reveal">
+            <i data-lucide="moon" class="w-6 h-6 text-pink-500 mb-4"></i>
+            <h3 class="font-bold mb-2">Night mode by default</h3>
+            <p class="text-muted text-sm leading-relaxed">Dark from the moment you open it. Big tap targets. Designed for someone wearing gloves at 2 a.m. in a sleeper.</p>
+          </div>
+
+        </div>
+      </div>
+    </section>
+    <div class="gradient-line"></div>
+
+    <!-- ===== TESTIMONIAL ===== -->
+    <section class="surface-1 py-24 border-y border-soft">
+      <div class="max-w-4xl mx-auto px-5 reveal">
+        <div class="surface-0 border border-soft rounded-2xl p-10 md:p-14 text-center relative overflow-hidden">
+          <i data-lucide="quote" class="w-12 h-12 text-pink-500 mx-auto mb-6 opacity-50"></i>
+          <p class="text-xl md:text-2xl leading-relaxed mb-8 max-w-3xl mx-auto">"My old fuel-card app made me log in every time. This one just opens to my balance and a map. The MoneyCode button on the home screen has saved me three times in the last month — twice for lumpers, once because the pump reader was busted and the cashier had to type a code."</p>
+          <div class="flex items-center justify-center gap-3">
+            <div class="w-12 h-12 rounded-full bg-gradient-to-br from-cyan-500 to-blue-600"></div>
+            <div class="text-left">
+              <p class="font-bold">Ricardo M.</p>
+              <p class="text-sm text-muted">Owner-operator · Reefer · Florida</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== CTA ===== -->
+    <section class="surface-0 py-24 relative overflow-hidden">
+      <div class="hero-aurora opacity-50"></div>
+      <div class="relative z-10 max-w-4xl mx-auto px-5 text-center reveal">
+        <h2 class="text-3xl md:text-5xl font-extrabold tracking-tight mb-6">
+          Get the app. Get the card.
+        </h2>
+        <p class="text-muted text-lg max-w-2xl mx-auto mb-10">The app is free and bundled with every EZ Fuel account. If you don't have an account yet, the application takes five minutes — Prepaid approves same-day with no credit check.</p>
+        <div class="flex flex-wrap gap-4 justify-center">
+          <a href="contact.html" class="btn-primary">Apply for an account <i data-lucide="arrow-right" class="w-4 h-4"></i></a>
+          <a href="tel:+18886265377" class="btn-ghost">(888) 626-5377</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="surface-1 border-t border-soft">
+    <div class="max-w-7xl mx-auto px-5 py-14">
+      <div class="grid sm:grid-cols-2 lg:grid-cols-5 gap-10">
+        <div class="lg:col-span-2">
+          <a href="index.html" class="flex items-center gap-1.5 text-xl font-extrabold tracking-tight mb-4">
+            <span class="ez-gradient-text">EZ</span><span>FUEL</span><span class="ez-pro-text ml-0.5">PRO</span><span class="ez-tm">&trade;</span>
+          </a>
+          <p class="text-muted text-sm leading-relaxed mb-4 max-w-sm">Fleet fuel cards with real savings. Roadside support that actually answers the phone.</p>
+          <p class="text-muted text-sm"><a href="tel:+18886265377" class="hover:text-white">(888) 626-5377</a> · info@ezfuelpro.com</p>
+        </div>
+        <div>
+          <p class="font-semibold mb-3 text-sm uppercase tracking-wider">Products</p>
+          <ul class="space-y-2 text-muted text-sm">
+            <li><a href="fuel-cards.html" class="hover:text-white transition-colors">Fuel Cards</a></li>
+            <li><a href="fleet-tech.html" class="hover:text-white transition-colors">Roadside Support</a></li>
+            <li><a href="mobile-app.html" class="hover:text-white transition-colors">Driver App</a></li>
+            <li><a href="integrations.html" class="hover:text-white transition-colors">Integrations</a></li>
+            <li><a href="pricing.html" class="hover:text-white transition-colors">Pricing</a></li>
+            <li><a href="network.html" class="hover:text-white transition-colors">Network</a></li>
+          </ul>
+        </div>
+        <div>
+          <p class="font-semibold mb-3 text-sm uppercase tracking-wider">Resources</p>
+          <ul class="space-y-2 text-muted text-sm">
+            <li><a href="resources.html" class="hover:text-white transition-colors">Insights</a></li>
+            <li><a href="compare.html" class="hover:text-white transition-colors">Compare</a></li>
+            <li><a href="customer-stories.html" class="hover:text-white transition-colors">Customer Stories</a></li>
+            <li><a href="roi-calculator.html" class="hover:text-white transition-colors">ROI Calculator</a></li>
+            <li><a href="help.html" class="hover:text-white transition-colors">Help Center</a></li>
+          </ul>
+        </div>
+        <div>
+          <p class="font-semibold mb-3 text-sm uppercase tracking-wider">Company</p>
+          <ul class="space-y-2 text-muted text-sm">
+            <li><a href="about.html" class="hover:text-white transition-colors">About</a></li>
+            <li><a href="owner-operators.html" class="hover:text-white transition-colors">For Owner Operators</a></li>
+            <li><a href="refer.html" class="hover:text-white transition-colors">Refer & Earn</a></li>
+            <li><a href="contact.html" class="hover:text-white transition-colors">Contact</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="dotted-divider mt-10 pt-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-muted text-xs">
+        <p>&copy; <span data-year></span> EZ FUEL. All rights reserved.</p>
+        <div class="flex gap-4">
+          <a href="#" class="hover:text-white transition-colors">Privacy Policy</a>
+          <a href="#" class="hover:text-white transition-colors">Terms of Service</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+  <script src="assets/app.js"></script>
+</body>
+</html>

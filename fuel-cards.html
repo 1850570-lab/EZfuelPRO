@@ -1,0 +1,622 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fleet Fuel Cards — Transparent Per-Gallon Discounts at 10,000+ Truck Stops</title>
+  <meta name="description" content="EZ FUEL fleet fuel cards with transparent per-gallon discounts at Pilot, Love's, and 10,000+ truck stops. Real-time dashboard, per-driver controls, instant card freeze, and IFTA-ready reporting.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            pink: { 500: '#22D3EE', 600: '#3B82F6' },
+            navy: { 900: '#0D1117', 800: '#161B22', 700: '#1F2328' },
+            green: { 500: '#3FB950' },
+          },
+          fontFamily: { sans: ['Inter', 'ui-sans-serif', 'system-ui', 'sans-serif'] },
+        }
+      }
+    }
+  </script>
+  <link rel="stylesheet" href="assets/styles.css">
+</head>
+<body class="static-page surface-0 text-white font-sans">
+
+  <!-- ===== STICKY HEADER ===== -->
+  <header class="fixed top-0 inset-x-0 z-50 nav-bg backdrop-blur-xl border-b border-soft">
+    <div class="max-w-7xl mx-auto flex items-center justify-between px-5 h-16">
+      <!-- Logo -->
+      <a href="index.html" class="flex items-center gap-1.5 text-xl font-extrabold tracking-tight">
+        <span class="ez-gradient-text">EZ</span><span>FUEL</span><span class="ez-pro-text ml-0.5">PRO</span><span class="ez-tm">&trade;</span>
+      </a>
+      <!-- Desktop nav -->
+      <nav class="hidden md:flex items-center gap-6 text-sm font-medium text-muted">
+        <a href="fuel-cards.html" data-nav-link class="hover:text-white transition-colors">Fuel Cards</a>
+        <a href="fleet-tech.html" data-nav-link class="hover:text-white transition-colors">Roadside Support</a>
+        <a href="pricing.html" data-nav-link class="hover:text-white transition-colors">Pricing</a>
+        <a href="network.html" data-nav-link class="hover:text-white transition-colors">Network</a>
+        <div class="relative" data-nav-dropdown>
+          <button type="button" class="flex items-center gap-1 hover:text-white transition-colors py-1" data-nav-dropdown-toggle aria-haspopup="true" aria-expanded="false">
+            Resources
+            <i data-lucide="chevron-down" class="w-3.5 h-3.5 transition-transform duration-200" data-nav-dropdown-chevron></i>
+          </button>
+          <div class="absolute top-full right-0 mt-3 w-[480px] hidden surface-1 border border-soft rounded-2xl shadow-2xl p-3 z-50" data-nav-dropdown-menu>
+            <a href="resources.html" class="flex items-center gap-3 p-3 mb-2 rounded-xl bg-pink-500/5 hover:bg-pink-500/10 border border-pink-500/20 transition-colors" onclick="window.location.href='resources.html'; return false;">
+              <div class="w-9 h-9 rounded-lg bg-pink-500/15 flex items-center justify-center flex-shrink-0">
+                <i data-lucide="library" class="w-4 h-4 text-pink-500"></i>
+              </div>
+              <div class="flex-1 min-w-0">
+                <p class="font-semibold text-white text-sm">All Resources</p>
+                <p class="text-xs text-muted">Hub with everything in one place</p>
+              </div>
+              <i data-lucide="arrow-right" class="w-4 h-4 text-pink-500 flex-shrink-0"></i>
+            </a>
+            <div class="grid grid-cols-2 gap-1">
+              <a href="compare.html" class="flex items-center gap-2.5 p-2.5 rounded-lg hover:bg-white/5 transition-colors" onclick="window.location.href='compare.html'; return false;">
+                <i data-lucide="git-compare-arrows" class="w-4 h-4 text-pink-500 flex-shrink-0"></i>
+                <span class="text-sm text-white">Compare</span>
+              </a>
+              <a href="customer-stories.html" class="flex items-center gap-2.5 p-2.5 rounded-lg hover:bg-white/5 transition-colors" onclick="window.location.href='customer-stories.html'; return false;">
+                <i data-lucide="users" class="w-4 h-4 text-pink-500 flex-shrink-0"></i>
+                <span class="text-sm text-white">Customer Stories</span>
+              </a>
+              <a href="roi-calculator.html" class="flex items-center gap-2.5 p-2.5 rounded-lg hover:bg-white/5 transition-colors" onclick="window.location.href='roi-calculator.html'; return false;">
+                <i data-lucide="calculator" class="w-4 h-4 text-green-500 flex-shrink-0"></i>
+                <span class="text-sm text-white">ROI Calculator</span>
+              </a>
+              <a href="owner-operators.html" class="flex items-center gap-2.5 p-2.5 rounded-lg hover:bg-white/5 transition-colors" onclick="window.location.href='owner-operators.html'; return false;">
+                <i data-lucide="truck" class="w-4 h-4 text-pink-500 flex-shrink-0"></i>
+                <span class="text-sm text-white">For Owner Operators</span>
+              </a>
+              <a href="integrations.html" class="flex items-center gap-2.5 p-2.5 rounded-lg hover:bg-white/5 transition-colors" onclick="window.location.href='integrations.html'; return false;">
+                <i data-lucide="plug-2" class="w-4 h-4 text-pink-500 flex-shrink-0"></i>
+                <span class="text-sm text-white">Integrations</span>
+              </a>
+              <a href="mobile-app.html" class="flex items-center gap-2.5 p-2.5 rounded-lg hover:bg-white/5 transition-colors" onclick="window.location.href='mobile-app.html'; return false;">
+                <i data-lucide="smartphone" class="w-4 h-4 text-pink-500 flex-shrink-0"></i>
+                <span class="text-sm text-white">Driver App</span>
+              </a>
+              <a href="help.html" class="flex items-center gap-2.5 p-2.5 rounded-lg hover:bg-white/5 transition-colors" onclick="window.location.href='help.html'; return false;">
+                <i data-lucide="life-buoy" class="w-4 h-4 text-pink-500 flex-shrink-0"></i>
+                <span class="text-sm text-white">Help Center</span>
+              </a>
+              <a href="refer.html" class="flex items-center gap-2.5 p-2.5 rounded-lg hover:bg-white/5 transition-colors" onclick="window.location.href='refer.html'; return false;">
+                <i data-lucide="gift" class="w-4 h-4 text-green-500 flex-shrink-0"></i>
+                <span class="text-sm text-white">Refer &amp; Earn</span>
+              </a>
+            </div>
+          </div>
+        </div>
+        <a href="about.html" data-nav-link class="hover:text-white transition-colors">About</a>
+        <a href="contact.html" data-nav-link class="hover:text-white transition-colors">Contact</a>
+      </nav>
+      <div class="flex items-center gap-3">
+        <!-- Theme toggle -->
+        <button data-theme-toggle aria-label="Toggle theme" class="p-2 rounded-lg hover:bg-white/5 transition-colors">
+          <i data-lucide="moon" data-theme-icon-dark class="w-4 h-4"></i>
+          <i data-lucide="sun" data-theme-icon-light class="w-4 h-4 hidden"></i>
+        </button>
+        <a href="#" class="btn-ghost text-sm hidden sm:inline-flex">Log In</a>
+        <a href="contact.html" class="btn-primary text-sm hidden sm:inline-flex">Apply Now <i data-lucide="arrow-right" class="w-4 h-4"></i></a>
+        <!-- Mobile menu toggle -->
+        <button data-mobile-nav-toggle class="md:hidden p-2 rounded-lg hover:bg-white/5">
+          <i data-lucide="menu" class="w-5 h-5"></i>
+        </button>
+      </div>
+    </div>
+    <!-- Mobile nav -->
+    <nav data-mobile-nav class="hidden md:hidden border-t border-soft px-5 py-4 flex flex-col gap-3 text-sm font-medium text-muted surface-0">
+      <a href="fuel-cards.html" class="py-2 hover:text-white">Fuel Cards</a>
+      <a href="fleet-tech.html" class="py-2 hover:text-white">Roadside Support</a>
+      <a href="pricing.html" class="py-2 hover:text-white">Pricing</a>
+      <a href="network.html" class="py-2 hover:text-white">Network</a>
+      <details class="border-t border-b border-soft py-1" data-mobile-dropdown>
+        <summary class="py-2 hover:text-white cursor-pointer flex items-center justify-between list-none">
+          <span>Resources</span>
+          <i data-lucide="chevron-down" class="w-4 h-4 transition-transform" data-mobile-chevron></i>
+        </summary>
+        <div class="pl-3 pt-2 pb-2 flex flex-col gap-2">
+          <a href="resources.html" class="py-1 text-sm text-pink-500 font-semibold hover:text-white" onclick="window.location.href='resources.html'; return false;">All Resources →</a>
+          <a href="compare.html" class="py-1 text-sm hover:text-white" onclick="window.location.href='compare.html'; return false;">Compare</a>
+          <a href="customer-stories.html" class="py-1 text-sm hover:text-white" onclick="window.location.href='customer-stories.html'; return false;">Customer Stories</a>
+          <a href="roi-calculator.html" class="py-1 text-sm hover:text-white" onclick="window.location.href='roi-calculator.html'; return false;">ROI Calculator</a>
+          <a href="owner-operators.html" class="py-1 text-sm hover:text-white" onclick="window.location.href='owner-operators.html'; return false;">For Owner Operators</a>
+          <a href="integrations.html" class="py-1 text-sm hover:text-white" onclick="window.location.href='integrations.html'; return false;">Integrations</a>
+          <a href="mobile-app.html" class="py-1 text-sm hover:text-white" onclick="window.location.href='mobile-app.html'; return false;">Driver App</a>
+          <a href="help.html" class="py-1 text-sm hover:text-white" onclick="window.location.href='help.html'; return false;">Help Center</a>
+          <a href="refer.html" class="py-1 text-sm hover:text-white" onclick="window.location.href='refer.html'; return false;">Refer &amp; Earn</a>
+        </div>
+      </details>
+      <a href="about.html" class="py-2 hover:text-white">About</a>
+      <a href="contact.html" class="py-2 hover:text-white">Contact</a>
+      <a href="#" class="btn-ghost text-sm mt-2 justify-center">Log In</a>
+      <a href="contact.html" class="btn-primary text-sm justify-center">Apply Now</a>
+    </nav>
+  </header>
+
+  <main>
+
+    <!-- ===== HERO ===== -->
+    <section class="relative min-h-[92vh] flex items-center overflow-hidden surface-0 pt-16">
+      <div class="hero-aurora"></div>
+      <div class="grid-bg absolute inset-0 z-0"></div>
+      <img src="assets/sphere-hero.svg" alt="" class="absolute right-[-160px] top-[-60px] w-[700px] h-[700px] opacity-[0.15] sphere-float pointer-events-none z-0 hidden lg:block" aria-hidden="true">
+      <div class="relative z-10 max-w-7xl mx-auto px-5 py-24 md:py-32 w-full">
+        <div class="grid lg:grid-cols-2 gap-12 items-center">
+          <div>
+            <div class="pill mb-6">
+              <i data-lucide="credit-card" class="w-3 h-3"></i>
+              Accepted at 10,000+ truck stops nationwide
+            </div>
+            <h1 class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold leading-[1.08] tracking-tight mb-6">
+              Fleet fuel cards,<br>
+              <span class="ez-gradient-text">built for the road</span>
+            </h1>
+            <p class="text-lg md:text-xl text-muted max-w-2xl mb-10 leading-relaxed">
+              Transparent per-gallon discounts at Pilot Flying J, Love's, and thousands of independent truck stops. Real-time visibility, per-driver controls, and instant card freeze from the app.
+            </p>
+            <div class="flex flex-wrap gap-4">
+              <a href="contact.html" class="btn-primary text-base">
+                Apply Now <i data-lucide="arrow-right" class="w-4 h-4"></i>
+              </a>
+              <a href="#discount-tiers" class="btn-ghost text-base">
+                View Discount Tiers <i data-lucide="chevron-down" class="w-4 h-4"></i>
+              </a>
+            </div>
+          </div>
+          <!-- Floating fuel card (mouse tilt + click to flip) -->
+          <div class="hidden lg:flex justify-center">
+            <div>
+              <div class="card-tilt-wrap">
+                <div class="card-flip" data-card-flip>
+                  <div class="card-tilt-3d card-float" data-tilt>
+                  <div class="card-flip-inner">
+                    <div class="card-flip-front">
+                      <img src="assets/fuel-card.svg" alt="EZ FUEL fleet card" class="w-[420px] rounded-2xl">
+                    </div>
+                    <div class="card-flip-back rounded-2xl" style="width:420px;">
+                      <div class="cb-header">
+                        <span>5204 (mm/yy)</span>
+                        <span class="cb-h-mid">For 24/7 customer service, call (888) 626-5377</span>
+                        <span>28648C001</span>
+                      </div>
+                      <div class="cb-magstripe"></div>
+                      <div class="cb-middle">
+                        <div class="cb-brand">
+                          <span class="cb-brand-text">EZ FUEL<span class="cb-brand-pro">PRO</span><span class="cb-brand-tm">&trade;</span></span>
+                        </div>
+                        <div class="cb-process">
+                          <p class="cb-process-line">For instructions on how to process this card, call:</p>
+                          <p class="cb-phone">(888) 626-5377</p>
+                        </div>
+                        <div class="cb-networks">
+                          <span class="cb-net">
+                            <span class="cb-circles cb-circles-maestro"></span>
+                            <em>maestro</em>
+                          </span>
+                          <span class="cb-net">
+                            <span class="cb-circles cb-circles-cirrus"></span>
+                            <em>cirrus</em>
+                          </span>
+                          <span class="cb-net cb-net-star">STAR</span>
+                        </div>
+                      </div>
+                      <div class="cb-legal">
+                        <p>The use of this card constitutes acceptance of all terms under which it was issued.</p>
+                        <p>The card is issued by WEX Bank pursuant to license by Mastercard International.</p>
+                      </div>
+                      <div class="cb-wexbank"><span>WEX</span> BANK</div>
+                    </div>
+                  </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <div class="gradient-line"></div>
+
+    <!-- ===== DISCOUNT TIERS ===== -->
+    <section id="discount-tiers" class="surface-1 border-y border-soft py-24">
+      <div class="max-w-7xl mx-auto px-5">
+        <div class="text-center mb-16 reveal">
+          <p class="pill mx-auto mb-4"><i data-lucide="trending-up" class="w-3 h-3"></i> Scale your savings</p>
+          <h2 class="text-3xl md:text-4xl font-extrabold tracking-tight">Discount tiers based on fleet size</h2>
+          <p class="text-muted mt-4 max-w-2xl mx-auto">The more trucks on your account, the bigger your discount. All discounts applied at the pump — your drivers see the savings on the receipt immediately.</p>
+        </div>
+        <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <!-- Starter -->
+          <div class="tier-card reveal">
+            <div class="tier-card__head">
+              <p class="tier-card__name">Starter</p>
+              <p class="tier-card__size">1–5 trucks</p>
+            </div>
+            <div class="tier-card__level">
+              <span class="tier-card__level-label">Volume discount</span>
+              <div class="tier-card__bars" data-level="1">
+                <span></span><span></span><span></span><span></span>
+              </div>
+            </div>
+            <p class="text-sm text-muted leading-relaxed mb-6">Perfect for small fleets and owner-operators just getting started with fuel savings.</p>
+            <a href="contact.html" class="btn-ghost w-full justify-center text-sm tier-card__cta">Get my rate <i data-lucide="arrow-right" class="w-4 h-4"></i></a>
+          </div>
+
+          <!-- Growth -->
+          <div class="tier-card reveal">
+            <div class="tier-card__head">
+              <p class="tier-card__name">Growth</p>
+              <p class="tier-card__size">6–20 trucks</p>
+            </div>
+            <div class="tier-card__level">
+              <span class="tier-card__level-label">Mid-volume discount</span>
+              <div class="tier-card__bars" data-level="2">
+                <span></span><span></span><span></span><span></span>
+              </div>
+            </div>
+            <p class="text-sm text-muted leading-relaxed mb-6">For growing fleets. Meaningful per-gallon savings with all the control features you need.</p>
+            <a href="contact.html" class="btn-ghost w-full justify-center text-sm tier-card__cta">Get my rate <i data-lucide="arrow-right" class="w-4 h-4"></i></a>
+          </div>
+
+          <!-- Pro — Most Popular -->
+          <div class="tier-card tier-card--featured reveal">
+            <div class="tier-card__badge">Most popular</div>
+            <div class="tier-card__head">
+              <p class="tier-card__name">Pro</p>
+              <p class="tier-card__size">21–50 trucks</p>
+            </div>
+            <div class="tier-card__level">
+              <span class="tier-card__level-label">Premium discount</span>
+              <div class="tier-card__bars" data-level="3">
+                <span></span><span></span><span></span><span></span>
+              </div>
+            </div>
+            <p class="text-sm text-muted leading-relaxed mb-6">Serious fuel savings for regional fleets. Advanced controls, priority support, and dedicated account management.</p>
+            <a href="contact.html" class="btn-primary w-full justify-center text-sm tier-card__cta">Get my rate <i data-lucide="arrow-right" class="w-4 h-4"></i></a>
+          </div>
+
+          <!-- Enterprise -->
+          <div class="tier-card reveal">
+            <div class="tier-card__head">
+              <p class="tier-card__name">Enterprise</p>
+              <p class="tier-card__size">50+ trucks</p>
+            </div>
+            <div class="tier-card__level">
+              <span class="tier-card__level-label">Maximum discount</span>
+              <div class="tier-card__bars" data-level="4">
+                <span></span><span></span><span></span><span></span>
+              </div>
+            </div>
+            <p class="text-sm text-muted leading-relaxed mb-6">Custom pricing, white-glove onboarding, and dedicated technical support for large operations.</p>
+            <a href="contact.html" class="btn-ghost w-full justify-center text-sm tier-card__cta">Talk to sales <i data-lucide="arrow-right" class="w-4 h-4"></i></a>
+          </div>
+        </div>
+        <p class="text-center text-muted text-sm mt-10 reveal">
+          <i data-lucide="info" class="w-4 h-4 inline-block align-text-bottom"></i>
+          Exact per-gallon rates depend on your tier, account type (Prepaid or Credit), volume, routes, and the current diesel index — quoted live by our team.
+        </p>
+      </div>
+    </section>
+
+    <!-- ===== ACCEPTED NETWORKS ===== -->
+    <section class="surface-0 py-24">
+      <div class="max-w-7xl mx-auto px-5">
+        <div class="text-center mb-16 reveal">
+          <p class="pill mx-auto mb-4"><i data-lucide="globe" class="w-3 h-3"></i> Accepted everywhere</p>
+          <h2 class="text-3xl md:text-4xl font-extrabold tracking-tight">Fuel at 10,000+ truck stops</h2>
+          <p class="text-muted mt-4 max-w-2xl mx-auto">Major chains plus thousands of independent stations. Your drivers can fuel up across the country with one EZ FUEL card.</p>
+        </div>
+        <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div class="surface-1 border border-soft rounded-2xl p-8 lift reveal flex items-center justify-center">
+            <div class="text-center">
+              <i data-lucide="fuel" class="w-10 h-10 text-pink-500 mx-auto mb-3"></i>
+              <p class="font-semibold text-lg">Pilot Flying J</p>
+              <p class="text-muted text-sm mt-1">Largest network in North America</p>
+            </div>
+          </div>
+
+          <div class="surface-1 border border-soft rounded-2xl p-8 lift reveal flex items-center justify-center">
+            <div class="text-center">
+              <i data-lucide="fuel" class="w-10 h-10 text-pink-500 mx-auto mb-3"></i>
+              <p class="font-semibold text-lg">Love's Travel Stops</p>
+              <p class="text-muted text-sm mt-1">Coast-to-coast coverage</p>
+            </div>
+          </div>
+
+          <div class="surface-1 border border-soft rounded-2xl p-8 lift reveal flex items-center justify-center">
+            <div class="text-center">
+              <i data-lucide="fuel" class="w-10 h-10 text-pink-500 mx-auto mb-3"></i>
+              <p class="font-semibold text-lg">RaceTrac</p>
+              <p class="text-muted text-sm mt-1">Southeastern powerhouse</p>
+            </div>
+          </div>
+
+          <div class="surface-1 border border-soft rounded-2xl p-8 lift reveal flex items-center justify-center">
+            <div class="text-center">
+              <i data-lucide="fuel" class="w-10 h-10 text-pink-500 mx-auto mb-3"></i>
+              <p class="font-semibold text-lg">Casey's</p>
+              <p class="text-muted text-sm mt-1">Midwest and beyond</p>
+            </div>
+          </div>
+
+          <div class="surface-1 border border-soft rounded-2xl p-8 lift reveal flex items-center justify-center">
+            <div class="text-center">
+              <i data-lucide="fuel" class="w-10 h-10 text-pink-500 mx-auto mb-3"></i>
+              <p class="font-semibold text-lg">QuikTrip</p>
+              <p class="text-muted text-sm mt-1">High-speed convenience</p>
+            </div>
+          </div>
+
+          <div class="surface-1 border border-soft rounded-2xl p-8 lift reveal flex items-center justify-center">
+            <div class="text-center">
+              <i data-lucide="fuel" class="w-10 h-10 text-pink-500 mx-auto mb-3"></i>
+              <p class="font-semibold text-lg">Sapp Bros</p>
+              <p class="text-muted text-sm mt-1">Family-owned favorite</p>
+            </div>
+          </div>
+
+          <div class="surface-1 border border-soft rounded-2xl p-8 lift reveal flex items-center justify-center">
+            <div class="text-center">
+              <i data-lucide="fuel" class="w-10 h-10 text-pink-500 mx-auto mb-3"></i>
+              <p class="font-semibold text-lg">Maverik</p>
+              <p class="text-muted text-sm mt-1">Mountain West coverage</p>
+            </div>
+          </div>
+
+          <div class="surface-1 border border-soft rounded-2xl p-8 lift reveal flex items-center justify-center">
+            <div class="text-center">
+              <i data-lucide="fuel" class="w-10 h-10 text-pink-500 mx-auto mb-3"></i>
+              <p class="font-semibold text-lg">Independent Stations</p>
+              <p class="text-muted text-sm mt-1">Thousands nationwide</p>
+            </div>
+          </div>
+
+          <div class="surface-1 border border-soft rounded-2xl p-8 lift reveal flex items-center justify-center">
+            <div class="text-center">
+              <i data-lucide="more-horizontal" class="w-10 h-10 text-pink-500 mx-auto mb-3"></i>
+              <p class="font-semibold text-lg">And 2,000+ more</p>
+              <p class="text-muted text-sm mt-1">Growing daily</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== CARD MANAGEMENT FEATURES ===== -->
+    <section class="surface-1 border-y border-soft py-24">
+      <div class="max-w-7xl mx-auto px-5">
+        <div class="text-center mb-16 reveal">
+          <p class="pill mx-auto mb-4"><i data-lucide="shield-check" class="w-3 h-3"></i> Complete control</p>
+          <h2 class="text-3xl md:text-4xl font-extrabold tracking-tight">Built-in card management features</h2>
+          <p class="text-muted mt-4 max-w-2xl mx-auto">Set restrictions, monitor spend, and lock down fraud in real time. Every card is a tool, not just a line item.</p>
+        </div>
+        <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div class="surface-2 border border-soft rounded-2xl p-6 lift reveal">
+            <i data-lucide="lock" class="w-6 h-6 text-pink-500 mb-4"></i>
+            <h3 class="font-bold mb-2">Per-Driver Spending Limits</h3>
+            <p class="text-muted text-sm leading-relaxed">Cap daily or weekly spend per card. Prevent runaway fuel costs and catch unusual activity instantly.</p>
+          </div>
+
+          <div class="surface-2 border border-soft rounded-2xl p-6 lift reveal">
+            <i data-lucide="fuel" class="w-6 h-6 text-pink-500 mb-4"></i>
+            <h3 class="font-bold mb-2">Fuel-Only Restrictions</h3>
+            <p class="text-muted text-sm leading-relaxed">Lock cards to fuel purchases only. Prevent drivers from buying snacks, merchandise, or anything else at the pump.</p>
+          </div>
+
+          <div class="surface-2 border border-soft rounded-2xl p-6 lift reveal">
+            <i data-lucide="map-pin" class="w-6 h-6 text-pink-500 mb-4"></i>
+            <h3 class="font-bold mb-2">Location-Based Controls</h3>
+            <p class="text-muted text-sm leading-relaxed">Define geofences. Cards only work at approved locations — keep regional drivers regional.</p>
+          </div>
+
+          <div class="surface-2 border border-soft rounded-2xl p-6 lift reveal">
+            <i data-lucide="power" class="w-6 h-6 text-pink-500 mb-4"></i>
+            <h3 class="font-bold mb-2">Instant Card Freeze/Unfreeze</h3>
+            <p class="text-muted text-sm leading-relaxed">Lost card? Suspected fraud? Freeze it in seconds from the app — no phone calls, no delays. Unfreeze when you're ready.</p>
+          </div>
+
+          <div class="surface-2 border border-soft rounded-2xl p-6 lift reveal">
+            <i data-lucide="bell" class="w-6 h-6 text-pink-500 mb-4"></i>
+            <h3 class="font-bold mb-2">Real-Time Transaction Alerts</h3>
+            <p class="text-muted text-sm leading-relaxed">Get notifications for every transaction. Know the second a card is swiped, where, and for how much.</p>
+          </div>
+
+          <div class="surface-2 border border-soft rounded-2xl p-6 lift reveal">
+            <i data-lucide="credit-card" class="w-6 h-6 text-pink-500 mb-4"></i>
+            <h3 class="font-bold mb-2">Virtual Card Numbers</h3>
+            <p class="text-muted text-sm leading-relaxed">Generate one-time or recurring virtual cards for same-day fueling. No physical card needed — drivers start saving immediately.</p>
+          </div>
+
+          <div class="surface-2 border border-soft rounded-2xl p-6 lift reveal">
+            <i data-lucide="key-round" class="w-6 h-6 text-cyan-400 mb-4"></i>
+            <h3 class="font-bold mb-2">MoneyCode Issuance</h3>
+            <p class="text-muted text-sm leading-relaxed">Issue one-time codes from the portal for lumper fees, scale tickets, repairs, or cash advances. Send to any driver in seconds — works at every truck stop, no card swipe required.</p>
+          </div>
+
+          <div class="surface-2 border border-soft rounded-2xl p-6 lift reveal">
+            <i data-lucide="wallet" class="w-6 h-6 text-cyan-400 mb-4"></i>
+            <h3 class="font-bold mb-2">Flexible Funding</h3>
+            <p class="text-muted text-sm leading-relaxed">Top up your account with ACH, wire, debit, or even a credit card — Visa, Mastercard, Amex. Run fuel through your business card and stack the rewards on top of your tier discount.</p>
+          </div>
+
+          <div class="surface-2 border border-soft rounded-2xl p-6 lift reveal">
+            <i data-lucide="smartphone" class="w-6 h-6 text-cyan-400 mb-4"></i>
+            <h3 class="font-bold mb-2">Driver Mobile App</h3>
+            <p class="text-muted text-sm leading-relaxed">Drivers see the cheapest in-network stations along their route, check card balance, view recent transactions, and reach support — all from their phone. iOS and Android.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== TRANSACTION VISIBILITY ===== -->
+    <section class="surface-0 py-24">
+      <div class="max-w-7xl mx-auto px-5">
+        <div class="grid lg:grid-cols-2 gap-12 items-center">
+          <div class="reveal">
+            <p class="pill mb-4"><i data-lucide="layout-dashboard" class="w-3 h-3"></i> See everything</p>
+            <h2 class="text-3xl md:text-4xl font-extrabold tracking-tight mb-4">Real-time transaction visibility</h2>
+            <p class="text-muted leading-relaxed mb-8">Every gallon, every location, every driver. No delays, no surprises. Filter transactions by driver, date range, or location. Export to CSV or PDF for accounting and IFTA reporting.</p>
+            <ul class="space-y-4 mb-8">
+              <li class="flex items-start gap-3">
+                <i data-lucide="check-circle" class="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5"></i>
+                <span class="text-muted">Live transaction feed updates as cards are swiped</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <i data-lucide="check-circle" class="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5"></i>
+                <span class="text-muted">Filter by driver, date, location, or amount</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <i data-lucide="check-circle" class="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5"></i>
+                <span class="text-muted">Export reports in CSV or PDF for your records</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <i data-lucide="check-circle" class="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5"></i>
+                <span class="text-muted">IFTA-ready reports organized by jurisdiction</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <i data-lucide="check-circle" class="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5"></i>
+                <span class="text-muted">Track savings, fuel costs, and per-gallon breakdown</span>
+              </li>
+            </ul>
+            <a href="contact.html" class="btn-primary">
+              Start Tracking <i data-lucide="arrow-right" class="w-4 h-4"></i>
+            </a>
+          </div>
+
+          <div class="reveal">
+            <!-- Dashboard mockup via CSS -->
+            <div class="surface-1 border border-soft rounded-2xl overflow-hidden shadow-2xl shadow-pink-500/5">
+              <div class="flex items-center gap-2 px-5 py-3 border-b border-soft">
+                <span class="w-3 h-3 rounded-full bg-red-500/70"></span>
+                <span class="w-3 h-3 rounded-full bg-yellow-500/70"></span>
+                <span class="w-3 h-3 rounded-full bg-green-500/70"></span>
+                <span class="text-xs text-muted ml-3">portal.ezfuel.com</span>
+              </div>
+              <div class="p-6 md:p-8">
+                <!-- Mock dashboard grid -->
+                <div class="grid grid-cols-2 gap-3 mb-6">
+                  <div class="surface-2 rounded-xl p-3">
+                    <p class="text-xs text-muted">Today's transactions</p>
+                    <p class="text-lg font-bold mt-1">28</p>
+                    <p class="text-xs text-green-500 mt-1">$8,217</p>
+                  </div>
+                  <div class="surface-2 rounded-xl p-3">
+                    <p class="text-xs text-muted">Active cards</p>
+                    <p class="text-lg font-bold mt-1">12</p>
+                    <p class="text-xs text-muted mt-1">All healthy</p>
+                  </div>
+                </div>
+                <!-- Mock transaction list -->
+                <div class="space-y-3">
+                  <div class="surface-2 rounded-xl p-3 border-l-2 border-pink-500">
+                    <div class="flex justify-between items-start mb-1">
+                      <p class="text-sm font-semibold">Driver #14 — Pilot, TX</p>
+                      <p class="text-sm font-bold text-green-500">-$78</p>
+                    </div>
+                    <p class="text-xs text-muted">312 gal • Discount applied • 3:24 PM</p>
+                  </div>
+                  <div class="surface-2 rounded-xl p-3 border-l-2 border-pink-500">
+                    <div class="flex justify-between items-start mb-1">
+                      <p class="text-sm font-semibold">Driver #07 — Love's, AR</p>
+                      <p class="text-sm font-bold text-green-500">-$68</p>
+                    </div>
+                    <p class="text-xs text-muted">272 gal • Discount applied • 2:51 PM</p>
+                  </div>
+                  <div class="surface-2 rounded-xl p-3 border-l-2 border-pink-500">
+                    <div class="flex justify-between items-start mb-1">
+                      <p class="text-sm font-semibold">Driver #19 — QuikTrip, OK</p>
+                      <p class="text-sm font-bold text-green-500">-$50</p>
+                    </div>
+                    <p class="text-xs text-muted">201 gal • Discount applied • 1:33 PM</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== BOTTOM CTA ===== -->
+    <section class="relative py-24 overflow-hidden">
+      <div class="hero-aurora"></div>
+      <div class="grid-bg absolute inset-0"></div>
+      <div class="relative z-10 max-w-3xl mx-auto px-5 text-center">
+        <h2 class="text-3xl md:text-5xl font-extrabold tracking-tight mb-5 reveal">Ready to cut your fuel bill?</h2>
+        <p class="text-muted text-lg mb-8 reveal">Get approved in 5 minutes. Start fueling at a discount today.</p>
+        <div class="flex flex-wrap justify-center gap-4 reveal">
+          <a href="contact.html" class="btn-primary text-base">
+            Apply Now <i data-lucide="arrow-right" class="w-4 h-4"></i>
+          </a>
+          <a href="pricing.html" class="btn-ghost text-base">
+            See Full Pricing <i data-lucide="chevron-right" class="w-4 h-4"></i>
+          </a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="surface-1 border-t border-soft">
+    <div class="max-w-7xl mx-auto px-5 py-14">
+      <div class="grid sm:grid-cols-2 lg:grid-cols-5 gap-10">
+        <div class="lg:col-span-2">
+          <a href="index.html" class="flex items-center gap-1.5 text-xl font-extrabold tracking-tight mb-4">
+            <span class="ez-gradient-text">EZ</span><span>FUEL</span><span class="ez-pro-text ml-0.5">PRO</span><span class="ez-tm">&trade;</span>
+          </a>
+          <p class="text-muted text-sm leading-relaxed mb-4 max-w-sm">Fleet fuel cards with real savings. Roadside support that actually answers the phone.</p>
+          <p class="text-muted text-sm"><a href="tel:+18886265377" class="hover:text-white">(888) 626-5377</a> · info@ezfuelpro.com</p>
+        </div>
+        <div>
+          <p class="font-semibold mb-3 text-sm uppercase tracking-wider">Products</p>
+          <ul class="space-y-2 text-muted text-sm">
+            <li><a href="fuel-cards.html" class="hover:text-white transition-colors">Fuel Cards</a></li>
+            <li><a href="fleet-tech.html" class="hover:text-white transition-colors">Roadside Support</a></li>
+            <li><a href="mobile-app.html" class="hover:text-white transition-colors">Driver App</a></li>
+            <li><a href="integrations.html" class="hover:text-white transition-colors">Integrations</a></li>
+            <li><a href="pricing.html" class="hover:text-white transition-colors">Pricing</a></li>
+            <li><a href="network.html" class="hover:text-white transition-colors">Network</a></li>
+          </ul>
+        </div>
+        <div>
+          <p class="font-semibold mb-3 text-sm uppercase tracking-wider">Resources</p>
+          <ul class="space-y-2 text-muted text-sm">
+            <li><a href="resources.html" class="hover:text-white transition-colors">Insights</a></li>
+            <li><a href="compare.html" class="hover:text-white transition-colors">Compare</a></li>
+            <li><a href="customer-stories.html" class="hover:text-white transition-colors">Customer Stories</a></li>
+            <li><a href="roi-calculator.html" class="hover:text-white transition-colors">ROI Calculator</a></li>
+            <li><a href="help.html" class="hover:text-white transition-colors">Help Center</a></li>
+          </ul>
+        </div>
+        <div>
+          <p class="font-semibold mb-3 text-sm uppercase tracking-wider">Company</p>
+          <ul class="space-y-2 text-muted text-sm">
+            <li><a href="about.html" class="hover:text-white transition-colors">About</a></li>
+            <li><a href="owner-operators.html" class="hover:text-white transition-colors">For Owner Operators</a></li>
+            <li><a href="refer.html" class="hover:text-white transition-colors">Refer &amp; Earn</a></li>
+            <li><a href="contact.html" class="hover:text-white transition-colors">Contact</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="dotted-divider mt-10 pt-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-muted text-xs">
+        <p>&copy; <span data-year></span> EZ FUEL. All rights reserved.</p>
+        <div class="flex gap-4">
+          <a href="#" class="hover:text-white transition-colors">Privacy Policy</a>
+          <a href="#" class="hover:text-white transition-colors">Terms of Service</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+  <script src="assets/app.js"></script>
+</body>
+</html>
