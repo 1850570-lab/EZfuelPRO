@@ -1,6 +1,6 @@
-/* EZ FUEL — custom styles on top of Tailwind */
+/* EZ FUEL - custom styles on top of Tailwind */
 
-/* ===== Mobile App — Phone mockup ===== */
+/* ===== Mobile App - Phone mockup ===== */
 .phone-mock {
   position: relative;
   width: 280px;
@@ -197,7 +197,7 @@ html { scroll-behavior: smooth; }
   }
 }
 
-/* ===== STATIC PAGES (non-index) — disable motion effects =====
+/* ===== STATIC PAGES (non-index) - disable motion effects =====
    The hero / scroll / tilt animation layer is reserved for the homepage.
    Other pages render everything in its final resting state instantly. */
 body.static-page .reveal,
@@ -230,7 +230,7 @@ body.static-page .map-dot {
   animation: none !important;
 }
 
-/* Fuel card keeps its own float/tilt even on static pages — it's the
+/* Fuel card keeps its own float/tilt even on static pages - it's the
    hero visual we want alive everywhere. */
 body.static-page .card-tilt-wrap .card-float {
   animation: cardFloat 6s ease-in-out infinite !important;
@@ -408,7 +408,7 @@ body.static-page .ez-pro-text { animation: none !important; }
 }
 .reveal-scale.in { opacity: 1; transform: scale(1); }
 
-/* Staggered reveal children — children fade/slide in with cascading delay
+/* Staggered reveal children - children fade/slide in with cascading delay
    when the parent gets .in. */
 .stagger > * {
   opacity: 0;
@@ -567,7 +567,7 @@ details[open] .faq-chevron { transform: rotate(180deg); }
   border-top: 1px dashed rgba(15,23,42,0.12);
 }
 
-/* ===== Real-time Transaction Visibility — mockups ===== */
+/* ===== Real-time Transaction Visibility - mockups ===== */
 
 /* Pulsing green "LIVE" dot */
 .live-dot {
@@ -754,7 +754,7 @@ main > section:not(.surface-0):not(.surface-1) { background-color: #0D1117; }
   box-shadow: 0 -18px 40px -20px rgba(15,23,42,0.18);
 }
 
-/* Footer shouldn't stick — it's the final layer */
+/* Footer shouldn't stick - it's the final layer */
 footer { position: relative; z-index: 2; }
 
 /* Hide scrollbar on logo strip */
@@ -770,7 +770,7 @@ footer { position: relative; z-index: 2; }
   width: max-content;
 }
 
-/* Brand chips for marquee — each named truck-stop network styled in its brand color */
+/* Brand chips for marquee - each named truck-stop network styled in its brand color */
 .brand-chip {
   display: inline-flex;
   align-items: center;
@@ -826,7 +826,7 @@ input:focus, select:focus, textarea:focus {
   50%      { transform: perspective(800px) rotateY(0deg) rotateX(-1deg) translateY(-12px); }
 }
 
-/* Interactive tilt — wrap container + glare */
+/* Interactive tilt - wrap container + glare */
 .card-tilt-wrap {
   position: relative;
   display: inline-block;
@@ -843,7 +843,7 @@ input:focus, select:focus, textarea:focus {
   filter: drop-shadow(0 30px 70px rgba(34,211,238,0.4));
 }
 
-/* ===== Network cards (Network page — Major networks grid) ===== */
+/* ===== Network cards (Network page - Major networks grid) ===== */
 .net-card {
   --brand: #22D3EE;
   position: relative;
@@ -856,7 +856,7 @@ input:focus, select:focus, textarea:focus {
   overflow: hidden;
   transition: transform .35s cubic-bezier(.22,.61,.36,1), border-color .3s, box-shadow .35s;
 }
-/* Animated top accent bar — slides in on hover, always-on for accent variants */
+/* Animated top accent bar - slides in on hover, always-on for accent variants */
 .net-card::before {
   content: '';
   position: absolute;
@@ -976,7 +976,7 @@ input:focus, select:focus, textarea:focus {
   opacity: 0.85;
 }
 
-/* Light mode — surface and contrast adjustments */
+/* Light mode - surface and contrast adjustments */
 .light .net-card {
   background:
     linear-gradient(180deg, rgba(0,0,0,0.02), transparent) padding-box,
@@ -998,7 +998,7 @@ input:focus, select:focus, textarea:focus {
 .light .net-card__tags { border-top-color: rgba(15, 23, 42, 0.1); }
 .light .net-card__badge { border-color: rgba(15, 23, 42, 0.08); }
 
-/* ===== Pricing — Live Quote card mockup (hero) ===== */
+/* ===== Pricing - Live Quote card mockup (hero) ===== */
 .rate-quote {
   position: relative;
   width: 420px;
@@ -1301,7 +1301,7 @@ input:focus, select:focus, textarea:focus {
   .rate-quote, .rq-dot, .rq-savings-fill { animation: none; }
 }
 
-/* ===== Pricing — Floating receipt stack (hero) ===== */
+/* ===== Pricing - Floating receipt stack (hero) ===== */
 .receipt-stack {
   position: relative;
   width: min(440px, 100%);
@@ -1438,7 +1438,7 @@ input:focus, select:focus, textarea:focus {
   letter-spacing: 0.06em;
 }
 
-/* The "DISCOUNT APPLIED" highlight — the focal point */
+/* The "DISCOUNT APPLIED" highlight - the focal point */
 .receipt__highlight {
   display: flex;
   align-items: center;
@@ -1539,7 +1539,7 @@ input:focus, select:focus, textarea:focus {
   -webkit-text-fill-color: transparent;
 }
 
-/* Light mode — receipts are already cream paper, just retune the badge */
+/* Light mode - receipts are already cream paper, just retune the badge */
 .light .receipt-badge {
   background:
     linear-gradient(135deg, rgba(63,185,80,0.14), rgba(34,211,238,0.08)) padding-box,
@@ -1567,7 +1567,7 @@ input:focus, select:focus, textarea:focus {
   .receipt__highlight, .receipt-badge { animation: none; }
 }
 
-/* ===== Pricing — Old pump comparison (deprecated, kept for compatibility) ===== */
+/* ===== Pricing - Old pump comparison (deprecated, kept for compatibility) ===== */
 .pump-compare-wrap {
   position: relative;
   width: min(600px, 100%);
@@ -1690,7 +1690,7 @@ input:focus, select:focus, textarea:focus {
   gap: 0.15rem;
 }
 
-/* Price typography — vintage LED feel */
+/* Price typography - vintage LED feel */
 .pump__price {
   font-family: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
   font-size: 2.1rem;
@@ -1712,7 +1712,7 @@ input:focus, select:focus, textarea:focus {
     0 0 26px rgba(34, 211, 238, 0.28);
 }
 
-/* Redacted price — solid blocks */
+/* Redacted price - solid blocks */
 .pump__price--redacted { align-items: center; gap: 0.04em; }
 .pump__price--redacted i {
   display: inline-block;
@@ -1927,7 +1927,7 @@ input:focus, select:focus, textarea:focus {
   .pump-arrow__icon { animation: none; }
 }
 
-/* ===== Pricing — account type cards (Prepaid vs Credit) ===== */
+/* ===== Pricing - account type cards (Prepaid vs Credit) ===== */
 .account-card {
   position: relative;
   display: flex;
@@ -2099,7 +2099,7 @@ input:focus, select:focus, textarea:focus {
 }
 .light .account-card__hero-unit { color: rgba(15, 23, 42, 0.6); }
 
-/* ===== Pricing — volume tier cards (no specific cents/gallon) ===== */
+/* ===== Pricing - volume tier cards (no specific cents/gallon) ===== */
 .tier-card {
   position: relative;
   display: flex;
@@ -2159,7 +2159,7 @@ input:focus, select:focus, textarea:focus {
   color: #ffffff;
 }
 
-/* Tier strength indicator — fills based on data-level */
+/* Tier strength indicator - fills based on data-level */
 .tier-card__level {
   margin-bottom: 1.4rem;
   padding-bottom: 1.4rem;
@@ -2242,7 +2242,7 @@ input:focus, select:focus, textarea:focus {
 .light .tier-card__level { border-bottom-color: rgba(15, 23, 42, 0.08); }
 .light .tier-card__bars > span { background: rgba(15, 23, 42, 0.08); }
 
-/* ===== Roadside Support — live dispatch card mockup ===== */
+/* ===== Roadside Support - live dispatch card mockup ===== */
 .dispatch-card {
   position: relative;
   width: 420px;
@@ -2527,7 +2527,7 @@ input:focus, select:focus, textarea:focus {
   .dc-timeline-node.dc-tn-active { animation: none; }
 }
 
-/* ===== Contact page — quick contact cards ===== */
+/* ===== Contact page - quick contact cards ===== */
 .contact-card {
   --brand: #22D3EE;
   position: relative;
@@ -2592,7 +2592,7 @@ input:focus, select:focus, textarea:focus {
 }
 .contact-card:hover .contact-card__arrow { opacity: 1; transform: translateX(2px); }
 
-/* ===== Contact page — form section headers + step indicators ===== */
+/* ===== Contact page - form section headers + step indicators ===== */
 .form-section-head {
   display: flex;
   align-items: center;
@@ -2660,7 +2660,7 @@ input:focus, select:focus, textarea:focus {
 }
 .form-pick:has(input:checked) i { color: #22D3EE; }
 
-/* ===== Contact page — sidebar timeline ===== */
+/* ===== Contact page - sidebar timeline ===== */
 .timeline-step {
   --brand: #22D3EE;
   position: relative;
@@ -2805,7 +2805,7 @@ input:focus, select:focus, textarea:focus {
   -webkit-user-drag: none;
 }
 
-/* The traveling dot — hops between LA → Dallas → Chicago → NY → Denver → loop.
+/* The traveling dot - hops between LA → Dallas → Chicago → NY → Denver → loop.
    Coordinates are percentages relative to the SVG's 900x500 viewBox. */
 .map-traveler {
   position: absolute;
@@ -2820,7 +2820,7 @@ input:focus, select:focus, textarea:focus {
     0 0 4px #ffffff inset;
   pointer-events: none;
   z-index: 3;
-  /* Move between cities — pause at each, then ease over to the next */
+  /* Move between cities - pause at each, then ease over to the next */
   animation: mapDotTravel 18s cubic-bezier(.45, .05, .55, .95) infinite;
 }
 .map-traveler::after {
@@ -2837,7 +2837,7 @@ input:focus, select:focus, textarea:focus {
   100% { transform: scale(3.4);  opacity: 0; }
 }
 @keyframes mapDotTravel {
-  /* Los Angeles — major hub on the SW coast */
+  /* Los Angeles - major hub on the SW coast */
   0%, 8%   { left: 11.7%; top: 61.5%; }
   /* Dallas */
   18%, 26% { left: 51.0%; top: 77.7%; }
@@ -2845,7 +2845,7 @@ input:focus, select:focus, textarea:focus {
   36%, 44% { left: 64.5%; top: 31.2%; }
   /* New York */
   54%, 62% { left: 87.9%; top: 35.8%; }
-  /* Denver — middle stop on the way back */
+  /* Denver - middle stop on the way back */
   72%, 80% { left: 38.0%; top: 50.0%; }
   /* loop back to LA */
   92%, 100% { left: 11.7%; top: 61.5%; }
@@ -2865,7 +2865,7 @@ input:focus, select:focus, textarea:focus {
   transform-style: preserve-3d;
   outline: none;
 }
-/* Responsive card sizing — small on phones, full size on desktop */
+/* Responsive card sizing - small on phones, full size on desktop */
 .card-img {
   width: 280px;
   border-radius: 1rem;
@@ -2898,7 +2898,7 @@ input:focus, select:focus, textarea:focus {
 .card-tilt-wrap.show-gyro-hint .gyro-hint { opacity: 1; }
 @media (min-width: 1024px) { .gyro-hint { display: none; } }
 /* This wrapper carries the mouse-tilt transform (data-tilt). It sits ABOVE
-   .card-flip-inner so the tilt applies to BOTH faces — the tilt keeps working
+   .card-flip-inner so the tilt applies to BOTH faces - the tilt keeps working
    when the card is showing its back. */
 .card-tilt-3d {
   position: relative;
@@ -2939,7 +2939,7 @@ input:focus, select:focus, textarea:focus {
   padding: 0.55em 0.85em 0.6em;
   /* Base font-size scales all em-based children down on small cards.
      Tuned so 16px corresponds to a 360px-wide card. */
-  font-size: 12.4px; /* mobile default — matches 280px card */
+  font-size: 12.4px; /* mobile default - matches 280px card */
 }
 @media (min-width: 480px) {
   .card-flip-back { font-size: 14.2px; } /* matches 320px card */
@@ -2965,14 +2965,14 @@ input:focus, select:focus, textarea:focus {
   font-weight: 600;
 }
 
-/* Black magnetic stripe — full bleed, edge-to-edge */
+/* Black magnetic stripe - full bleed, edge-to-edge */
 .cb-magstripe {
   height: 16%;
   background: #000;
   margin: 0.45em -0.85em 0;
 }
 
-/* Centered middle block — fills the space between magstripe and legal */
+/* Centered middle block - fills the space between magstripe and legal */
 .cb-middle {
   flex: 1;
   display: flex;

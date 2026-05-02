@@ -1,4 +1,4 @@
-// EZ FUEL — global UI behaviors
+// EZ FUEL - global UI behaviors
 
 (function () {
   // ----- Theme (dark default, persisted) -----
@@ -198,7 +198,7 @@
         } else {
           rafId = null;
           if (!active) {
-            // fully settled — clear inline so the idle float animation resumes cleanly
+            // fully settled - clear inline so the idle float animation resumes cleanly
             card.style.transform = '';
           }
         }
@@ -239,7 +239,7 @@
   // ----- Gyroscope tilt for mobile (DeviceOrientation API) -----
   // Card responds to phone movement: tilt the phone left/right/forward/back
   // and the 3D card follows. Works automatically on Android. iOS 13+ requires
-  // a user-gesture permission request — we attach a one-time tap handler
+  // a user-gesture permission request - we attach a one-time tap handler
   // for that. Falls back to the existing CSS card-float idle animation if
   // permissions denied or device has no gyro.
   function bindCardGyro() {
@@ -308,7 +308,7 @@
       });
     }
 
-    // iOS 13+ — needs explicit permission via user gesture
+    // iOS 13+ - needs explicit permission via user gesture
     const needsPerm = typeof DeviceOrientationEvent.requestPermission === 'function';
     if (needsPerm) {
       // Show the hint and wait for tap on any card to request permission
@@ -327,7 +327,7 @@
         card.addEventListener('click', requestPerm);
       });
     } else {
-      // Android / other — listen immediately
+      // Android / other - listen immediately
       startListening();
     }
   }
@@ -419,11 +419,11 @@
         const submitBtn = form.querySelector('button[type="submit"], [data-submit]') ||
                           [...form.querySelectorAll('button')].pop();
 
-        // Honeypot tripped — silently abort (looks like success to the bot)
+        // Honeypot tripped - silently abort (looks like success to the bot)
         const hp = form.querySelector('input[name="_honey"]');
         if (hp && hp.value) {
           if (status) {
-            status.textContent = "Thanks — we received your application.";
+            status.textContent = "Thanks - we received your application.";
             status.classList.remove('hidden');
           }
           form.reset();
@@ -436,7 +436,7 @@
         for (const [key, value] of formData.entries()) {
           if (key === '_honey') continue;
           if (data[key] !== undefined) {
-            // multiple values (checkboxes) — collapse to comma-separated string
+            // multiple values (checkboxes) - collapse to comma-separated string
             data[key] = Array.isArray(data[key])
               ? [...data[key], value].join(', ')
               : [data[key], value].join(', ');
@@ -447,7 +447,7 @@
 
         // FormSubmit metadata
         const senderName = data.contact_name || data.name || data.full_name || data.email || 'Unknown';
-        data._subject = `New EZ Fuel Pro Application — ${senderName}`;
+        data._subject = `New EZ Fuel Pro Application - ${senderName}`;
         data._template = 'box';
         data._captcha = 'false';
         data._replyto = data.email || '';
@@ -481,7 +481,7 @@
 
           if (ok) {
             if (status) {
-              status.textContent = '✓ Thanks — we received your application. An EZ FUEL account specialist will reach out within one business day.';
+              status.textContent = '✓ Thanks - we received your application. An EZ FUEL account specialist will reach out within one business day.';
               status.style.color = '';
             }
             form.reset();
@@ -531,12 +531,12 @@
     stampYear();
     markActiveNav();
     // Card tilt is opt-in per [data-tilt] element, so we bind it everywhere
-    // — any page that has a fuel-card hero gets the mouse-follow 3D effect.
+    // - any page that has a fuel-card hero gets the mouse-follow 3D effect.
     bindCardTilt();
     bindCardGyro();
     bindCardFlip();
 
-    // Broader animation layer — homepage only. Static pages opt out via body.static-page.
+    // Broader animation layer - homepage only. Static pages opt out via body.static-page.
     const isStatic = document.body.classList.contains('static-page');
     if (!isStatic) {
       bindReveal();

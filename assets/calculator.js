@@ -1,10 +1,10 @@
-// EZ FUEL — savings calculator
+// EZ FUEL - savings calculator
 // Math: monthlySavings = gallons * discountCents / 100
 // Tiers are now determined by fleet size (number of trucks), not volume.
 
 (function () {
   // Discount tiers by number of active trucks (cents per gallon)
-  // Easy to customize — edit these values to change public savings figures.
+  // Easy to customize - edit these values to change public savings figures.
   const TIERS = [
     { min: 1,   max: 5,        cpg: 12, label: "Starter" },
     { min: 6,   max: 20,       cpg: 25, label: "Growth" },
