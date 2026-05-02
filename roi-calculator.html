@@ -5,8 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
   <link rel="apple-touch-icon" href="assets/favicon.svg">
-  <title>ROI Calculator — Estimate Your Fleet's Savings — EZ FUEL PRO</title>
-  <meta name="description" content="Plug in your truck count and weekly gallons. Get an estimated annual savings range — no sales call, no email gate.">
+  <title>ROI Calculator - Estimate Your Fleet's Savings - EZ FUEL PRO</title>
+  <meta name="description" content="Plug in your truck count and weekly gallons. Get an estimated annual savings range - no sales call, no email gate.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -26,7 +26,7 @@
       }
     }
   </script>
-  <link rel="stylesheet" href="assets/styles.css?v=phone3">
+  <link rel="stylesheet" href="assets/styles.css?v=dash1">
 </head>
 <body class="static-page surface-0 text-white font-sans">
 
@@ -151,7 +151,7 @@
           <span class="ez-gradient-text">yourself.</span>
         </h1>
         <p class="text-lg md:text-xl text-muted max-w-2xl mx-auto leading-relaxed">
-          Plug in your fleet size and weekly gallons. We'll show you an estimated annual savings range based on real EZ Fuel customers at the same scale. No email gate, no "we'll call you" — just numbers.
+          Plug in your fleet size and weekly gallons. We'll show you an estimated annual savings range based on real EZ Fuel customers at the same scale. No email gate, no "we'll call you" - just numbers.
         </p>
       </div>
     </section>
@@ -224,7 +224,7 @@
                 </div>
               </div>
 
-              <p class="text-xs text-muted mt-6">Estimates use blended assumptions across our active customer base at each tier — your specific quote depends on lanes, networks fueled, and current diesel index. We'll always confirm the exact rate before you switch.</p>
+              <p class="text-xs text-muted mt-6">Estimates use blended assumptions across our active customer base at each tier - your specific quote depends on lanes, networks fueled, and current diesel index. We'll always confirm the exact rate before you switch.</p>
             </div>
 
             <!-- Output -->
@@ -278,7 +278,7 @@
         <div class="grid sm:grid-cols-2 gap-6 text-sm">
           <div class="surface-0 border border-soft rounded-xl p-5">
             <p class="font-semibold mb-2"><i data-lucide="layers" class="w-4 h-4 inline text-pink-500"></i> Tier mapping</p>
-            <p class="text-muted leading-relaxed">Truck count maps to your fleet tier — Starter (1–5), Growth (6–20), Pro (21–50), or Enterprise (50+). Each tier has a discount range we've actually delivered.</p>
+            <p class="text-muted leading-relaxed">Truck count maps to your fleet tier - Starter (1–5), Growth (6–20), Pro (21–50), or Enterprise (50+). Each tier has a discount range we've actually delivered.</p>
           </div>
           <div class="surface-0 border border-soft rounded-xl p-5">
             <p class="font-semibold mb-2"><i data-lucide="dollar-sign" class="w-4 h-4 inline text-pink-500"></i> Account type</p>
@@ -365,9 +365,9 @@
   </footer>
 
   <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
-  <script src="assets/app.js?v=phone3"></script>
+  <script src="assets/app.js?v=dash1"></script>
   <script>
-    // ROI calculator — qualitative tier-based ranges, no specific cents/gallon revealed
+    // ROI calculator - qualitative tier-based ranges, no specific cents/gallon revealed
     (function() {
       const trucks = document.querySelector('[data-roi-trucks]');
       const gpw = document.querySelector('[data-roi-gpw]');
@@ -382,7 +382,7 @@
       const monthlyEl = document.querySelector('[data-roi-monthly]');
       const timeEl = document.querySelector('[data-roi-time]');
 
-      // Tier blended discount ranges (percentage of fuel spend) — derived from real customer outcomes.
+      // Tier blended discount ranges (percentage of fuel spend) - derived from real customer outcomes.
       // Stored as ranges, not specific cents/gallon, to keep with the brand's "we quote it live" philosophy.
       const tiers = [
         { name: 'Starter tier',    min: 1,   max: 5,   prepaid: [0.025, 0.035], credit: [0.035, 0.045] },
@@ -391,7 +391,7 @@
         { name: 'Enterprise tier', min: 51,  max: 999, prepaid: [0.072, 0.090], credit: [0.090, 0.110] },
       ];
 
-      // Use a stable diesel reference price so the math is consistent — but we never expose this on the page.
+      // Use a stable diesel reference price so the math is consistent - but we never expose this on the page.
       const REF_PRICE = 4.10;
 
       const fmt = (n) => '$' + n.toLocaleString('en-US');
