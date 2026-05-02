@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <defs>
+    <linearGradient id="ezGrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#22D3EE"/>
+      <stop offset="100%" stop-color="#3B82F6"/>
+    </linearGradient>
+    <linearGradient id="bgGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#0F172A"/>
+      <stop offset="100%" stop-color="#020617"/>
+    </linearGradient>
+  </defs>
+  <!-- Rounded square background -->
+  <rect width="64" height="64" rx="14" ry="14" fill="url(#bgGrad)"/>
+  <!-- Subtle border highlight -->
+  <rect x="0.5" y="0.5" width="63" height="63" rx="13.5" ry="13.5" fill="none" stroke="#1e293b" stroke-width="1"/>
+  <!-- Subtle italic + bold strokes -->
+  <g transform="translate(4 0) skewX(-8)">
+    <!-- "E" letter — extra bold -->
+    <path d="M 6 14 L 30 14 L 30 23 L 16 23 L 16 27.5 L 27 27.5 L 27 34.5 L 16 34.5 L 16 41 L 30 41 L 30 50 L 6 50 Z"
+          fill="url(#ezGrad)"/>
+    <!-- "Z" letter — extra bold -->
+    <path d="M 34 14 L 58 14 L 58 23 L 47 41 L 58 41 L 58 50 L 34 50 L 34 41 L 45 23 L 34 23 Z"
+          fill="url(#ezGrad)"/>
+  </g>
+</svg>
