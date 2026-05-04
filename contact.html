@@ -26,7 +26,7 @@
       }
     }
   </script>
-  <link rel="stylesheet" href="assets/styles.css?v=dash1">
+  <link rel="stylesheet" href="assets/styles.css?v=acctype1">
 </head>
 <body class="static-page surface-0 text-white font-sans">
 
@@ -284,17 +284,21 @@
                       <select name="fleet_size" required
                         class="w-full surface-2 border border-soft rounded-xl px-4 py-3 text-white focus:border-pink-500 focus:outline-none transition-colors">
                         <option value="">Select fleet size...</option>
-                        <option value="1-5">1–5 trucks</option>
-                        <option value="6-20">6–20 trucks</option>
-                        <option value="21-50">21–50 trucks</option>
-                        <option value="51-100">51–100 trucks</option>
+                        <option value="1-5">1-5 trucks</option>
+                        <option value="6-20">6-20 trucks</option>
+                        <option value="21-50">21-50 trucks</option>
+                        <option value="51-100">51-100 trucks</option>
                         <option value="100+">100+ trucks</option>
                       </select>
                     </div>
                     <div>
-                      <label class="block text-sm font-semibold mb-2">Monthly diesel (gal) <span class="text-pink-500">*</span></label>
-                      <input type="number" name="monthly_gallons" required placeholder="15,000"
-                        class="w-full surface-2 border border-soft rounded-xl px-4 py-3 text-white placeholder-muted focus:border-pink-500 focus:outline-none transition-colors">
+                      <label class="block text-sm font-semibold mb-2">Account Type <span class="text-pink-500">*</span></label>
+                      <select name="account_type" required
+                        class="w-full surface-2 border border-soft rounded-xl px-4 py-3 text-white focus:border-pink-500 focus:outline-none transition-colors">
+                        <option value="">Select account type...</option>
+                        <option value="Prepaid">Prepaid</option>
+                        <option value="Credit">Credit</option>
+                      </select>
                     </div>
                   </div>
                 </div>
@@ -526,7 +530,7 @@
   </footer>
 
   <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
-  <script src="assets/app.js?v=dash1"></script>
+  <script src="assets/app.js?v=acctype1"></script>
   <script>
     // Simple form handling
     const form = document.querySelector('[data-apply-form]');
