@@ -26,7 +26,7 @@
       }
     }
   </script>
-  <link rel="stylesheet" href="assets/styles.css?v=acctype1">
+  <link rel="stylesheet" href="assets/styles.css?v=fixreset1">
 </head>
 <body class="static-page surface-0 text-white font-sans">
 
@@ -530,28 +530,6 @@
   </footer>
 
   <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
-  <script src="assets/app.js?v=acctype1"></script>
-  <script>
-    // Simple form handling
-    const form = document.querySelector('[data-apply-form]');
-    const formStatus = document.querySelector('[data-form-status]');
-
-    if (form) {
-      form.addEventListener('submit', function(e) {
-        e.preventDefault();
-
-        // Show success message
-        formStatus.classList.remove('hidden');
-
-        // Reset form
-        form.reset();
-
-        // Scroll to top to show success message
-        setTimeout(() => {
-          window.scrollTo({ top: 0, behavior: 'smooth' });
-        }, 100);
-      });
-    }
-  </script>
+  <script src="assets/app.js?v=fixreset1"></script>
 </body>
 </html>
