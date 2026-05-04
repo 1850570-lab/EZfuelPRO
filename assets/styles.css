@@ -336,6 +336,8 @@ body.static-page .ez-pro-text { animation: none !important; }
   background-size: 48px 48px;
   mask-image: radial-gradient(ellipse at center, black 40%, transparent 80%);
   animation: gridDrift 30s linear infinite;
+  /* Decorative overlay must not intercept clicks on form inputs / links */
+  pointer-events: none;
 }
 @keyframes gridDrift {
   from { background-position: 0 0, 0 0; }
