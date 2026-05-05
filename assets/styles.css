@@ -4631,3 +4631,71 @@ body.static-page .truck-drive { animation: none !important; }
   box-shadow: inset 0 0 60px rgba(0,0,0,0.35);
   z-index: 800;
 }
+
+/* ============================================================
+   MOBILE FIXES — targeted improvements for <768px viewports
+   ============================================================ */
+@media (max-width: 767px) {
+  /* Scroll-tilt section is too tall on mobile - reduce so it doesn't
+     dominate the page */
+  .scroll-tilt-section {
+    height: 48rem !important;
+    padding: 0.5rem !important;
+  }
+  .scroll-tilt-inner {
+    padding-top: 1.5rem !important;
+    padding-bottom: 1.5rem !important;
+  }
+  .scroll-tilt-card {
+    height: 28rem !important;
+    padding: 0.4rem !important;
+    margin-top: -2rem !important;
+  }
+  .scroll-tilt-header h2 {
+    font-size: 1.875rem !important;
+    line-height: 1.15 !important;
+  }
+  .scroll-tilt-header p {
+    font-size: 0.875rem !important;
+  }
+
+  /* Dashboard mockup - hide less critical elements on mobile to fit */
+  .dash-cats { display: none !important; }
+  /* Show only first 3 transactions on mobile */
+  .dash-tx:nth-child(n+5) { display: none !important; }
+  .dash-kpi-value { font-size: 16px !important; }
+  .dash-kpi { padding: 8px 10px !important; }
+  .dash-kpi-label { font-size: 9px !important; }
+  .dash-kpi-trend { font-size: 9px !important; }
+  .dash-chart-svg { height: 70px !important; min-height: 60px !important; }
+  .dash-tx-line1 { font-size: 10px !important; }
+  .dash-tx-line2 { font-size: 9px !important; }
+  .dash-topbar { padding: 8px 12px !important; }
+  .dash-topbar-brand { font-size: 11px !important; }
+  .dash-topbar-pill { font-size: 9px !important; padding: 2px 6px !important; }
+  .dash-footstrip { padding: 6px 10px !important; font-size: 10px !important; }
+
+  /* Fuel Finder snapshot - show only 3 results on mobile */
+  .ff-snap-row:nth-child(n+4) { display: none !important; }
+  .ff-snap-results-list { padding: 5px !important; gap: 4px !important; }
+  .ff-snap-row { padding: 6px !important; }
+  .ff-snap-search { padding: 8px !important; gap: 4px !important; }
+  .ff-snap-input { padding: 5px 8px !important; }
+  .ff-snap-input-value { font-size: 11px !important; }
+  .ff-snap-find { padding: 6px 10px !important; font-size: 10px !important; }
+  .ff-snap-chips { padding: 6px 8px !important; gap: 3px !important; }
+  .ff-snap-chip { padding: 3px 7px !important; font-size: 9px !important; }
+  .ff-snap-rank { width: 18px !important; height: 18px !important; font-size: 9px !important; }
+  .ff-snap-rhead .price { font-size: 11px !important; }
+
+  /* Comparison table - tighten cells on narrow screens */
+  .grid-cols-3 .py-5 { padding-top: 0.75rem !important; padding-bottom: 0.75rem !important; }
+  .grid-cols-3 .px-4 { padding-left: 0.5rem !important; padding-right: 0.5rem !important; }
+  .grid-cols-3 .text-sm { font-size: 0.7rem !important; line-height: 1.3 !important; }
+  .grid-cols-3 .text-base, .grid-cols-3 .text-lg { font-size: 0.8rem !important; }
+  .grid-cols-3 [data-lucide] { width: 12px !important; height: 12px !important; }
+  
+  /* Fuel finder search bar on hero - already stacks but make tighter */
+  .ff-planner-inputs { gap: 6px !important; }
+  .ff-stat-chip { font-size: 11px !important; padding: 6px 12px !important; }
+}
