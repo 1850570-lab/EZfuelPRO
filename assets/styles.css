@@ -3717,13 +3717,17 @@ body.static-page .truck-drive { animation: none !important; }
 }
 .leaflet-control-attribution a { color: #22D3EE !important; }
 
-/* Animated route line dash */
-.leaflet-overlay-pane path[stroke="#22D3EE"] {
-  animation: routeDash 1.5s linear infinite;
+/* Force route polylines to render visibly inside tilted card. */
+.leaflet-overlay-pane {
+  z-index: 400 !important;
 }
-@keyframes routeDash {
-  from { stroke-dashoffset: 0; }
-  to { stroke-dashoffset: -28; }
+.leaflet-overlay-pane svg {
+  overflow: visible !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+.leaflet-overlay-pane svg path {
+  visibility: visible !important;
 }
 
 /* Results panel */
@@ -3936,4 +3940,694 @@ body.static-page .truck-drive { animation: none !important; }
   .ff-results-panel { max-height: none; }
   .ff-toolbar { gap: 10px; }
   .ff-status { width: 100%; text-align: left; }
+}
+
+/* ============================================================
+   SCROLL-TILT SECTION — vanilla port of Aceternity ContainerScroll
+   ============================================================ */
+.scroll-tilt-section {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 60rem;
+  padding: 0.5rem;
+  overflow: hidden;
+}
+@media (min-width: 768px) {
+  .scroll-tilt-section { height: 80rem; padding: 1.5rem 5rem; }
+}
+.scroll-tilt-inner {
+  padding-top: 2.5rem;
+  padding-bottom: 2.5rem;
+  width: 100%;
+  position: relative;
+  perspective: 1000px;
+}
+@media (min-width: 768px) {
+  .scroll-tilt-inner { padding-top: 10rem; padding-bottom: 10rem; }
+}
+.scroll-tilt-header {
+  max-width: 64rem;
+  margin: 0 auto;
+  text-align: center;
+  will-change: transform;
+  transition: transform 0.1s linear;
+}
+.scroll-tilt-card {
+  max-width: 64rem;
+  margin: -3rem auto 0;
+  width: 100%;
+  height: 30rem;
+  border: 4px solid #6C6C6C;
+  padding: 0.5rem;
+  background: #222222;
+  border-radius: 30px;
+  box-shadow:
+    0 9px 20px rgba(0,0,0,0.29),
+    0 37px 37px rgba(0,0,0,0.26),
+    0 84px 50px rgba(0,0,0,0.15),
+    0 149px 60px rgba(0,0,0,0.04),
+    0 233px 65px rgba(0,0,0,0.01);
+  will-change: transform;
+  transform-origin: center top;
+  transform: rotateX(20deg) scale(1.05);
+  transition: transform 0.1s linear;
+}
+@media (min-width: 768px) {
+  .scroll-tilt-card { height: 40rem; padding: 1.5rem; }
+}
+.scroll-tilt-card-inner {
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+  border-radius: 16px;
+  background: linear-gradient(135deg, #0F172A, #161B22);
+  position: relative;
+}
+
+/* Dashboard mockup inside the tilt card */
+.dash-mockup {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  font-family: Inter, ui-sans-serif, system-ui, sans-serif;
+  color: #fff;
+}
+.dash-topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 20px;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+  background: rgba(255,255,255,0.02);
+}
+.dash-topbar-brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  font-weight: 800;
+}
+.dash-topbar-brand-mark {
+  width: 24px;
+  height: 24px;
+  border-radius: 6px;
+  background: linear-gradient(135deg, #22D3EE, #3B82F6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 11px;
+  font-weight: 900;
+  color: #0a0e1a;
+}
+.dash-topbar-pills {
+  display: flex;
+  gap: 6px;
+  font-size: 11px;
+}
+.dash-topbar-pill {
+  padding: 4px 10px;
+  background: rgba(255,255,255,0.04);
+  border-radius: 999px;
+  color: #94a3b8;
+}
+.dash-topbar-pill.is-active {
+  background: rgba(34, 211, 238, 0.12);
+  color: #22D3EE;
+  font-weight: 700;
+}
+.dash-body {
+  flex: 1;
+  padding: 16px 20px;
+  display: grid;
+  grid-template-columns: 1fr 320px;
+  gap: 16px;
+  min-height: 0;
+}
+@media (max-width: 768px) {
+  .dash-body { grid-template-columns: 1fr; padding: 12px; gap: 10px; }
+}
+.dash-kpi-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  margin-bottom: 14px;
+}
+.dash-kpi {
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 12px;
+  padding: 12px 14px;
+}
+.dash-kpi-label {
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: #94a3b8;
+  font-weight: 700;
+}
+.dash-kpi-value {
+  font-size: 22px;
+  font-weight: 900;
+  color: #fff;
+  margin-top: 2px;
+  line-height: 1.1;
+}
+.dash-kpi-value.green { color: #3FB950; }
+.dash-kpi-value.gradient { background: linear-gradient(135deg, #22D3EE, #3B82F6); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
+.dash-kpi-trend {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  font-size: 10px;
+  color: #3FB950;
+  margin-top: 4px;
+  font-weight: 700;
+}
+.dash-chart {
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 12px;
+  padding: 14px;
+  position: relative;
+  overflow: hidden;
+}
+.dash-chart-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 10px;
+}
+.dash-chart-title { font-size: 12px; font-weight: 700; color: #fff; }
+.dash-chart-sub { font-size: 10px; color: #94a3b8; }
+.dash-chart-svg { width: 100%; height: 110px; display: block; }
+.dash-side {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  min-height: 0;
+}
+.dash-side-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  font-size: 12px;
+}
+.dash-side-head strong { color: #fff; }
+.dash-side-head span { color: #94a3b8; font-size: 10px; }
+.dash-tx {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px;
+  background: rgba(255,255,255,0.025);
+  border: 1px solid rgba(255,255,255,0.05);
+  border-radius: 10px;
+  position: relative;
+}
+.dash-tx::before {
+  content: '';
+  position: absolute;
+  left: 0; top: 0; bottom: 0;
+  width: 3px;
+  background: var(--brand, #22D3EE);
+  border-radius: 10px 0 0 10px;
+}
+.dash-tx-icon {
+  width: 28px;
+  height: 28px;
+  border-radius: 8px;
+  background: var(--brand, #22D3EE);
+  opacity: 0.18;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  position: relative;
+}
+.dash-tx-icon::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 8px;
+  background: var(--brand, #22D3EE);
+  opacity: 0.6;
+  mix-blend-mode: overlay;
+}
+.dash-tx-body { flex: 1; min-width: 0; }
+.dash-tx-line1 {
+  display: flex;
+  justify-content: space-between;
+  font-size: 11px;
+  font-weight: 700;
+  color: #fff;
+}
+.dash-tx-line1 span:last-child { color: #3FB950; }
+.dash-tx-line2 {
+  display: flex;
+  justify-content: space-between;
+  font-size: 10px;
+  color: #94a3b8;
+  margin-top: 2px;
+}
+.dash-livedot {
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #3FB950;
+  margin-right: 5px;
+  animation: livedot 1.4s ease-in-out infinite;
+  box-shadow: 0 0 0 0 rgba(63, 185, 80, 0.7);
+}
+@keyframes livedot {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(63, 185, 80, 0.7); }
+  50% { box-shadow: 0 0 0 6px rgba(63, 185, 80, 0); }
+}
+
+/* ============================================================
+   DASHBOARD MOCKUP — fill out the card with more sections
+   ============================================================ */
+/* Left column flex stack */
+.dash-left {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  min-height: 0;
+}
+.dash-chart {
+  flex: 1;
+  min-height: 100px;
+  display: flex;
+  flex-direction: column;
+}
+.dash-chart-svg {
+  flex: 1;
+  height: auto !important;
+  min-height: 80px;
+}
+/* Make Side panel scroll if too tall */
+.dash-side {
+  overflow: hidden;
+}
+
+/* Spend by category widget */
+.dash-cats {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 12px;
+  padding: 12px 14px;
+}
+.dash-cats-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 10px;
+}
+.dash-cat {
+  display: grid;
+  grid-template-columns: 130px 1fr 90px;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 6px;
+  font-size: 11px;
+}
+.dash-cat:last-child { margin-bottom: 0; }
+.dash-cat-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: #cbd5e1;
+  font-weight: 600;
+}
+.dash-cat-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  display: inline-block;
+}
+.dash-cat-bar {
+  height: 6px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 3px;
+  overflow: hidden;
+}
+.dash-cat-bar-fill {
+  height: 100%;
+  border-radius: 3px;
+}
+.dash-cat-val {
+  text-align: right;
+  font-weight: 800;
+  color: #fff;
+  font-size: 11px;
+  white-space: nowrap;
+}
+.dash-cat-val span {
+  font-weight: 600;
+  color: #94a3b8;
+  font-size: 10px;
+  margin-left: 4px;
+}
+
+/* Footer strip at bottom of dashboard */
+.dash-footstrip {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 12px 20px;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  background: rgba(255, 255, 255, 0.02);
+  font-size: 12px;
+  color: #cbd5e1;
+}
+.dash-footstat {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+.dash-footstat strong { color: #fff; font-weight: 800; }
+
+@media (max-width: 768px) {
+  .dash-cat { grid-template-columns: 100px 1fr 70px; gap: 8px; font-size: 10px; }
+  .dash-footstrip { flex-wrap: wrap; gap: 8px 14px; padding: 10px 14px; font-size: 11px; }
+  .dash-footstat { flex: 1 1 45%; }
+}
+
+/* ============================================================
+   FUEL FINDER SNAPSHOT — static mockup inside tilt-card on Network
+   ============================================================ */
+.ff-snap {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  font-family: Inter, ui-sans-serif, system-ui, sans-serif;
+  color: #fff;
+  background: linear-gradient(135deg, #0F172A, #161B22);
+}
+
+/* Top toolbar: search bar mockup */
+.ff-snap-search {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr auto;
+  gap: 8px;
+  padding: 12px 14px;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+  background: rgba(34,211,238,0.04);
+  align-items: center;
+}
+.ff-snap-input {
+  display: flex;
+  flex-direction: column;
+  background: rgba(15,23,42,0.7);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 10px;
+  padding: 7px 12px;
+  min-width: 0;
+}
+.ff-snap-input-label {
+  font-size: 9px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #94a3b8;
+  font-weight: 700;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+.ff-snap-input.from .ff-snap-input-label i { color: #3FB950; }
+.ff-snap-input.to .ff-snap-input-label i { color: #22D3EE; }
+.ff-snap-input-value {
+  font-size: 13px;
+  font-weight: 700;
+  color: #fff;
+  margin-top: 1px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.ff-snap-swap {
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  background: rgba(34,211,238,0.1);
+  border: 1px solid rgba(34,211,238,0.2);
+  color: #22D3EE;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.ff-snap-find {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 16px;
+  background: linear-gradient(135deg, #22D3EE, #3B82F6);
+  color: #0a0e1a;
+  font-weight: 800;
+  font-size: 12px;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(34,211,238,0.3);
+  white-space: nowrap;
+}
+.ff-snap-chips {
+  display: flex;
+  gap: 5px;
+  padding: 10px 14px;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+  font-size: 10px;
+  flex-wrap: wrap;
+}
+.ff-snap-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px 10px;
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 999px;
+  color: #94a3b8;
+  font-weight: 600;
+}
+.ff-snap-chip.is-active {
+  background: rgba(34,211,238,0.1);
+  border-color: rgba(34,211,238,0.4);
+  color: #fff;
+}
+.ff-snap-chip-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+}
+
+/* Body: map (left) + results (right) */
+.ff-snap-body {
+  flex: 1;
+  display: grid;
+  grid-template-columns: 1fr 220px;
+  min-height: 0;
+}
+.ff-snap-map {
+  position: relative;
+  background:
+    radial-gradient(closest-side, rgba(34,211,238,0.08), transparent 70%),
+    linear-gradient(180deg, #0a0e1a, #0F172A);
+  overflow: hidden;
+  border-right: 1px solid rgba(255,255,255,0.06);
+}
+.ff-snap-map svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+.ff-snap-map-legend {
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 4px 8px;
+  background: rgba(15,23,42,0.85);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 6px;
+  font-size: 10px;
+  color: #cbd5e1;
+}
+.ff-snap-map-legend i { color: #22D3EE; }
+.ff-snap-stats {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 5px 10px;
+  background: rgba(15,23,42,0.85);
+  border: 1px solid rgba(34,211,238,0.3);
+  border-radius: 6px;
+  font-size: 10px;
+  color: #cbd5e1;
+}
+.ff-snap-stats strong { color: #22D3EE; font-weight: 800; }
+
+/* Results panel */
+.ff-snap-results {
+  display: flex;
+  flex-direction: column;
+  background: linear-gradient(180deg, rgba(34,211,238,0.04), rgba(15,23,42,0.6));
+}
+.ff-snap-results-head {
+  padding: 10px 14px;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+  background: rgba(34,211,238,0.04);
+  font-size: 11px;
+  font-weight: 700;
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+.ff-snap-results-head i { color: #22D3EE; }
+.ff-snap-results-head span { font-size: 9px; color: #94a3b8; font-weight: 500; }
+.ff-snap-results-list {
+  flex: 1;
+  padding: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  min-height: 0;
+}
+.ff-snap-row {
+  display: flex;
+  gap: 8px;
+  padding: 8px;
+  background: rgba(15,23,42,0.4);
+  border: 1px solid rgba(255,255,255,0.05);
+  border-radius: 8px;
+  position: relative;
+  overflow: hidden;
+}
+.ff-snap-row::before {
+  content: '';
+  position: absolute;
+  left: 0; top: 0; bottom: 0;
+  width: 3px;
+  background: var(--brand, #22D3EE);
+}
+.ff-snap-row.is-best {
+  background: linear-gradient(135deg, rgba(34,211,238,0.08), rgba(63,185,80,0.04));
+  border-color: rgba(34,211,238,0.3);
+}
+.ff-snap-row.is-best::after {
+  content: 'BEST';
+  position: absolute;
+  top: 4px;
+  right: 4px;
+  font-size: 7px;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  padding: 2px 5px;
+  background: linear-gradient(135deg, #22D3EE, #3B82F6);
+  color: #0a0e1a;
+  border-radius: 3px;
+}
+.ff-snap-rank {
+  width: 22px;
+  height: 22px;
+  border-radius: 6px;
+  background: linear-gradient(135deg, #22D3EE, #3B82F6);
+  color: #0a0e1a;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 900;
+  font-size: 10px;
+  flex-shrink: 0;
+}
+.ff-snap-rbody { flex: 1; min-width: 0; }
+.ff-snap-rhead {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  font-size: 10px;
+  font-weight: 800;
+  color: #fff;
+  margin-bottom: 2px;
+}
+.ff-snap-rhead .price { color: var(--brand, #22D3EE); font-size: 13px; line-height: 1; }
+.ff-snap-rloc {
+  font-size: 9px;
+  color: #cbd5e1;
+  margin: 0 0 4px;
+}
+.ff-snap-rdisc {
+  display: inline-block;
+  font-size: 8px;
+  font-weight: 700;
+  padding: 2px 5px;
+  background: rgba(63,185,80,0.12);
+  color: #3FB950;
+  border-radius: 3px;
+}
+
+/* Mobile collapse */
+@media (max-width: 768px) {
+  .ff-snap-body { grid-template-columns: 1fr; grid-template-rows: 60% 40%; }
+  .ff-snap-map { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.06); }
+  .ff-snap-search { grid-template-columns: 1fr 1fr; gap: 6px; }
+  .ff-snap-swap, .ff-snap-find { grid-column: span 1; }
+  .ff-snap-find { width: 100%; justify-content: center; padding: 8px; }
+  .ff-snap-results-list { gap: 4px; padding: 6px; }
+  .ff-snap-row { padding: 6px; }
+}
+
+/* Fix: real US map as background of fuel-finder snapshot + force icon sizes */
+.ff-snap-map {
+  background:
+    url('us-map.svg') center/contain no-repeat,
+    radial-gradient(closest-side, rgba(34,211,238,0.08), transparent 70%),
+    linear-gradient(180deg, #0a0e1a, #0F172A) !important;
+}
+.ff-snap-map-legend i,
+.ff-snap-map-legend svg,
+.ff-snap-stats i,
+.ff-snap-stats svg,
+.ff-snap-results-head i,
+.ff-snap-results-head svg {
+  width: 12px !important;
+  height: 12px !important;
+  flex-shrink: 0;
+}
+.ff-snap-input-label i,
+.ff-snap-input-label svg,
+.ff-snap-find i,
+.ff-snap-find svg,
+.ff-snap-swap i,
+.ff-snap-swap svg {
+  width: 14px !important;
+  height: 14px !important;
+  flex-shrink: 0;
+}
+
+/* Leaflet snapshot map (inside fuel-finder snapshot card on Network) */
+.ff-snap-leaflet {
+  width: 100%;
+  height: 100%;
+  background: #f3eee5; /* fallback while tiles load */
+}
+.ff-snap-leaflet .leaflet-control-attribution { display: none !important; }
+/* Subtle vignette so it feels like a screenshot, not a live map */
+.ff-snap-map {
+  position: relative;
+}
+.ff-snap-map::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  box-shadow: inset 0 0 60px rgba(0,0,0,0.35);
+  z-index: 800;
 }
