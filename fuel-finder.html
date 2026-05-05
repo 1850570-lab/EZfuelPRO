@@ -26,7 +26,7 @@
       }
     }
   </script>
-  <link rel="stylesheet" href="assets/styles.css?v=finder1">
+  <link rel="stylesheet" href="assets/styles.css?v=finder2">
   <!-- Leaflet CSS -->
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
         integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">
@@ -119,79 +119,153 @@
 
   <main>
     <!-- ===== HERO ===== -->
-    <section class="relative pt-28 pb-10 surface-0 overflow-hidden">
+    <section class="ff-hero relative pt-28 pb-12 overflow-hidden">
       <div class="grid-bg absolute inset-0 z-0"></div>
+      <div class="ff-hero-glow"></div>
       <div class="relative z-10 max-w-7xl mx-auto px-5 text-center">
         <div class="pill mx-auto mb-5"><i data-lucide="map-pin" class="w-3 h-3"></i> Fuel Finder · Live route map</div>
-        <h1 class="text-3xl md:text-5xl font-extrabold tracking-tight mb-4">
-          Find the cheapest diesel
+        <h1 class="text-4xl md:text-6xl font-extrabold tracking-tight leading-[1.05] mb-5">
+          Find the cheapest diesel<br>
           <span class="ez-gradient-text">along your route.</span>
         </h1>
-        <p class="text-base md:text-lg text-muted max-w-2xl mx-auto leading-relaxed">
-          Enter your origin and destination — we'll show you in-network stops with the deepest per-gallon discounts, plus amenities at every site.
+        <p class="text-base md:text-lg text-muted max-w-2xl mx-auto leading-relaxed mb-8">
+          Plot your trip and we'll surface every in-network stop with the deepest per-gallon discounts, amenities, and detour distance.
         </p>
+        <!-- Stat chips -->
+        <div class="flex flex-wrap justify-center gap-3 md:gap-4">
+          <div class="ff-stat-chip">
+            <i data-lucide="map-pinned" class="w-4 h-4 text-pink-500"></i>
+            <span><strong>10,000+</strong> in-network stops</span>
+          </div>
+          <div class="ff-stat-chip">
+            <i data-lucide="globe" class="w-4 h-4 text-green-500"></i>
+            <span><strong>US &amp; Canada</strong> coverage</span>
+          </div>
+          <div class="ff-stat-chip">
+            <i data-lucide="trending-down" class="w-4 h-4 text-pink-500"></i>
+            <span><strong>Live discounts</strong> at every site</span>
+          </div>
+        </div>
+      </div>
+      <!-- Decorative route line -->
+      <svg class="ff-hero-route absolute inset-x-0 -bottom-px pointer-events-none" viewBox="0 0 1440 60" preserveAspectRatio="none" aria-hidden="true">
+        <defs>
+          <linearGradient id="ffRouteGrad" x1="0" y1="0" x2="1" y2="0">
+            <stop offset="0%" stop-color="#22D3EE" stop-opacity="0"/>
+            <stop offset="50%" stop-color="#22D3EE" stop-opacity="0.6"/>
+            <stop offset="100%" stop-color="#3B82F6" stop-opacity="0"/>
+          </linearGradient>
+        </defs>
+        <path d="M0,40 Q360,10 720,30 T1440,20" stroke="url(#ffRouteGrad)" stroke-width="2" fill="none" stroke-dasharray="6 8"/>
+      </svg>
+    </section>
+
+    <!-- ===== ROUTE PLANNER (sticky-ish search bar) ===== -->
+    <section class="surface-0 pt-2 pb-6 relative z-20">
+      <div class="max-w-7xl mx-auto px-5">
+        <form id="fuel-finder-form" class="ff-planner">
+          <div class="ff-planner-inputs">
+            <label class="ff-input-wrap ff-input-from">
+              <span class="ff-input-label"><i data-lucide="circle-dot" class="w-3.5 h-3.5"></i> From</span>
+              <input id="ff-from" type="text" placeholder="Knoxville, TN" required autocomplete="off"
+                class="ff-input">
+            </label>
+            <button type="button" id="ff-swap" class="ff-swap-btn" aria-label="Swap From and To">
+              <i data-lucide="arrow-left-right" class="w-4 h-4"></i>
+            </button>
+            <label class="ff-input-wrap ff-input-to">
+              <span class="ff-input-label"><i data-lucide="map-pin" class="w-3.5 h-3.5"></i> To</span>
+              <input id="ff-to" type="text" placeholder="Phoenix, AZ" required autocomplete="off"
+                class="ff-input">
+            </label>
+            <button type="submit" class="ff-submit">
+              <i data-lucide="search" class="w-4 h-4"></i>
+              <span>Find best stops</span>
+            </button>
+          </div>
+          <div class="ff-planner-foot">
+            <div class="ff-suggested">
+              <span class="ff-suggested-label">Try:</span>
+              <button type="button" class="ff-route-chip" data-from="Atlanta, GA" data-to="Dallas, TX">Atlanta → Dallas</button>
+              <button type="button" class="ff-route-chip" data-from="Chicago, IL" data-to="Los Angeles, CA">Chicago → LA</button>
+              <button type="button" class="ff-route-chip" data-from="Toronto, ON" data-to="Calgary, AB">Toronto → Calgary</button>
+              <button type="button" class="ff-route-chip" data-from="Miami, FL" data-to="Boston, MA">Miami → Boston</button>
+            </div>
+            <button type="button" id="ff-reset" class="ff-reset-link">
+              <i data-lucide="rotate-ccw" class="w-3 h-3"></i> Reset
+            </button>
+          </div>
+        </form>
       </div>
     </section>
 
-    <!-- ===== MAP + PANEL ===== -->
+    <!-- ===== MAP + RESULTS ===== -->
     <section class="surface-0 pb-20">
       <div class="max-w-7xl mx-auto px-5">
-        <div class="grid lg:grid-cols-[1fr_360px] gap-5">
-          <!-- LEFT: Map + form -->
-          <div class="surface-1 border border-soft rounded-2xl overflow-hidden">
-            <!-- Form -->
-            <form id="fuel-finder-form" class="p-5 border-b border-soft bg-pink-500/5">
-              <div class="grid sm:grid-cols-2 gap-3 mb-3">
-                <label class="block">
-                  <span class="text-xs uppercase tracking-wider text-muted font-semibold mb-1.5 inline-flex items-center gap-1.5">
-                    <i data-lucide="circle-dot" class="w-3 h-3 text-green-500"></i> From
-                  </span>
-                  <input id="ff-from" type="text" placeholder="e.g. Knoxville, TN" required
-                    class="w-full surface-2 border border-soft rounded-xl px-4 py-3 text-white placeholder-muted focus:border-pink-500 focus:outline-none transition-colors">
-                </label>
-                <label class="block">
-                  <span class="text-xs uppercase tracking-wider text-muted font-semibold mb-1.5 inline-flex items-center gap-1.5">
-                    <i data-lucide="map-pin" class="w-3 h-3 text-pink-500"></i> To
-                  </span>
-                  <input id="ff-to" type="text" placeholder="e.g. Phoenix, AZ" required
-                    class="w-full surface-2 border border-soft rounded-xl px-4 py-3 text-white placeholder-muted focus:border-pink-500 focus:outline-none transition-colors">
-                </label>
-              </div>
-              <div class="flex flex-wrap items-center gap-3">
-                <button type="submit" class="btn-primary text-sm">
-                  Find best stops <i data-lucide="search" class="w-4 h-4"></i>
-                </button>
-                <button type="button" id="ff-reset" class="btn-ghost text-sm">Reset map</button>
-                <p id="fuel-finder-status" class="text-xs text-muted ml-auto"></p>
-              </div>
-            </form>
+        <!-- Brand filters + status -->
+        <div class="ff-toolbar">
+          <div class="ff-brand-filters">
+            <button type="button" class="ff-brand-chip is-active" data-brand="all">
+              <span class="ff-brand-dot" style="background:linear-gradient(135deg,#22D3EE,#3B82F6)"></span>
+              All brands
+            </button>
+            <button type="button" class="ff-brand-chip" data-brand="Pilot">
+              <span class="ff-brand-dot" style="background:#FFB300"></span>Pilot
+            </button>
+            <button type="button" class="ff-brand-chip" data-brand="Flying J">
+              <span class="ff-brand-dot" style="background:#E63946"></span>Flying J
+            </button>
+            <button type="button" class="ff-brand-chip" data-brand="TA">
+              <span class="ff-brand-dot" style="background:#1976D2"></span>TA
+            </button>
+            <button type="button" class="ff-brand-chip" data-brand="Petro">
+              <span class="ff-brand-dot" style="background:#6A1B9A"></span>Petro
+            </button>
+            <button type="button" class="ff-brand-chip" data-brand="Love's">
+              <span class="ff-brand-dot" style="background:#D32F2F"></span>Love's
+            </button>
+            <button type="button" class="ff-brand-chip" data-brand="Husky">
+              <span class="ff-brand-dot" style="background:#2E7D32"></span>Husky
+            </button>
+            <button type="button" class="ff-brand-chip" data-brand="Petro-Canada">
+              <span class="ff-brand-dot" style="background:#00838F"></span>Petro-Canada
+            </button>
+          </div>
+          <p id="fuel-finder-status" class="ff-status">Loading stops…</p>
+        </div>
 
-            <!-- Map -->
-            <div id="fuel-finder-map" style="height: 560px; width: 100%; background:#0F172A;"></div>
-
-            <!-- Legend -->
-            <div class="p-4 border-t border-soft flex flex-wrap items-center gap-x-6 gap-y-2 text-xs">
-              <span class="flex items-center gap-2"><span class="w-3 h-3 rounded-full" style="background:#FFB300"></span> Pilot</span>
-              <span class="flex items-center gap-2"><span class="w-3 h-3 rounded-full" style="background:#E63946"></span> Flying J</span>
-              <span class="flex items-center gap-2"><span class="w-3 h-3 rounded-full" style="background:#1976D2"></span> TA</span>
-              <span class="flex items-center gap-2"><span class="w-3 h-3 rounded-full" style="background:#6A1B9A"></span> Petro</span>
-              <span class="flex items-center gap-2"><span class="w-3 h-3 rounded-full" style="background:#D32F2F"></span> Love's</span>
-              <span class="flex items-center gap-2"><span class="w-3 h-3 rounded-full" style="background:#2E7D32"></span> Husky</span>
-              <span class="flex items-center gap-2"><span class="w-3 h-3 rounded-full" style="background:#00838F"></span> Petro-Canada</span>
-              <span class="text-muted ml-auto">Posted prices estimated · live in-network discounts shown for cardholders</span>
+        <div class="grid lg:grid-cols-[1fr_380px] gap-5">
+          <!-- LEFT: Map -->
+          <div class="ff-map-shell">
+            <div id="fuel-finder-map"></div>
+            <!-- Map overlay legend (small, bottom-left) -->
+            <div class="ff-map-legend">
+              <i data-lucide="info" class="w-3 h-3"></i>
+              <span>Tap a pin for amenities &amp; price · Yellow chip = your card price</span>
             </div>
           </div>
 
           <!-- RIGHT: Results panel -->
-          <aside class="surface-1 border border-soft rounded-2xl flex flex-col" style="max-height: 720px;">
-            <div class="p-5 border-b border-soft">
-              <h2 class="font-bold text-lg">Top stops along route</h2>
-              <p class="text-xs text-muted mt-1">Sorted by deepest per-gallon discount, then distance off route.</p>
+          <aside class="ff-results-panel">
+            <div class="ff-results-head">
+              <div>
+                <h2 class="font-bold text-lg flex items-center gap-2">
+                  <i data-lucide="trophy" class="w-5 h-5 text-pink-500"></i>
+                  Top stops along route
+                </h2>
+                <p class="text-xs text-muted mt-0.5">Sorted by deepest discount, then nearest to route.</p>
+              </div>
             </div>
-            <div id="fuel-finder-results" class="flex-1 overflow-y-auto p-3">
-              <p class="ts-empty">Enter From and To cities to find the cheapest stops along your route.</p>
+            <div id="fuel-finder-results" class="ff-results-body">
+              <div class="ff-empty-state">
+                <div class="ff-empty-icon">
+                  <i data-lucide="route" class="w-8 h-8"></i>
+                </div>
+                <p class="ff-empty-title">Plan your trip</p>
+                <p class="ff-empty-text">Enter From and To above to surface the cheapest in-network stops along your route.</p>
+              </div>
             </div>
-            <div class="p-4 border-t border-soft">
+            <div class="ff-results-foot">
               <a href="contact.html" class="btn-primary w-full justify-center text-sm">
                 Lock in these rates <i data-lucide="arrow-right" class="w-4 h-4"></i>
               </a>
@@ -304,7 +378,7 @@
   <!-- Leaflet JS -->
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
           integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
-  <script src="assets/app.js?v=finder1"></script>
-  <script src="assets/fuel-finder.js?v=finder1"></script>
+  <script src="assets/app.js?v=finder2"></script>
+  <script src="assets/fuel-finder.js?v=finder2"></script>
 </body>
 </html>

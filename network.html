@@ -26,7 +26,10 @@
       }
     }
   </script>
-  <link rel="stylesheet" href="assets/styles.css?v=finder1">
+  <link rel="stylesheet" href="assets/styles.css?v=finder2">
+  <!-- Leaflet CSS for embedded Fuel Finder -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+        integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">
 </head>
 <body class="static-page surface-0 text-white font-sans">
 
@@ -188,6 +191,110 @@
         </div>
       </div>
     </section>
+    <div class="gradient-line"></div>
+
+    <!-- ===== INTERACTIVE FUEL FINDER ===== -->
+    <section class="surface-0 py-16 md:py-20">
+      <div class="max-w-7xl mx-auto px-5">
+        <div class="text-center mb-10">
+          <p class="pill mx-auto mb-4"><i data-lucide="map-pin" class="w-3 h-3"></i> Live network map</p>
+          <h2 class="text-3xl md:text-5xl font-extrabold tracking-tight mb-4">
+            Find the cheapest diesel
+            <span class="ez-gradient-text">along your route.</span>
+          </h2>
+          <p class="text-muted text-base md:text-lg max-w-2xl mx-auto">
+            Type your origin and destination - we'll plot the route and surface every in-network stop with the deepest per-gallon discounts.
+          </p>
+        </div>
+
+        <!-- Route planner -->
+        <form id="fuel-finder-form" class="ff-planner">
+          <div class="ff-planner-inputs">
+            <label class="ff-input-wrap ff-input-from">
+              <span class="ff-input-label"><i data-lucide="circle-dot" class="w-3.5 h-3.5"></i> From</span>
+              <input id="ff-from" type="text" placeholder="Knoxville, TN" required autocomplete="off" class="ff-input">
+            </label>
+            <button type="button" id="ff-swap" class="ff-swap-btn" aria-label="Swap From and To">
+              <i data-lucide="arrow-left-right" class="w-4 h-4"></i>
+            </button>
+            <label class="ff-input-wrap ff-input-to">
+              <span class="ff-input-label"><i data-lucide="map-pin" class="w-3.5 h-3.5"></i> To</span>
+              <input id="ff-to" type="text" placeholder="Phoenix, AZ" required autocomplete="off" class="ff-input">
+            </label>
+            <button type="submit" class="ff-submit">
+              <i data-lucide="search" class="w-4 h-4"></i>
+              <span>Find best stops</span>
+            </button>
+          </div>
+          <div class="ff-planner-foot">
+            <div class="ff-suggested">
+              <span class="ff-suggested-label">Try:</span>
+              <button type="button" class="ff-route-chip" data-from="Atlanta, GA" data-to="Dallas, TX">Atlanta → Dallas</button>
+              <button type="button" class="ff-route-chip" data-from="Chicago, IL" data-to="Los Angeles, CA">Chicago → LA</button>
+              <button type="button" class="ff-route-chip" data-from="Toronto, ON" data-to="Calgary, AB">Toronto → Calgary</button>
+              <button type="button" class="ff-route-chip" data-from="Miami, FL" data-to="Boston, MA">Miami → Boston</button>
+            </div>
+            <button type="button" id="ff-reset" class="ff-reset-link">
+              <i data-lucide="rotate-ccw" class="w-3 h-3"></i> Reset
+            </button>
+          </div>
+        </form>
+
+        <!-- Brand filters + status -->
+        <div class="ff-toolbar">
+          <div class="ff-brand-filters">
+            <button type="button" class="ff-brand-chip is-active" data-brand="all">
+              <span class="ff-brand-dot" style="background:linear-gradient(135deg,#22D3EE,#3B82F6)"></span>
+              All brands
+            </button>
+            <button type="button" class="ff-brand-chip" data-brand="Pilot"><span class="ff-brand-dot" style="background:#FFB300"></span>Pilot</button>
+            <button type="button" class="ff-brand-chip" data-brand="Flying J"><span class="ff-brand-dot" style="background:#E63946"></span>Flying J</button>
+            <button type="button" class="ff-brand-chip" data-brand="TA"><span class="ff-brand-dot" style="background:#1976D2"></span>TA</button>
+            <button type="button" class="ff-brand-chip" data-brand="Petro"><span class="ff-brand-dot" style="background:#6A1B9A"></span>Petro</button>
+            <button type="button" class="ff-brand-chip" data-brand="Love's"><span class="ff-brand-dot" style="background:#D32F2F"></span>Love's</button>
+            <button type="button" class="ff-brand-chip" data-brand="Husky"><span class="ff-brand-dot" style="background:#2E7D32"></span>Husky</button>
+            <button type="button" class="ff-brand-chip" data-brand="Petro-Canada"><span class="ff-brand-dot" style="background:#00838F"></span>Petro-Canada</button>
+          </div>
+          <p id="fuel-finder-status" class="ff-status">Loading stops…</p>
+        </div>
+
+        <div class="grid lg:grid-cols-[1fr_380px] gap-5">
+          <div class="ff-map-shell">
+            <div id="fuel-finder-map"></div>
+            <div class="ff-map-legend">
+              <i data-lucide="info" class="w-3 h-3"></i>
+              <span>Tap a pin for amenities &amp; price</span>
+            </div>
+          </div>
+
+          <aside class="ff-results-panel">
+            <div class="ff-results-head">
+              <div>
+                <h3 class="font-bold text-lg flex items-center gap-2">
+                  <i data-lucide="trophy" class="w-5 h-5 text-pink-500"></i>
+                  Top stops along route
+                </h3>
+                <p class="text-xs text-muted mt-0.5">Sorted by deepest discount, then nearest to route.</p>
+              </div>
+            </div>
+            <div id="fuel-finder-results" class="ff-results-body">
+              <div class="ff-empty-state">
+                <div class="ff-empty-icon"><i data-lucide="route" class="w-8 h-8"></i></div>
+                <p class="ff-empty-title">Plan your trip</p>
+                <p class="ff-empty-text">Enter From and To above to surface the cheapest in-network stops along your route.</p>
+              </div>
+            </div>
+            <div class="ff-results-foot">
+              <a href="contact.html" class="btn-primary w-full justify-center text-sm">
+                Lock in these rates <i data-lucide="arrow-right" class="w-4 h-4"></i>
+              </a>
+              <p class="text-xs text-muted mt-2 text-center">Approved in 24 hours · No setup fees</p>
+            </div>
+          </aside>
+        </div>
+      </div>
+    </section>
+
     <div class="gradient-line"></div>
 
     <!-- ===== COVERAGE HIGHLIGHTS ===== -->
@@ -488,6 +595,10 @@
   </footer>
 
   <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
-  <script src="assets/app.js?v=finder1"></script>
+  <!-- Leaflet JS for embedded Fuel Finder -->
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+          integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+  <script src="assets/app.js?v=finder2"></script>
+  <script src="assets/fuel-finder.js?v=finder2"></script>
 </body>
 </html>
