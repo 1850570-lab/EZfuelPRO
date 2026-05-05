@@ -26,7 +26,7 @@
       }
     }
   </script>
-  <link rel="stylesheet" href="assets/styles.css?v=dash1">
+  <link rel="stylesheet" href="assets/styles.css?v=finder1">
 </head>
 <body class="surface-0 text-white font-sans">
 
@@ -63,6 +63,10 @@
               <i data-lucide="arrow-right" class="w-4 h-4 text-pink-500 flex-shrink-0"></i>
             </a>
             <div class="grid grid-cols-2 gap-1">
+              <a href="fuel-finder.html" class="flex items-center gap-2.5 p-2.5 rounded-lg bg-pink-500/10 hover:bg-pink-500/15 transition-colors" onclick="window.location.href='fuel-finder.html'; return false;">
+                <i data-lucide="map-pin" class="w-4 h-4 text-pink-500 flex-shrink-0"></i>
+                <span class="text-sm text-white font-semibold">Fuel Finder</span>
+              </a>
               <a href="compare.html" class="flex items-center gap-2.5 p-2.5 rounded-lg hover:bg-white/5 transition-colors" onclick="window.location.href='compare.html'; return false;">
                 <i data-lucide="git-compare-arrows" class="w-4 h-4 text-pink-500 flex-shrink-0"></i>
                 <span class="text-sm text-white">Compare</span>
@@ -253,7 +257,7 @@
         </div>
         <div>
           <p class="text-3xl md:text-4xl font-extrabold ez-gradient-text" data-counter data-to="10000" data-suffix="+" data-format="comma">10,000+</p>
-          <p class="text-muted text-sm mt-1">Truck stops accepted</p>
+          <p class="text-muted text-sm mt-1">Truck stops · US &amp; Canada</p>
         </div>
         <div>
           <p class="text-3xl md:text-4xl font-extrabold ez-gradient-text">24/7</p>
@@ -262,6 +266,144 @@
         <div>
           <p class="text-3xl md:text-4xl font-extrabold ez-gradient-text" data-counter data-to="99.9" data-suffix="%" data-decimals="1">99.9%</p>
           <p class="text-muted text-sm mt-1">Portal uptime</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Gradient line -->
+    <div class="gradient-line"></div>
+
+    <!-- ===== COMPARISON: EZ FUEL PRO vs OLD WAY ===== -->
+    <section class="surface-0 py-20">
+      <div class="max-w-7xl mx-auto px-5">
+        <div class="text-center mb-12 reveal">
+          <p class="pill mx-auto mb-4"><i data-lucide="git-compare-arrows" class="w-3 h-3"></i> Why fleets switch</p>
+          <h2 class="text-3xl md:text-4xl font-extrabold tracking-tight">Built for the way fleets actually <span class="ez-gradient-text">run today.</span></h2>
+          <p class="text-muted mt-4 max-w-2xl mx-auto">Most fuel programs were designed in the 90s. We rebuilt one for fleets that need real-time data, modern controls, and a partner that picks up the phone.</p>
+        </div>
+
+        <div class="surface-1 border border-soft rounded-2xl overflow-hidden reveal">
+          <!-- Header row -->
+          <div class="grid grid-cols-3 border-b border-soft">
+            <div class="px-4 md:px-6 py-4 text-xs uppercase tracking-wider text-muted font-semibold">Feature</div>
+            <div class="px-4 md:px-6 py-4 text-center bg-pink-500/5 border-l border-soft">
+              <p class="text-base md:text-lg font-extrabold ez-gradient-text">EZ Fuel Pro</p>
+            </div>
+            <div class="px-4 md:px-6 py-4 text-center text-muted border-l border-soft">
+              <p class="text-base md:text-lg font-bold">Legacy Fuel Cards</p>
+            </div>
+          </div>
+
+          <!-- Row 1: Pricing -->
+          <div class="grid grid-cols-3 border-b border-soft">
+            <div class="px-4 md:px-6 py-5 text-sm font-semibold flex items-center gap-2"><i data-lucide="dollar-sign" class="w-4 h-4 text-pink-500 flex-shrink-0"></i> Transparent pricing</div>
+            <div class="px-4 md:px-6 py-5 text-sm border-l border-soft bg-pink-500/5 flex items-center gap-2">
+              <i data-lucide="check-circle-2" class="w-4 h-4 text-green-500 flex-shrink-0"></i>
+              <span>$0 in-network transaction fees</span>
+            </div>
+            <div class="px-4 md:px-6 py-5 text-sm border-l border-soft text-muted flex items-center gap-2">
+              <i data-lucide="x-circle" class="w-4 h-4 text-red-400 flex-shrink-0"></i>
+              <span>Hidden swipe fees, monthly markups</span>
+            </div>
+          </div>
+
+          <!-- Row 2: Approval -->
+          <div class="grid grid-cols-3 border-b border-soft">
+            <div class="px-4 md:px-6 py-5 text-sm font-semibold flex items-center gap-2"><i data-lucide="zap" class="w-4 h-4 text-pink-500 flex-shrink-0"></i> Approval speed</div>
+            <div class="px-4 md:px-6 py-5 text-sm border-l border-soft bg-pink-500/5 flex items-center gap-2">
+              <i data-lucide="check-circle-2" class="w-4 h-4 text-green-500 flex-shrink-0"></i>
+              <span>Approved in 24 hours</span>
+            </div>
+            <div class="px-4 md:px-6 py-5 text-sm border-l border-soft text-muted flex items-center gap-2">
+              <i data-lucide="x-circle" class="w-4 h-4 text-red-400 flex-shrink-0"></i>
+              <span>5-10 days, paperwork-heavy</span>
+            </div>
+          </div>
+
+          <!-- Row 3: Account types -->
+          <div class="grid grid-cols-3 border-b border-soft">
+            <div class="px-4 md:px-6 py-5 text-sm font-semibold flex items-center gap-2"><i data-lucide="credit-card" class="w-4 h-4 text-pink-500 flex-shrink-0"></i> Account flexibility</div>
+            <div class="px-4 md:px-6 py-5 text-sm border-l border-soft bg-pink-500/5 flex items-center gap-2">
+              <i data-lucide="check-circle-2" class="w-4 h-4 text-green-500 flex-shrink-0"></i>
+              <span>Prepaid OR credit · up to $5,000/truck/week</span>
+            </div>
+            <div class="px-4 md:px-6 py-5 text-sm border-l border-soft text-muted flex items-center gap-2">
+              <i data-lucide="x-circle" class="w-4 h-4 text-red-400 flex-shrink-0"></i>
+              <span>Credit only, strict checks</span>
+            </div>
+          </div>
+
+          <!-- Row 4: Real-time visibility -->
+          <div class="grid grid-cols-3 border-b border-soft">
+            <div class="px-4 md:px-6 py-5 text-sm font-semibold flex items-center gap-2"><i data-lucide="activity" class="w-4 h-4 text-pink-500 flex-shrink-0"></i> Transaction visibility</div>
+            <div class="px-4 md:px-6 py-5 text-sm border-l border-soft bg-pink-500/5 flex items-center gap-2">
+              <i data-lucide="check-circle-2" class="w-4 h-4 text-green-500 flex-shrink-0"></i>
+              <span>Live dashboard · alerts the moment they swipe</span>
+            </div>
+            <div class="px-4 md:px-6 py-5 text-sm border-l border-soft text-muted flex items-center gap-2">
+              <i data-lucide="x-circle" class="w-4 h-4 text-red-400 flex-shrink-0"></i>
+              <span>End-of-month statements only</span>
+            </div>
+          </div>
+
+          <!-- Row 5: Card controls -->
+          <div class="grid grid-cols-3 border-b border-soft">
+            <div class="px-4 md:px-6 py-5 text-sm font-semibold flex items-center gap-2"><i data-lucide="sliders-horizontal" class="w-4 h-4 text-pink-500 flex-shrink-0"></i> Card controls</div>
+            <div class="px-4 md:px-6 py-5 text-sm border-l border-soft bg-pink-500/5 flex items-center gap-2">
+              <i data-lucide="check-circle-2" class="w-4 h-4 text-green-500 flex-shrink-0"></i>
+              <span>Per-driver limits, geo &amp; time fences</span>
+            </div>
+            <div class="px-4 md:px-6 py-5 text-sm border-l border-soft text-muted flex items-center gap-2">
+              <i data-lucide="x-circle" class="w-4 h-4 text-red-400 flex-shrink-0"></i>
+              <span>Fixed limits, no flexibility</span>
+            </div>
+          </div>
+
+          <!-- Row 6: Network -->
+          <div class="grid grid-cols-3 border-b border-soft">
+            <div class="px-4 md:px-6 py-5 text-sm font-semibold flex items-center gap-2"><i data-lucide="globe" class="w-4 h-4 text-pink-500 flex-shrink-0"></i> Coverage</div>
+            <div class="px-4 md:px-6 py-5 text-sm border-l border-soft bg-pink-500/5 flex items-center gap-2">
+              <i data-lucide="check-circle-2" class="w-4 h-4 text-green-500 flex-shrink-0"></i>
+              <span>10,000+ stops across US &amp; Canada</span>
+            </div>
+            <div class="px-4 md:px-6 py-5 text-sm border-l border-soft text-muted flex items-center gap-2">
+              <i data-lucide="x-circle" class="w-4 h-4 text-red-400 flex-shrink-0"></i>
+              <span>US-only, restricted networks</span>
+            </div>
+          </div>
+
+          <!-- Row 7: Funding -->
+          <div class="grid grid-cols-3 border-b border-soft">
+            <div class="px-4 md:px-6 py-5 text-sm font-semibold flex items-center gap-2"><i data-lucide="wallet" class="w-4 h-4 text-pink-500 flex-shrink-0"></i> Funding methods</div>
+            <div class="px-4 md:px-6 py-5 text-sm border-l border-soft bg-pink-500/5 flex items-center gap-2">
+              <i data-lucide="check-circle-2" class="w-4 h-4 text-green-500 flex-shrink-0"></i>
+              <span>ACH, debit, credit card, MoneyCode, Comchek</span>
+            </div>
+            <div class="px-4 md:px-6 py-5 text-sm border-l border-soft text-muted flex items-center gap-2">
+              <i data-lucide="x-circle" class="w-4 h-4 text-red-400 flex-shrink-0"></i>
+              <span>Wire transfers only, slow funding</span>
+            </div>
+          </div>
+
+          <!-- Row 8: Support -->
+          <div class="grid grid-cols-3">
+            <div class="px-4 md:px-6 py-5 text-sm font-semibold flex items-center gap-2"><i data-lucide="headset" class="w-4 h-4 text-pink-500 flex-shrink-0"></i> Support</div>
+            <div class="px-4 md:px-6 py-5 text-sm border-l border-soft bg-pink-500/5 flex items-center gap-2">
+              <i data-lucide="check-circle-2" class="w-4 h-4 text-green-500 flex-shrink-0"></i>
+              <span>24/7 phone &amp; SMS · talk to a real agent</span>
+            </div>
+            <div class="px-4 md:px-6 py-5 text-sm border-l border-soft text-muted flex items-center gap-2">
+              <i data-lucide="x-circle" class="w-4 h-4 text-red-400 flex-shrink-0"></i>
+              <span>Phone trees, scripted call centers</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="text-center mt-10 reveal">
+          <a href="contact.html" class="btn-primary text-base">
+            See it for yourself <i data-lucide="arrow-right" class="w-4 h-4"></i>
+          </a>
+          <p class="text-muted text-sm mt-3">Approved in 24 hours · No setup fees · No long-term contract</p>
         </div>
       </div>
     </section>
@@ -1002,7 +1144,7 @@
   </footer>
 
   <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
-  <script src="assets/app.js?v=dash1"></script>
+  <script src="assets/app.js?v=finder1"></script>
   <script src="assets/calculator.js"></script>
   <script>
     // Hard fallback: explicitly route every card-link <a> via window.location on click.
