@@ -26,7 +26,7 @@
       }
     }
   </script>
-  <link rel="stylesheet" href="assets/styles.css?v=finder1">
+  <link rel="stylesheet" href="assets/styles.css?v=tilt13">
 </head>
 <body class="surface-0 text-white font-sans">
 
@@ -409,6 +409,195 @@
     </section>
 
     <!-- Gradient line -->
+    <div class="gradient-line"></div>
+
+    <!-- ===== SCROLL-TILT DASHBOARD PREVIEW ===== -->
+    <section class="scroll-tilt-section surface-0" data-scroll-tilt>
+      <div class="scroll-tilt-inner">
+        <div class="scroll-tilt-header" data-scroll-tilt-header>
+          <p class="pill mx-auto mb-5"><i data-lucide="monitor" class="w-3 h-3"></i> Live fleet dashboard</p>
+          <h2 class="text-4xl md:text-6xl font-extrabold tracking-tight leading-[1.05] mb-5">
+            See every transaction<br>
+            <span class="ez-gradient-text">the moment it happens.</span>
+          </h2>
+          <p class="text-base md:text-lg text-muted max-w-2xl mx-auto leading-relaxed">
+            Real-time spend, savings tracker, and per-card controls - all in one dashboard. Designed for fleet owners and drivers, on any device.
+          </p>
+        </div>
+
+        <div class="scroll-tilt-card" data-scroll-tilt-card>
+          <div class="scroll-tilt-card-inner">
+            <!-- Dashboard mockup -->
+            <div class="dash-mockup">
+              <div class="dash-topbar">
+                <div class="dash-topbar-brand">
+                  <span class="dash-topbar-brand-mark">EZ</span>
+                  <span>Fleet Overview</span>
+                </div>
+                <div class="dash-topbar-pills">
+                  <span class="dash-topbar-pill">Today</span>
+                  <span class="dash-topbar-pill is-active">This week</span>
+                  <span class="dash-topbar-pill">This month</span>
+                </div>
+              </div>
+
+              <div class="dash-body">
+                <!-- LEFT column: KPIs + chart + categories -->
+                <div class="dash-left">
+                  <div class="dash-kpi-row">
+                    <div class="dash-kpi">
+                      <div class="dash-kpi-label">Saved this week</div>
+                      <div class="dash-kpi-value green">$4,287</div>
+                      <div class="dash-kpi-trend"><i data-lucide="trending-up" style="width:11px;height:11px"></i>+18% vs last week</div>
+                    </div>
+                    <div class="dash-kpi">
+                      <div class="dash-kpi-label">Active cards</div>
+                      <div class="dash-kpi-value">28</div>
+                      <div class="dash-kpi-trend" style="color:#94a3b8"><i data-lucide="users" style="width:11px;height:11px"></i>4 drivers on the road</div>
+                    </div>
+                    <div class="dash-kpi">
+                      <div class="dash-kpi-label">Avg per gallon</div>
+                      <div class="dash-kpi-value gradient">$3.18</div>
+                      <div class="dash-kpi-trend"><i data-lucide="trending-down" style="width:11px;height:11px"></i>$0.42 below market</div>
+                    </div>
+                  </div>
+
+                  <!-- Line chart (savings over 7 days) - flexes to fill -->
+                  <div class="dash-chart">
+                    <div class="dash-chart-head">
+                      <div class="dash-chart-title">Savings · last 7 days</div>
+                      <div class="dash-chart-sub">Cumulative</div>
+                    </div>
+                    <svg class="dash-chart-svg" viewBox="0 0 320 110" preserveAspectRatio="none" aria-hidden="true">
+                      <defs>
+                        <linearGradient id="dashLineGrad" x1="0" y1="0" x2="1" y2="0">
+                          <stop offset="0%" stop-color="#22D3EE"/>
+                          <stop offset="100%" stop-color="#3B82F6"/>
+                        </linearGradient>
+                        <linearGradient id="dashFillGrad" x1="0" y1="0" x2="0" y2="1">
+                          <stop offset="0%" stop-color="#22D3EE" stop-opacity="0.35"/>
+                          <stop offset="100%" stop-color="#22D3EE" stop-opacity="0"/>
+                        </linearGradient>
+                      </defs>
+                      <line x1="0" y1="30" x2="320" y2="30" stroke="rgba(255,255,255,0.04)" stroke-dasharray="2 4"/>
+                      <line x1="0" y1="60" x2="320" y2="60" stroke="rgba(255,255,255,0.04)" stroke-dasharray="2 4"/>
+                      <line x1="0" y1="90" x2="320" y2="90" stroke="rgba(255,255,255,0.04)" stroke-dasharray="2 4"/>
+                      <path d="M0,90 L40,82 L80,72 L120,68 L160,55 L200,42 L240,30 L280,22 L320,15 L320,110 L0,110 Z" fill="url(#dashFillGrad)"/>
+                      <path d="M0,90 L40,82 L80,72 L120,68 L160,55 L200,42 L240,30 L280,22 L320,15" fill="none" stroke="url(#dashLineGrad)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                      <circle cx="320" cy="15" r="4" fill="#22D3EE"/>
+                      <circle cx="320" cy="15" r="8" fill="#22D3EE" opacity="0.25"/>
+                    </svg>
+                  </div>
+
+                  <!-- Spend by category -->
+                  <div class="dash-cats">
+                    <div class="dash-cats-head">
+                      <div class="dash-chart-title">Spend by category</div>
+                      <div class="dash-chart-sub">This month · $18,748 total</div>
+                    </div>
+                    <div class="dash-cat">
+                      <div class="dash-cat-label">
+                        <span class="dash-cat-dot" style="background:#22D3EE"></span>
+                        <span>Diesel</span>
+                      </div>
+                      <div class="dash-cat-bar"><div class="dash-cat-bar-fill" style="width:75%; background:linear-gradient(90deg,#22D3EE,#3B82F6)"></div></div>
+                      <div class="dash-cat-val">$14,238 <span>76%</span></div>
+                    </div>
+                    <div class="dash-cat">
+                      <div class="dash-cat-label">
+                        <span class="dash-cat-dot" style="background:#3FB950"></span>
+                        <span>DEF</span>
+                      </div>
+                      <div class="dash-cat-bar"><div class="dash-cat-bar-fill" style="width:8%; background:#3FB950"></div></div>
+                      <div class="dash-cat-val">$1,402 <span>8%</span></div>
+                    </div>
+                    <div class="dash-cat">
+                      <div class="dash-cat-label">
+                        <span class="dash-cat-dot" style="background:#FFB300"></span>
+                        <span>Maintenance &amp; tires</span>
+                      </div>
+                      <div class="dash-cat-bar"><div class="dash-cat-bar-fill" style="width:17%; background:#FFB300"></div></div>
+                      <div class="dash-cat-val">$3,108 <span>16%</span></div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- RIGHT column: live transactions -->
+                <div class="dash-side">
+                  <div class="dash-side-head">
+                    <strong><span class="dash-livedot"></span>Live transactions</strong>
+                    <span>Updated 2s ago</span>
+                  </div>
+                  <div class="dash-tx" style="--brand:#FFB300">
+                    <div class="dash-tx-icon"></div>
+                    <div class="dash-tx-body">
+                      <div class="dash-tx-line1"><span>Pilot · Knoxville, TN</span><span>-$167.48</span></div>
+                      <div class="dash-tx-line2"><span>Card #4721 · 52.7 gal</span><span>2 min ago</span></div>
+                    </div>
+                  </div>
+                  <div class="dash-tx" style="--brand:#1976D2">
+                    <div class="dash-tx-icon"></div>
+                    <div class="dash-tx-body">
+                      <div class="dash-tx-line1"><span>TA · Albuquerque, NM</span><span>-$201.30</span></div>
+                      <div class="dash-tx-line2"><span>Card #8329 · 64.5 gal</span><span>14 min ago</span></div>
+                    </div>
+                  </div>
+                  <div class="dash-tx" style="--brand:#D32F2F">
+                    <div class="dash-tx-icon"></div>
+                    <div class="dash-tx-body">
+                      <div class="dash-tx-line1"><span>Love's · Amarillo, TX</span><span>-$148.92</span></div>
+                      <div class="dash-tx-line2"><span>Card #6104 · 47.8 gal</span><span>38 min ago</span></div>
+                    </div>
+                  </div>
+                  <div class="dash-tx" style="--brand:#E63946">
+                    <div class="dash-tx-icon"></div>
+                    <div class="dash-tx-body">
+                      <div class="dash-tx-line1"><span>Flying J · Dallas, TX</span><span>-$182.05</span></div>
+                      <div class="dash-tx-line2"><span>Card #2188 · 58.4 gal</span><span>1 hr ago</span></div>
+                    </div>
+                  </div>
+                  <div class="dash-tx" style="--brand:#6A1B9A">
+                    <div class="dash-tx-icon"></div>
+                    <div class="dash-tx-body">
+                      <div class="dash-tx-line1"><span>Petro · Phoenix, AZ</span><span>-$215.74</span></div>
+                      <div class="dash-tx-line2"><span>Card #5503 · 68.2 gal</span><span>2 hr ago</span></div>
+                    </div>
+                  </div>
+                  <div class="dash-tx" style="--brand:#2E7D32">
+                    <div class="dash-tx-icon"></div>
+                    <div class="dash-tx-body">
+                      <div class="dash-tx-line1"><span>Husky · Toronto, ON</span><span>-$176.20</span></div>
+                      <div class="dash-tx-line2"><span>Card #9947 · 56.1 gal</span><span>3 hr ago</span></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Bottom strip: at-a-glance fleet status -->
+              <div class="dash-footstrip">
+                <div class="dash-footstat">
+                  <i data-lucide="truck" class="w-4 h-4" style="color:#22D3EE"></i>
+                  <span><strong>4</strong> drivers on the road</span>
+                </div>
+                <div class="dash-footstat">
+                  <i data-lucide="bell" class="w-4 h-4" style="color:#FFB300"></i>
+                  <span><strong>2</strong> alerts to review</span>
+                </div>
+                <div class="dash-footstat">
+                  <i data-lucide="receipt" class="w-4 h-4" style="color:#3FB950"></i>
+                  <span><strong>147</strong> tx this week</span>
+                </div>
+                <div class="dash-footstat">
+                  <i data-lucide="shield-check" class="w-4 h-4" style="color:#3FB950"></i>
+                  <span>Fraud monitor: <strong style="color:#3FB950">Clean</strong></span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <div class="gradient-line"></div>
 
     <!-- ===== TWO PILLARS ===== -->
@@ -1144,7 +1333,7 @@
   </footer>
 
   <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
-  <script src="assets/app.js?v=finder1"></script>
+  <script src="assets/app.js?v=tilt13"></script>
   <script src="assets/calculator.js"></script>
   <script>
     // Hard fallback: explicitly route every card-link <a> via window.location on click.

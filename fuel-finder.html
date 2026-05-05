@@ -26,7 +26,7 @@
       }
     }
   </script>
-  <link rel="stylesheet" href="assets/styles.css?v=finder2">
+  <link rel="stylesheet" href="assets/styles.css?v=tilt13">
   <!-- Leaflet CSS -->
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
         integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">
@@ -160,118 +160,111 @@
       </svg>
     </section>
 
-    <!-- ===== ROUTE PLANNER (sticky-ish search bar) ===== -->
-    <section class="surface-0 pt-2 pb-6 relative z-20">
-      <div class="max-w-7xl mx-auto px-5">
-        <form id="fuel-finder-form" class="ff-planner">
-          <div class="ff-planner-inputs">
-            <label class="ff-input-wrap ff-input-from">
-              <span class="ff-input-label"><i data-lucide="circle-dot" class="w-3.5 h-3.5"></i> From</span>
-              <input id="ff-from" type="text" placeholder="Knoxville, TN" required autocomplete="off"
-                class="ff-input">
-            </label>
-            <button type="button" id="ff-swap" class="ff-swap-btn" aria-label="Swap From and To">
-              <i data-lucide="arrow-left-right" class="w-4 h-4"></i>
-            </button>
-            <label class="ff-input-wrap ff-input-to">
-              <span class="ff-input-label"><i data-lucide="map-pin" class="w-3.5 h-3.5"></i> To</span>
-              <input id="ff-to" type="text" placeholder="Phoenix, AZ" required autocomplete="off"
-                class="ff-input">
-            </label>
-            <button type="submit" class="ff-submit">
-              <i data-lucide="search" class="w-4 h-4"></i>
-              <span>Find best stops</span>
-            </button>
-          </div>
-          <div class="ff-planner-foot">
-            <div class="ff-suggested">
-              <span class="ff-suggested-label">Try:</span>
-              <button type="button" class="ff-route-chip" data-from="Atlanta, GA" data-to="Dallas, TX">Atlanta → Dallas</button>
-              <button type="button" class="ff-route-chip" data-from="Chicago, IL" data-to="Los Angeles, CA">Chicago → LA</button>
-              <button type="button" class="ff-route-chip" data-from="Toronto, ON" data-to="Calgary, AB">Toronto → Calgary</button>
-              <button type="button" class="ff-route-chip" data-from="Miami, FL" data-to="Boston, MA">Miami → Boston</button>
-            </div>
-            <button type="button" id="ff-reset" class="ff-reset-link">
-              <i data-lucide="rotate-ccw" class="w-3 h-3"></i> Reset
-            </button>
-          </div>
-        </form>
-      </div>
-    </section>
-
-    <!-- ===== MAP + RESULTS ===== -->
-    <section class="surface-0 pb-20">
-      <div class="max-w-7xl mx-auto px-5">
-        <!-- Brand filters + status -->
-        <div class="ff-toolbar">
-          <div class="ff-brand-filters">
-            <button type="button" class="ff-brand-chip is-active" data-brand="all">
-              <span class="ff-brand-dot" style="background:linear-gradient(135deg,#22D3EE,#3B82F6)"></span>
-              All brands
-            </button>
-            <button type="button" class="ff-brand-chip" data-brand="Pilot">
-              <span class="ff-brand-dot" style="background:#FFB300"></span>Pilot
-            </button>
-            <button type="button" class="ff-brand-chip" data-brand="Flying J">
-              <span class="ff-brand-dot" style="background:#E63946"></span>Flying J
-            </button>
-            <button type="button" class="ff-brand-chip" data-brand="TA">
-              <span class="ff-brand-dot" style="background:#1976D2"></span>TA
-            </button>
-            <button type="button" class="ff-brand-chip" data-brand="Petro">
-              <span class="ff-brand-dot" style="background:#6A1B9A"></span>Petro
-            </button>
-            <button type="button" class="ff-brand-chip" data-brand="Love's">
-              <span class="ff-brand-dot" style="background:#D32F2F"></span>Love's
-            </button>
-            <button type="button" class="ff-brand-chip" data-brand="Husky">
-              <span class="ff-brand-dot" style="background:#2E7D32"></span>Husky
-            </button>
-            <button type="button" class="ff-brand-chip" data-brand="Petro-Canada">
-              <span class="ff-brand-dot" style="background:#00838F"></span>Petro-Canada
-            </button>
-          </div>
-          <p id="fuel-finder-status" class="ff-status">Loading stops…</p>
+    <!-- ===== SCROLL-TILT FUEL FINDER PREVIEW ===== -->
+    <section class="scroll-tilt-section surface-0" data-scroll-tilt>
+      <div class="scroll-tilt-inner">
+        <div class="scroll-tilt-header" data-scroll-tilt-header>
+          <p class="pill mx-auto mb-5"><i data-lucide="sparkles" class="w-3 h-3"></i> Available in your client portal</p>
+          <h2 class="text-3xl md:text-5xl font-extrabold tracking-tight leading-[1.05] mb-5">
+            See the cheapest stops <span class="ez-gradient-text">live, on every trip.</span>
+          </h2>
+          <p class="text-base md:text-lg text-muted max-w-2xl mx-auto leading-relaxed mb-6">
+            Sign in with your fleet account to access the live Fuel Finder - real-time prices, custom card filters, and route planning at every login.
+          </p>
+          <a href="contact.html" class="btn-primary text-base">
+            Get card access <i data-lucide="arrow-right" class="w-4 h-4"></i>
+          </a>
         </div>
 
-        <div class="grid lg:grid-cols-[1fr_380px] gap-5">
-          <!-- LEFT: Map -->
-          <div class="ff-map-shell">
-            <div id="fuel-finder-map"></div>
-            <!-- Map overlay legend (small, bottom-left) -->
-            <div class="ff-map-legend">
-              <i data-lucide="info" class="w-3 h-3"></i>
-              <span>Tap a pin for amenities &amp; price · Yellow chip = your card price</span>
+        <div class="scroll-tilt-card" data-scroll-tilt-card>
+          <div class="scroll-tilt-card-inner">
+            <div class="ff-snap">
+              <!-- Top: search bar -->
+              <div class="ff-snap-search">
+                <div class="ff-snap-input from">
+                  <span class="ff-snap-input-label"><i data-lucide="circle-dot" style="width:11px;height:11px"></i>From</span>
+                  <span class="ff-snap-input-value">Knoxville, TN</span>
+                </div>
+                <div class="ff-snap-swap">
+                  <i data-lucide="arrow-left-right" class="w-4 h-4"></i>
+                </div>
+                <div class="ff-snap-input to">
+                  <span class="ff-snap-input-label"><i data-lucide="map-pin" style="width:11px;height:11px"></i>To</span>
+                  <span class="ff-snap-input-value">Phoenix, AZ</span>
+                </div>
+                <span class="ff-snap-find">
+                  <i data-lucide="search" class="w-4 h-4"></i>Find best stops
+                </span>
+              </div>
+
+              <!-- Brand filter chips -->
+              <div class="ff-snap-chips">
+                <span class="ff-snap-chip is-active"><span class="ff-snap-chip-dot" style="background:linear-gradient(135deg,#22D3EE,#3B82F6)"></span>All brands</span>
+                <span class="ff-snap-chip"><span class="ff-snap-chip-dot" style="background:#FFB300"></span>Pilot</span>
+                <span class="ff-snap-chip"><span class="ff-snap-chip-dot" style="background:#E63946"></span>Flying J</span>
+                <span class="ff-snap-chip"><span class="ff-snap-chip-dot" style="background:#1976D2"></span>TA</span>
+                <span class="ff-snap-chip"><span class="ff-snap-chip-dot" style="background:#6A1B9A"></span>Petro</span>
+                <span class="ff-snap-chip"><span class="ff-snap-chip-dot" style="background:#D32F2F"></span>Love's</span>
+                <span class="ff-snap-chip"><span class="ff-snap-chip-dot" style="background:#2E7D32"></span>Husky</span>
+              </div>
+
+              <!-- Body: map + results -->
+              <div class="ff-snap-body">
+                <div class="ff-snap-map">
+                  <div id="ff-snap-leaflet" class="ff-snap-leaflet"></div>
+                </div>
+
+                <div class="ff-snap-results">
+                  <div class="ff-snap-results-head">
+                    <span><i data-lucide="trophy" class="inline-block" style="width:13px;height:13px;vertical-align:-2px"></i> Top stops</span>
+                    <span>5 found</span>
+                  </div>
+                  <div class="ff-snap-results-list">
+                    <div class="ff-snap-row is-best" style="--brand:#D32F2F">
+                      <div class="ff-snap-rank">1</div>
+                      <div class="ff-snap-rbody">
+                        <div class="ff-snap-rhead"><span>Love's</span><span class="price">$3.00</span></div>
+                        <p class="ff-snap-rloc">Dallas, TX · 12 mi off route</p>
+                        <span class="ff-snap-rdisc">Save 50¢/gal</span>
+                      </div>
+                    </div>
+                    <div class="ff-snap-row" style="--brand:#1976D2">
+                      <div class="ff-snap-rank">2</div>
+                      <div class="ff-snap-rbody">
+                        <div class="ff-snap-rhead"><span>TA</span><span class="price">$3.01</span></div>
+                        <p class="ff-snap-rloc">Albuquerque, NM · 8 mi</p>
+                        <span class="ff-snap-rdisc">Save 49¢/gal</span>
+                      </div>
+                    </div>
+                    <div class="ff-snap-row" style="--brand:#6A1B9A">
+                      <div class="ff-snap-rank">3</div>
+                      <div class="ff-snap-rbody">
+                        <div class="ff-snap-rhead"><span>Petro</span><span class="price">$3.06</span></div>
+                        <p class="ff-snap-rloc">Amarillo, TX · 22 mi</p>
+                        <span class="ff-snap-rdisc">Save 44¢/gal</span>
+                      </div>
+                    </div>
+                    <div class="ff-snap-row" style="--brand:#1976D2">
+                      <div class="ff-snap-rank">4</div>
+                      <div class="ff-snap-rbody">
+                        <div class="ff-snap-rhead"><span>TA</span><span class="price">$3.06</span></div>
+                        <p class="ff-snap-rloc">Little Rock, AR · 5 mi</p>
+                        <span class="ff-snap-rdisc">Save 44¢/gal</span>
+                      </div>
+                    </div>
+                    <div class="ff-snap-row" style="--brand:#FFB300">
+                      <div class="ff-snap-rank">5</div>
+                      <div class="ff-snap-rbody">
+                        <div class="ff-snap-rhead"><span>Pilot</span><span class="price">$3.08</span></div>
+                        <p class="ff-snap-rloc">Memphis, TN · 18 mi</p>
+                        <span class="ff-snap-rdisc">Save 42¢/gal</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
-
-          <!-- RIGHT: Results panel -->
-          <aside class="ff-results-panel">
-            <div class="ff-results-head">
-              <div>
-                <h2 class="font-bold text-lg flex items-center gap-2">
-                  <i data-lucide="trophy" class="w-5 h-5 text-pink-500"></i>
-                  Top stops along route
-                </h2>
-                <p class="text-xs text-muted mt-0.5">Sorted by deepest discount, then nearest to route.</p>
-              </div>
-            </div>
-            <div id="fuel-finder-results" class="ff-results-body">
-              <div class="ff-empty-state">
-                <div class="ff-empty-icon">
-                  <i data-lucide="route" class="w-8 h-8"></i>
-                </div>
-                <p class="ff-empty-title">Plan your trip</p>
-                <p class="ff-empty-text">Enter From and To above to surface the cheapest in-network stops along your route.</p>
-              </div>
-            </div>
-            <div class="ff-results-foot">
-              <a href="contact.html" class="btn-primary w-full justify-center text-sm">
-                Lock in these rates <i data-lucide="arrow-right" class="w-4 h-4"></i>
-              </a>
-              <p class="text-xs text-muted mt-2 text-center">Approved in 24 hours · No setup fees</p>
-            </div>
-          </aside>
         </div>
       </div>
     </section>
@@ -378,7 +371,124 @@
   <!-- Leaflet JS -->
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
           integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
-  <script src="assets/app.js?v=finder2"></script>
-  <script src="assets/fuel-finder.js?v=finder2"></script>
+  <script src="assets/app.js?v=tilt13"></script>
+  <script>
+    // Snapshot map preview inside scroll-tilt card (same as network.html)
+    (function () {
+      function initSnapshotMap() {
+        const el = document.getElementById('ff-snap-leaflet');
+        if (!el || !window.L) return;
+
+        const FROM = [35.9606, -83.9207]; // Knoxville, TN
+        const TO   = [33.4484, -112.0740]; // Phoenix, AZ
+        const STOPS = [
+          { lat: 35.1495, lng: -90.0490, brand: 'Pilot',   price: '$3.08', color: '#FFB300' },
+          { lat: 34.7465, lng: -92.2896, brand: 'TA',      price: '$3.06', color: '#1976D2' },
+          { lat: 32.7767, lng: -96.7970, brand: "Love's",  price: '$3.00', color: '#D32F2F' },
+          { lat: 35.2220, lng: -101.8313,brand: 'Petro',   price: '$3.06', color: '#6A1B9A' },
+          { lat: 35.0844, lng: -106.6504,brand: 'TA',      price: '$3.01', color: '#1976D2' }
+        ];
+
+        // Hardcoded route along I-40 / I-30 / US-287 / I-17
+        const ROUTE = [
+          [35.9606, -83.9207], [35.9300, -84.1500], [35.8950, -84.4200], [35.9700, -84.7600],
+          [35.9450, -84.9800], [35.9500, -85.0300], [35.9700, -85.2800], [36.0500, -85.4000],
+          [36.1600, -85.5000], [36.1750, -85.7500], [36.1750, -86.0500], [36.1800, -86.3000],
+          [36.1627, -86.7816], [36.1500, -86.9500], [36.1100, -87.1800], [36.0800, -87.3900],
+          [36.0500, -87.6500], [35.9500, -87.9000], [35.8500, -88.1500], [35.7500, -88.4000],
+          [35.7000, -88.6000], [35.6128, -88.8139], [35.5500, -89.0500], [35.4800, -89.3000],
+          [35.4000, -89.5500], [35.3000, -89.7800], [35.2200, -89.9000],
+          [35.1495, -90.0490],
+          [35.1300, -90.2000], [35.1000, -90.4500], [35.0500, -90.6500], [35.0100, -90.7900],
+          [34.9500, -91.0000], [34.8900, -91.2000], [34.8500, -91.4500], [34.8000, -91.7000],
+          [34.7800, -91.9500], [34.7600, -92.1500],
+          [34.7465, -92.2896],
+          [34.7000, -92.4000], [34.6200, -92.5000], [34.5600, -92.5900], [34.4800, -92.7500],
+          [34.3500, -92.8500], [34.2000, -93.0000], [34.1200, -93.0500], [34.0500, -93.2500],
+          [33.9500, -93.4500], [33.8500, -93.7000], [33.7500, -93.9000], [33.6000, -94.0000],
+          [33.4374, -94.0377], [33.3500, -94.2500], [33.2500, -94.5000], [33.1600, -94.9700],
+          [33.1000, -95.2500], [33.0500, -95.5500], [33.0500, -95.8000], [33.0800, -96.0000],
+          [33.1400, -96.1100], [33.0500, -96.3000], [32.9500, -96.4500], [32.8500, -96.6000],
+          [32.7700, -96.6800],
+          [32.7767, -96.7970],
+          [32.8500, -96.9000], [32.9500, -97.1500], [33.0500, -97.4000], [33.1500, -97.5000],
+          [33.2300, -97.5900], [33.3500, -97.7000], [33.4500, -97.7800], [33.5600, -97.8500],
+          [33.6500, -97.9500], [33.7500, -98.1000], [33.8500, -98.3000], [33.9100, -98.4900],
+          [34.0000, -98.7000], [34.0800, -98.9000], [34.1600, -99.2700], [34.2500, -99.5000],
+          [34.3500, -99.8000], [34.4300, -100.2000], [34.5500, -100.3500], [34.6500, -100.4500],
+          [34.7300, -100.5400], [34.8200, -100.6800], [34.9400, -100.8900], [35.0500, -101.1500],
+          [35.1100, -101.3600], [35.1700, -101.5500], [35.2000, -101.7000],
+          [35.2220, -101.8313],
+          [35.2400, -102.0000], [35.2400, -102.4300], [35.2200, -102.7500], [35.2000, -103.0500],
+          [35.1900, -103.3500], [35.1700, -103.7200], [35.1500, -104.0500], [35.0700, -104.3500],
+          [34.9400, -104.6800], [34.9700, -104.9500], [35.0100, -105.2500], [35.0100, -105.6700],
+          [34.9900, -105.8500], [34.9900, -106.0500], [35.0300, -106.2500], [35.0500, -106.4500],
+          [35.0844, -106.6504],
+          [35.1000, -106.8500], [35.1300, -107.1000], [35.1500, -107.4000], [35.1500, -107.8500],
+          [35.2000, -108.1500], [35.4500, -108.4500], [35.5300, -108.7400], [35.4500, -109.0500],
+          [35.3000, -109.3500], [35.1500, -109.6500], [35.0000, -109.9000], [34.9000, -110.1600],
+          [34.9500, -110.4000], [35.0200, -110.6900], [35.1000, -110.9500], [35.1500, -111.2000],
+          [35.1900, -111.6500],
+          [35.2000, -111.6500],
+          [35.1000, -111.6500], [34.9400, -111.6500], [34.7500, -111.7500], [34.5600, -111.8500],
+          [34.4000, -111.9500], [34.3100, -112.1300], [34.1500, -112.1500], [33.9500, -112.1500],
+          [33.8600, -112.1400], [33.7000, -112.1200], [33.5500, -112.1000],
+          [33.4484, -112.0740]
+        ];
+
+        const map = L.map(el, {
+          zoomControl: false,
+          attributionControl: false,
+          dragging: false,
+          touchZoom: false,
+          doubleClickZoom: false,
+          scrollWheelZoom: false,
+          boxZoom: false,
+          keyboard: false,
+          tap: false,
+          preferCanvas: true,
+          renderer: L.canvas({ padding: 0.5 })
+        }).setView([35.5, -97.5], 4);
+
+        L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', {
+          subdomains: 'abcd',
+          maxZoom: 19
+        }).addTo(map);
+
+        // Glow + main route line
+        L.polyline(ROUTE, { color: '#22D3EE', weight: 12, opacity: 0.30, lineCap: 'round', lineJoin: 'round' }).addTo(map);
+        L.polyline(ROUTE, { color: '#06B6D4', weight: 5, opacity: 1, lineCap: 'round', lineJoin: 'round' }).addTo(map);
+
+        // Stop pins
+        STOPS.forEach(stop => {
+          const html = `<div class="ts-pin" style="--c:${stop.color}"><span>${stop.price}</span></div>`;
+          L.marker([stop.lat, stop.lng], {
+            icon: L.divIcon({ className: 'ts-pin-wrap', html: html, iconSize: [56, 28], iconAnchor: [28, 28] }),
+            interactive: false
+          }).addTo(map);
+        });
+
+        // Endpoint A (Knoxville, green)
+        L.marker(FROM, {
+          icon: L.divIcon({ className: 'ts-endpoint ts-endpoint-from', html: '<span>A</span>', iconSize: [32, 32], iconAnchor: [16, 16] }),
+          interactive: false
+        }).addTo(map);
+        // Endpoint B (Phoenix, blue)
+        L.marker(TO, {
+          icon: L.divIcon({ className: 'ts-endpoint ts-endpoint-to', html: '<span>B</span>', iconSize: [32, 32], iconAnchor: [16, 16] }),
+          interactive: false
+        }).addTo(map);
+
+        const bounds = L.latLngBounds(ROUTE);
+        map.fitBounds(bounds, { padding: [40, 40], maxZoom: 6 });
+      }
+
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initSnapshotMap);
+      } else {
+        initSnapshotMap();
+      }
+    })();
+  </script>
 </body>
 </html>
