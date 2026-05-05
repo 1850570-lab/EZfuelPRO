@@ -445,6 +445,35 @@
           }
         }
 
+        // Defense-in-depth: validate required fields ourselves in case browser
+        // validation was bypassed (programmatic submission, mobile Safari edge
+        // cases, or a bot POSTing directly via fetch).
+        const requiredFields = ['company_name', 'contact_name', 'email', 'phone'];
+        const missing = requiredFields.filter(f => !((data[f] || '').toString().trim()));
+        if (missing.length) {
+          if (status) {
+            status.classList.remove('hidden');
+            status.textContent = 'Please fill in all required fields: ' + missing.join(', ').replace(/_/g, ' ') + '.';
+            status.style.color = '#f87171';
+          }
+          // Surface the first missing field for the user
+          const firstMissing = form.querySelector('[name="' + missing[0] + '"]');
+          if (firstMissing) {
+            firstMissing.focus();
+            firstMissing.scrollIntoView({ block: 'center', behavior: 'smooth' });
+          }
+          return;
+        }
+        // Basic email sanity check
+        if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test((data.email || '').trim())) {
+          if (status) {
+            status.classList.remove('hidden');
+            status.textContent = 'Please enter a valid email address.';
+            status.style.color = '#f87171';
+          }
+          return;
+        }
+
         // FormSubmit metadata
         const senderName = data.contact_name || data.name || data.full_name || data.email || 'Unknown';
         data._subject = `New EZ Fuel Pro Application - ${senderName}`;
