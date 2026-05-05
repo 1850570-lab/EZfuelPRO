@@ -550,6 +550,56 @@
     });
   }
 
+  // ----- Scroll-driven tilt section (Aceternity ContainerScroll port) -----
+  // Card starts tilted forward at 20deg + scaled, flattens & shrinks as the
+  // user scrolls the section through the viewport. Pure CSS transforms - no
+  // framer-motion needed.
+  function bindScrollTilt() {
+    const sections = document.querySelectorAll('[data-scroll-tilt]');
+    if (!sections.length) return;
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+    sections.forEach(section => {
+      const card = section.querySelector('[data-scroll-tilt-card]');
+      const header = section.querySelector('[data-scroll-tilt-header]');
+      if (!card) return;
+
+      let raf = null;
+      function update() {
+        const isMobile = window.innerWidth <= 768;
+        const rect = section.getBoundingClientRect();
+        const vh = window.innerHeight || document.documentElement.clientHeight;
+
+        // Progress: 0 at section-top entering bottom of viewport,
+        //           1 at section-bottom leaving top of viewport.
+        const total = rect.height + vh;
+        const traveled = vh - rect.top;
+        const p = Math.max(0, Math.min(1, traveled / total));
+
+        const rotate = 20 - p * 20; // 20deg → 0deg
+        const scaleStart = isMobile ? 0.7 : 1.05;
+        const scaleEnd = isMobile ? 0.9 : 1;
+        const scale = scaleStart + p * (scaleEnd - scaleStart);
+        const tY = -p * 100;
+
+        card.style.transform = `rotateX(${rotate.toFixed(2)}deg) scale(${scale.toFixed(3)})`;
+        if (header) header.style.transform = `translateY(${tY.toFixed(1)}px)`;
+      }
+
+      function onScroll() {
+        if (raf) return;
+        raf = requestAnimationFrame(() => {
+          update();
+          raf = null;
+        });
+      }
+
+      update();
+      window.addEventListener('scroll', onScroll, { passive: true });
+      window.addEventListener('resize', onScroll);
+    });
+  }
+
   document.addEventListener('DOMContentLoaded', () => {
     // Always-on (needed on every page)
     bindThemeToggle();
@@ -564,6 +614,7 @@
     bindCardTilt();
     bindCardGyro();
     bindCardFlip();
+    bindScrollTilt();
 
     // Broader animation layer - homepage only. Static pages opt out via body.static-page.
     const isStatic = document.body.classList.contains('static-page');
