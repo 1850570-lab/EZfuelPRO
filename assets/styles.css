@@ -463,58 +463,174 @@ i[data-lucide] { transition: transform .3s ease; }
   51%, 100% { opacity: 0; }
 }
 
-/* Buttons */
+/* ===== TRUE LIQUID GLASS BUTTONS — visibly translucent ===== */
+/* The fill is barely there - color comes from a soft tint behind frosted
+   blur. Bright top edge highlight + thin glowing border make it read as
+   "glass" not "button". */
+
 .btn-primary {
   position: relative;
-  overflow: hidden;
-  background: linear-gradient(90deg, #22D3EE, #3B82F6, #22D3EE);
-  background-size: 200% 100%;
-  color: white;
-  font-weight: 600;
-  border-radius: 10px;
-  padding: 12px 22px;
   display: inline-flex;
   align-items: center;
-  gap: 8px;
-  transition: transform .2s cubic-bezier(.22,.61,.36,1), box-shadow .3s ease, filter .2s ease, background-position .5s ease, gap .2s ease;
-  box-shadow: 0 8px 30px -10px rgba(34,211,238,0.55);
+  justify-content: center;
+  gap: 10px;
+  padding: 13px 26px;
+  font-weight: 600;
+  font-size: 14px;
+  letter-spacing: -0.005em;
+  color: #fff;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+  border-radius: 14px;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  cursor: pointer;
+  text-decoration: none;
+  user-select: none;
+  isolation: isolate;
+  overflow: hidden;
+  /* Frosted glass with subtle cyan-blue tint */
+  background:
+    linear-gradient(180deg,
+      rgba(255, 255, 255, 0.18) 0%,
+      rgba(255, 255, 255, 0.04) 45%,
+      rgba(255, 255, 255, 0.02) 55%,
+      rgba(255, 255, 255, 0.10) 100%),
+    linear-gradient(135deg,
+      rgba(34, 211, 238, 0.28) 0%,
+      rgba(59, 130, 246, 0.20) 100%);
+  backdrop-filter: blur(20px) saturate(200%);
+  -webkit-backdrop-filter: blur(20px) saturate(200%);
+  /* Glass-defining shadows: bright top edge + soft inner depth + minimal outer */
+  box-shadow:
+    inset 0 1.5px 0 0 rgba(255, 255, 255, 0.55),
+    inset 0 -1px 0 0 rgba(255, 255, 255, 0.10),
+    inset 0 0 14px 0 rgba(255, 255, 255, 0.10),
+    0 6px 20px -4px rgba(34, 211, 238, 0.35),
+    0 1px 3px rgba(0, 0, 0, 0.20);
+  transition:
+    transform 0.25s cubic-bezier(0.22, 0.61, 0.36, 1),
+    background 0.3s ease,
+    box-shadow 0.3s ease,
+    gap 0.2s ease;
 }
+/* Strong specular highlight (curved gradient on top half) */
+.btn-primary::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  background:
+    radial-gradient(140% 70% at 50% -20%,
+      rgba(255, 255, 255, 0.45) 0%,
+      rgba(255, 255, 255, 0) 55%);
+  z-index: 1;
+}
+.btn-primary > * { position: relative; z-index: 2; }
+
 .btn-primary:hover {
   transform: translateY(-2px);
-  filter: brightness(1.08);
-  background-position: 100% 0;
-  box-shadow: 0 14px 40px -10px rgba(34,211,238,0.7);
   gap: 12px;
+  background:
+    linear-gradient(180deg,
+      rgba(255, 255, 255, 0.22) 0%,
+      rgba(255, 255, 255, 0.06) 45%,
+      rgba(255, 255, 255, 0.04) 55%,
+      rgba(255, 255, 255, 0.14) 100%),
+    linear-gradient(135deg,
+      rgba(34, 211, 238, 0.38) 0%,
+      rgba(59, 130, 246, 0.28) 100%);
+  box-shadow:
+    inset 0 1.5px 0 0 rgba(255, 255, 255, 0.65),
+    inset 0 -1px 0 0 rgba(255, 255, 255, 0.12),
+    inset 0 0 18px 0 rgba(255, 255, 255, 0.14),
+    0 10px 30px -4px rgba(34, 211, 238, 0.5),
+    0 2px 6px rgba(0, 0, 0, 0.22);
 }
-.btn-primary::before {
-  content: "";
-  position: absolute;
-  top: 0; left: -100%;
-  width: 100%; height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.25), transparent);
-  transition: left .6s ease;
+.btn-primary:active {
+  transform: translateY(0) scale(0.97);
+  transition: transform 0.1s ease;
+  box-shadow:
+    inset 0 1.5px 4px rgba(0, 0, 0, 0.18),
+    inset 0 -1px 0 0 rgba(255, 255, 255, 0.20),
+    0 2px 8px rgba(0, 0, 0, 0.15);
 }
-.btn-primary:hover::before { left: 100%; }
-.btn-primary:active { transform: translateY(0) scale(0.98); }
 
+/* ----- Ghost glass button ----- */
 .btn-ghost {
-  border: 1px solid rgba(255,255,255,0.18);
-  color: inherit;
-  font-weight: 600;
-  border-radius: 10px;
-  padding: 12px 22px;
+  position: relative;
   display: inline-flex;
   align-items: center;
-  gap: 8px;
-  transition: background-color .25s ease, border-color .25s ease, transform .2s ease, gap .2s ease;
+  justify-content: center;
+  gap: 10px;
+  padding: 13px 26px;
+  font-weight: 600;
+  font-size: 14px;
+  letter-spacing: -0.005em;
+  color: rgba(255, 255, 255, 0.95);
+  border-radius: 14px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  cursor: pointer;
+  text-decoration: none;
+  user-select: none;
+  isolation: isolate;
+  overflow: hidden;
+  background:
+    linear-gradient(180deg,
+      rgba(255, 255, 255, 0.10) 0%,
+      rgba(255, 255, 255, 0.02) 50%,
+      rgba(255, 255, 255, 0.06) 100%);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  box-shadow:
+    inset 0 1px 0 0 rgba(255, 255, 255, 0.30),
+    inset 0 -1px 0 0 rgba(255, 255, 255, 0.06),
+    inset 0 0 12px 0 rgba(255, 255, 255, 0.06),
+    0 3px 10px rgba(0, 0, 0, 0.18);
+  transition:
+    transform 0.25s cubic-bezier(0.22, 0.61, 0.36, 1),
+    background 0.3s ease,
+    border-color 0.3s ease,
+    box-shadow 0.3s ease,
+    gap 0.2s ease;
 }
+.btn-ghost::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  background: radial-gradient(140% 70% at 50% -20%,
+    rgba(255, 255, 255, 0.30) 0%,
+    rgba(255, 255, 255, 0) 55%);
+  z-index: 1;
+}
+.btn-ghost > * { position: relative; z-index: 2; }
 .btn-ghost:hover {
-  background: rgba(255,255,255,0.06);
-  border-color: rgba(34,211,238,0.55);
   transform: translateY(-2px);
   gap: 12px;
+  border-color: rgba(34, 211, 238, 0.4);
+  background:
+    linear-gradient(180deg,
+      rgba(255, 255, 255, 0.14) 0%,
+      rgba(255, 255, 255, 0.04) 50%,
+      rgba(255, 255, 255, 0.10) 100%),
+    linear-gradient(135deg,
+      rgba(34, 211, 238, 0.10) 0%,
+      rgba(59, 130, 246, 0.06) 100%);
+  box-shadow:
+    inset 0 1px 0 0 rgba(255, 255, 255, 0.40),
+    inset 0 -1px 0 0 rgba(255, 255, 255, 0.08),
+    inset 0 0 14px 0 rgba(255, 255, 255, 0.10),
+    0 6px 18px rgba(34, 211, 238, 0.18),
+    0 2px 6px rgba(0, 0, 0, 0.18);
 }
-.btn-ghost:active { transform: translateY(0); }
+.btn-ghost:active {
+  transform: translateY(0) scale(0.97);
+  transition: transform 0.1s ease;
+  box-shadow:
+    inset 0 1.5px 4px rgba(0, 0, 0, 0.18),
+    inset 0 -1px 0 0 rgba(255, 255, 255, 0.10);
+}
 .light .btn-ghost {
   border-color: rgba(15,23,42,0.18);
 }
